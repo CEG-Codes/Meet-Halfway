@@ -30,7 +30,7 @@ async defer></script>
 
 #####Javascript
 ######/app/assets/javascripts/maps/*name of file.js*
-* in a javacsript file, use this method to create a new map
+* Use this method to create a new map
 
 ```js
 var map = new google.maps.Map(document.getElementById("map"), {<options>});
@@ -48,7 +48,7 @@ var map = new google.maps.Map(document.getElementById("map"), {<options>});
 var map_options = {
   center: {lat: -34.397, lng: 150.644},
   zoom: 8,
-  mapTypeId: HYBRID,
+  mapTypeId: 'HYBRID',
   backgroundColor: teal
 }
 
