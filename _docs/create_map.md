@@ -1,9 +1,19 @@
 #**Documentation**
+##Creating a map || [Back to Table of Contents](_content.md)
 
-##[Creating a map](README.md)
-From [google maps API docs](https://developers.google.com/maps/documentation/javascript/tutorial)
+####Intro
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Google provides a well documented tool for using their maps found here: [google maps API docs](https://developers.google.com/maps/documentation/javascript/tutorial){:target="_blank"}
 
-* In the maps/index.html.erb file add div with the ID of "map" to the body.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The maps use a javascript library and are easiest to manipulate from the front end.This means we won't need a gem to create the map itself, but we may need one for the
+more complicated stuff we want to do such as Google Places.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The map requires an API *browser* key to use. The browser key is a type of Google API key that simply tracks the amount of requests you make to google maps. This key doesn't need to be kept secret (it's placed in the HTML template) but it needs to be setup to only accept requests from certain URLs in the developer's console.
+
+####Coding
+
+#####HTML
+######/app/views/maps/index.html.erb
+* add div with the ID of "map" to the body.
 * copy and paste google's map script to the body, including your API **BROWSER** key
 
 ```html
@@ -18,7 +28,9 @@ async defer></script>
 </html>
 ```
 
-* in a javacsript file, create a new map with this method
+#####Javascript
+######/app/assets/javascripts/maps/*name of file.js*
+* in a javacsript file, use this method to create a new map
 
 ```js
 var map = new google.maps.Map(document.getElementById("map"), {<options>});
@@ -30,7 +42,7 @@ var map = new google.maps.Map(document.getElementById("map"), {<options>});
 
 * We can set the options above the method and pass it in with a variable.
     * The center and zoom options are required. All others are optional.
-    * A full list of interesting options can be found at the [Google Maps API Reference Page](https://developers.google.com/maps/documentation/javascript/reference#MapOptions)
+    * A full list of interesting options can be found at the [Google Maps API Reference Page](https://developers.google.com/maps/documentation/javascript/reference#MapOptions){:target="_blank"}
 
 ```js
 var map_options = {
@@ -44,12 +56,3 @@ var map = new google.maps.Map(document.getElementById("map"), {map_options});
 
 ```
 
-##Finding a route between two points
-
-##Finding the halfway point
-
-##Creating a marker at halfway point
-
-##Creating a draggable circle
-
-##Methods Reference
