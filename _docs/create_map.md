@@ -1,10 +1,10 @@
 #**Documentation**
-##Creating a map || [Back to Table of Contents](_content.md)
+##Creating a map || [Back to Table of Contents](_table_of_contents.md)
 
 ####Intro
-Based off the <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">Google Maps API docs</a>
+Based off the [Google Maps API Docs](https://developers.google.com/maps/documentation/javascript/tutorial)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The maps use a javascript library and are easiest to manipulate from the front end. This means we won't need a gem to create the map itself, but we may need one for the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The maps use a javascript library and are easiest to manipulate from the front end.This means we won't need a gem to create the map itself, but we may need one for the
 more complicated stuff we want to do such as Google Places.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The map requires an API *browser* key to use. The browser key is a type of Google API key that simply tracks the amount of requests you make to google maps. This key doesn't need to be kept secret (it's placed in the HTML template) but it needs to be setup to only accept requests from certain URLs in the developer's console.
@@ -42,7 +42,7 @@ var map = new google.maps.Map(document.getElementById("map"), {<options>});
 
 * We can set the options above the method and pass it in with a variable.
     * The center and zoom options are required. All others are optional.
-    * A full list of interesting options can be found at the <a href="https://developers.google.com/maps/documentation/javascript/reference#MapOptions" target="_blank">Google Maps API Reference Page</a>
+    * A full list of interesting options can be found at the [Google Maps API Reference Page](https://developers.google.com/maps/documentation/javascript/reference#MapOptions)
 
 ```js
 var map_options = {
