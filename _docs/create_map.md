@@ -45,14 +45,16 @@ var map = new google.maps.Map(document.getElementById("map"), {<options>});
     * A full list of interesting options can be found at the [Google Maps API Reference Page](https://developers.google.com/maps/documentation/javascript/reference#MapOptions)
 
 ```js
-var map_options = {
-  center: {lat: -34.397, lng: 150.644},
-  zoom: 8,
-  mapTypeId: 'HYBRID',
-  backgroundColor: teal
+
+function initMap()
+{
+    var map_options = {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8,
+      mapTypeId: 'roadmap'
+    }
+
+    var map = new google.maps.Map(document.getElementById("map"), {map_options});
 }
-
-var map = new google.maps.Map(document.getElementById("map"), {map_options});
-
 ```
 
