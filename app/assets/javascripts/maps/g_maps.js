@@ -6,6 +6,7 @@ $(document).ready(function()
 
 var directionsDisplay
 var directionsService
+var request
 
 function initMap() {
  directionsDisplay = new google.maps.DirectionsRenderer();
@@ -28,19 +29,19 @@ function initMap() {
  calcRoute();
 };
 
-// we are going to do directions here - 
+// we are going to do directions here -
 
 
 
-function calcRoute() { 
+function calcRoute() {
 
 
 	// var start = document.getElementById('start').value;
 	// var end = document.getElementById('end').value;
 
-	var request = {
-    	origin: "Brooklyn, NY",
-    	destination: "Nashville, TN",
+	request = {
+    	origin: "Sunset Park, Brooklyn, NY",
+    	destination: "Meat Packing, Manhattan, NY",
     	travelMode: 'DRIVING'
     	// travelMode will eventually be a varible from user input
   	};
@@ -48,6 +49,7 @@ function calcRoute() {
     directionsService.route(request, function(result, status) {
     if (status == 'OK') {
       directionsDisplay.setDirections(result);
+      findHalfway(result);
       console.log(result);
       // status is the api suceeding or failing
     }
@@ -57,3 +59,23 @@ function calcRoute() {
 }
 
 
+function findHalfway(result){
+  var coordinates_array = result.routes[0].overview_path
+  var half = (coordinates_array.length / 2)
+  var halfway_point = coordinates_array[half]
+  console.log(halfway_point)
+
+
+  var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], halfway_point)
+  console.log(startingToHalfway)
+  var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length -1], halfway_point)
+  console.log(halfwayToDestination)
+
+  var marker = new google.maps.Marker({
+   position: halfway_point,
+   map: map,
+   title: 'Hello World!'
+ });
+
+};
+// computeDistanceBetween(starting_point, halfway_point)
