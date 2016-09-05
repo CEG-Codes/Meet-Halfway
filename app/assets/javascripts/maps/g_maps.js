@@ -3,7 +3,13 @@ $(document).ready(function()
   console.log('Hi Sarah!')
 });
 
+
+var directionsDisplay
+var directionsService
+
 function initMap() {
+ directionsDisplay = new google.maps.DirectionsRenderer();
+ directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
 
@@ -18,6 +24,7 @@ function initMap() {
   }
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
+ directionsDisplay.setMap(map);
  calcRoute();
 };
 
@@ -27,8 +34,6 @@ function initMap() {
 
 function calcRoute() { 
 
-	var directionsService = new google.maps.DirectionsService();
-	var directionsDisplay = new google.maps.DirectionsRenderer();
 
 	// var start = document.getElementById('start').value;
 	// var end = document.getElementById('end').value;
@@ -42,10 +47,12 @@ function calcRoute() {
 
     directionsService.route(request, function(result, status) {
     if (status == 'OK') {
+      directionsDisplay.setDirections(result);
       console.log(result);
       // status is the api suceeding or failing
     }
   });
+
 
 }
 
