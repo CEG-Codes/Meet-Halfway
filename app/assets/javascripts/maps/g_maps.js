@@ -18,4 +18,35 @@ function initMap() {
   }
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
+ calcRoute();
 };
+
+// we are going to do directions here - 
+
+
+
+function calcRoute() { 
+
+	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplay = new google.maps.DirectionsRenderer();
+
+	// var start = document.getElementById('start').value;
+	// var end = document.getElementById('end').value;
+
+	var request = {
+    	origin: "Brooklyn, NY",
+    	destination: "Nashville, TN",
+    	travelMode: 'DRIVING'
+    	// travelMode will eventually be a varible from user input
+  	};
+
+    directionsService.route(request, function(result, status) {
+    if (status == 'OK') {
+      console.log(result);
+      // status is the api suceeding or failing
+    }
+  });
+
+}
+
+
