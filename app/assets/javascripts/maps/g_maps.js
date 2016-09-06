@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+  $('select').material_select();
   console.log('Hi Sarah!')
   // initAutocomplete();
   buttonlistener();
