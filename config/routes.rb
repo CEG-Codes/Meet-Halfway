@@ -6,4 +6,7 @@ resources :maps
 resources :users
 resources :places
 
+get "/auth/:provider/callback" => "sessions#create"
+get "signout" => "sessions#destroy", :as => :signout
+
 end
