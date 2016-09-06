@@ -55,9 +55,10 @@ function calcRoute() {
 ```js
 
 var directionsDisplay = new google.maps.DirectionsRenderer();
+directionsDisplay.setMap(map);
 
 //Put this line inside the <status == 'OK'> callback function from the code above
-
+        
         directionsDisplay.setDirections(result);
         console.log(result);
 
