@@ -1,12 +1,20 @@
 $(document).ready(function()
 {
   console.log('Hi Sarah!')
+  buttonlistener();
 });
 
 
 var directionsDisplay
 var directionsService
 var request
+
+
+function buttonlistener() {
+  $('#destSubmitBtn').on('click', function(){
+    calcRoute();
+  })
+}
 
 function initMap() {
  directionsDisplay = new google.maps.DirectionsRenderer();
@@ -26,7 +34,7 @@ function initMap() {
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
- calcRoute();
+ // calcRoute();
 };
 
 // we are going to do directions here -
@@ -36,12 +44,12 @@ function initMap() {
 function calcRoute() {
 
 
-	// var start = document.getElementById('start').value;
-	// var end = document.getElementById('end').value;
+	var start = document.getElementById('dest1').value;
+	var end = document.getElementById('dest2').value;
 
 	request = {
-    	origin: "Sunset Park, Brooklyn, NY",
-    	destination: "Meat Packing, Manhattan, NY",
+    	origin: start,
+    	destination: end,
     	travelMode: 'DRIVING'
     	// travelMode will eventually be a varible from user input
   	};
