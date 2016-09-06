@@ -15,7 +15,8 @@ var predictor
 var autocomplete, placeSearch;
 
 function buttonlistener() {
-  $('#destSubmitBtn').on('click', function(){
+  $('#destSubmitBtn').on('click', function(e){
+    e.preventDefault();
     calcRoute();
   })
 }

@@ -3,92 +3,54 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body, html {
-  height: 100%;
-  width: 100%;
+ height: 100%;
+ width: 100%;
 }
 
 #map{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 0;
 }
 
 .container {
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  background-color: rgba(255, 255, 255, 0.8);
-<<<<<<< HEAD
-  width: 30em;
-  // margin: 30px auto;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ background-color: rgba(255, 255, 255, 0.8);
 
-=======
-  width: 25em;
->>>>>>> sarah_commits
+ width: 25em;
+
 }
 
 h4 {
-  font-weight: 300;
-  padding-left: 30%;
+ font-weight: 300;
+ padding-left: 30%;
 }
 
 #destInput {
-<<<<<<< HEAD
-    margin: 30px auto;
+
+   margin: 30px auto;
 }
-=======
->>>>>>> sarah_commits
 
 h4 {
-  font-weight: 300;
-  padding-left: 32%;
+ font-weight: 300;
+ padding-left: 32%;
 }
 
-<<<<<<< HEAD
-// form {
-//   text-align: center;
-// }
-=======
 
 
 .destinationInput {
->>>>>>> sarah_commits
+}
+
 
 .destinationInput {
-  // margin: 0px auto;
+ // margin: 0px auto;
 }
 
 #destSubmitBtn {
-<<<<<<< HEAD
-  margin-left: 30%;
-=======
-  margin-left: 25%;
->>>>>>> sarah_commits
+ margin-left: 25%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
