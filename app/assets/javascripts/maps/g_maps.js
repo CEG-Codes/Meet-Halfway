@@ -69,7 +69,7 @@ function calcRoute() {
 
 function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path
-  var half = (coordinates_array.length / 2)
+  var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
   console.log(halfway_point)
 
@@ -79,15 +79,11 @@ function findHalfway(result){
   var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length -1], halfway_point)
   console.log(halfwayToDestination)
 
-  var marker = new google.maps.Marker({
-   position: halfway_point,
-   map: map,
-   title: 'Hello World!'
- });
+  placeMarker(halfway_point);
 
   var latLng = {
     lat: halfway_point.lat(),
-    lng: halfway_point.lng()   
+    lng: halfway_point.lng()
   };
 
   searchPlaces(latLng);
@@ -95,12 +91,23 @@ function findHalfway(result){
 // computeDistanceBetween(starting_point, halfway_point)
 
 
+function placeMarker(latLng)
+{
+  var marker = new google.maps.Marker({
+     position: latLng,
+     map: map,
+     title: 'Hello World!'
+ });
+}
+
+
+
 //pass the halfway point latLng to this method
 function searchPlaces (latLng) {
 
 //create a data object to send to rails
   var places_data = {
-    search: 'restauraunt',
+    search: ['restauraunt','food'],
     radius: 1000, // how big of a search area in meters
     center: latLng
   };
@@ -113,6 +120,20 @@ function searchPlaces (latLng) {
     success: function(data)
     {
       console.log('success', data)
+
+      data.results.forEach(function(place)
+      {
+        var latLng = {
+          lat: place.lat,
+          lng: place.lng
+        }
+
+        placeMarker(latLng);
+
+
+      });
+
+
     },
     error: function(data)
     {
