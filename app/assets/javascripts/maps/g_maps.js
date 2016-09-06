@@ -85,5 +85,43 @@ function findHalfway(result){
    title: 'Hello World!'
  });
 
+  var latLng = {
+    lat: halfway_point.lat(),
+    lng: halfway_point.lng()   
+  };
+
+  searchPlaces(latLng);
 };
 // computeDistanceBetween(starting_point, halfway_point)
+
+
+//pass the halfway point latLng to this method
+function searchPlaces (latLng) {
+
+//create a data object to send to rails
+  var places_data = {
+    search: 'restauraunt',
+    radius: 1000, // how big of a search area in meters
+    center: latLng
+  };
+
+//make an ajax POST to /places route
+  $.ajax({
+    url: '/places',
+    method:'post',
+    data: places_data,
+    success: function(data)
+    {
+      console.log('success', data)
+    },
+    error: function(data)
+    {
+      console.log('error');
+    }
+  })
+
+}
+
+
+
+
