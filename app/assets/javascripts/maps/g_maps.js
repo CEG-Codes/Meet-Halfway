@@ -1,14 +1,17 @@
 $(document).ready(function()
 {
   console.log('Hi Sarah!')
+  initAutocomplete();
   buttonlistener();
 });
 
-
+var map
 var directionsDisplay
 var directionsService
 var request
+var predictor
 
+var autocomplete, placeSearch;
 
 function buttonlistener() {
   $('#destSubmitBtn').on('click', function(){
@@ -16,9 +19,60 @@ function buttonlistener() {
   })
 }
 
-function initMap() {
- directionsDisplay = new google.maps.DirectionsRenderer();
- directionsService = new google.maps.DirectionsService();
+function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest1', 'dest2')), {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+
+  }
+  // function geolocate() {
+  //      if (navigator.geolocation) {
+  //        navigator.geolocation.getCurrentPosition(function(position) {
+  //          var geolocation = {
+  //            lat: position.coords.latitude,
+  //            lng: position.coords.longitude
+  //          };
+  //          var circle = new google.maps.Circle({
+  //            center: geolocation,
+  //            radius: position.coords.accuracy
+  //          });
+  //          autocomplete.setBounds(circle.getBounds());
+  //        });
+  //      }
+  //    }
+
+
+  //function fillInAddress() {
+         // Get the place details from the autocomplete object.
+        // var place = autocomplete.getPlace();
+
+        //  for (var component in componentForm) {
+        //   //  document.getElementById(component).value = '';
+        //   //  document.getElementById(component).disabled = false;
+        //  }
+         //
+        //  // Get each component of the address from the place details
+        //  // and fill the corresponding field on the form.
+        //  for (var i = 0; i < place.address_components.length; i++) {
+        //    var addressType = place.address_components[i].types[0];
+        //    if (componentForm[addressType]) {
+        //      var val = place.address_components[i][componentForm[addressType]];
+        //      document.getElementById(addressType).value = val;
+        //    }
+        //  }
+       //}
+
+
+
+
+
+function initMap()
+{
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
 
@@ -142,7 +196,3 @@ function searchPlaces (latLng) {
   })
 
 }
-
-
-
-
