@@ -2,16 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-<<<<<<< HEAD
-#map{
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-=======
+
 body, html {
   height: 100%;
   width: 100%;
->>>>>>> 574fa87592f3ce8456e5aa628e557e0b18c00542
 }
 
 #map{
@@ -23,7 +17,8 @@ body, html {
   z-index: 0;
 }
 
-
+.input-field {
+}
 
 #destInput {
   position: absolute;
@@ -38,5 +33,25 @@ body, html {
 }
 
 #destSubmitBtn {
+
+}
+
+.collapse-button { 
+  position: absolute;
+  top: 100px;
+  left: 100px;
+
+#menu-btn {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  border: 1px solid black;
+}
+
+#nav-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 
 }

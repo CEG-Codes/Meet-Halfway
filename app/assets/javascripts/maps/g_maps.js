@@ -1,10 +1,21 @@
 $(document).ready(function()
 {
   console.log('Hi Sarah!')
+
+
+
+  $(".button-collapse").sideNav();
+  // Initialize collapse button for nav
+  
+  // Show sideNav
+  $('.button-collapse').sideNav('show');
+  // Hide sideNav
+  $('.button-collapse').sideNav('hide');
+
   buttonlistener();
-});
+}); // end of doc ready 
 
-
+// google variables 
 var directionsDisplay
 var directionsService
 var request
@@ -17,13 +28,10 @@ function buttonlistener() {
 }
 
 function initMap() {
- directionsDisplay = new google.maps.DirectionsRenderer();
- directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
-
-// var directionsService = new google.maps.DirectionsService;
-// var directionsDisplay = new google.maps.DirectionsRenderer;
 
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
@@ -32,17 +40,13 @@ function initMap() {
     mapTypeId: 'roadmap'
   }
 
- map = new google.maps.Map(document.getElementById('map'), map_options);
- directionsDisplay.setMap(map);
- // calcRoute();
-};
+  map = new google.maps.Map(document.getElementById('map'), map_options);
+  directionsDisplay.setMap(map);
+}; // end initMap
+
 
 // we are going to do directions here -
-
-
-
 function calcRoute() {
-
 
 	var start = document.getElementById('dest1').value;
 	var end = document.getElementById('dest2').value;
@@ -61,10 +65,9 @@ function calcRoute() {
       console.log(result);
       // status is the api suceeding or failing
     }
-  });
+  }); // end of directionService.route function
 
-
-}
+} // end of calcRoute function
 
 
 function findHalfway(result){
@@ -83,7 +86,7 @@ function findHalfway(result){
    position: halfway_point,
    map: map,
    title: 'Hello World!'
- });
+  });
 
   var latLng = {
     lat: halfway_point.lat(),
@@ -91,7 +94,8 @@ function findHalfway(result){
   };
 
   searchPlaces(latLng);
-};
+}; // end of findHalfWay 
+
 // computeDistanceBetween(starting_point, halfway_point)
 
 
@@ -118,10 +122,9 @@ function searchPlaces (latLng) {
     {
       console.log('error');
     }
-  })
+  }) // end of ajax for places 
 
-}
-
+} // end of searchPlaces function
 
 
 
