@@ -21,7 +21,9 @@ body, html {
   top: 100px;
   left: 100px;
   background-color: rgba(255, 255, 255, 0.8);
+
   width: 25em;
+
 }
 
 h4 {
@@ -31,12 +33,22 @@ h4 {
 
 #destInput {
 
+    margin: 30px auto;
+}
+
+h4 {
+  font-weight: 300;
+  padding-left: 32%;
 }
 
 
 
 .destinationInput {
+}
 
+
+.destinationInput {
+  // margin: 0px auto;
 }
 
 #destSubmitBtn {
