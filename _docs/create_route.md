@@ -55,7 +55,7 @@ function calcRoute() {
 ```js
 
 var directionsDisplay = new google.maps.DirectionsRenderer();
-directionsDisplay.setMap(map);
+directionsDisplay.setMap(map); //this tells the directions server which map to render on
 
 //Put this line inside the <status == 'OK'> callback function from the code above
         
