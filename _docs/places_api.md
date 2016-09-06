@@ -23,7 +23,7 @@ class PlacesController < ApplicationController
   #The places_data object we passed from the front-end will be send here
   #We can access the different keys in it using params["key_name"]
 
-    search = params["places_type"]
+    search = params["search"]
     radius = params["radius"].to_i
     center = params["center"]
 

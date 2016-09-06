@@ -9,10 +9,11 @@ This guide will use information from the [Google Places API](https://developers.
 The goal we have here is to take the halfway point we found in the previous section and find all of the cool places around that point using the Google Places API.
 
 To do this we need to:
-1. grab the halfway coordinates the front-end
-2. send them with an AJAX call to the rails back-end, 
-3. hit the Places API from the rails backend and get data back
-4. Send that data back to the front-end and render the map markers
+
+* Grab the halfway coordinates the front-end
+* Send them with an AJAX call to the rails back-end
+* Hit the Places API from the rails backend and get data back
+* Send that data back to the front-end and render the map markers
 
 This section will cover sending the coordinates from the front-end to the rails back-end.
 
@@ -39,7 +40,7 @@ var latLng = {
 }
 ```
 
-Great! Now we can send this new latLng object to the rails backend. [Ruby Google Places Gem](https://github.com/qpowell/google_places)) looks for a latLng just like this, as well as a radius, and finally, some search categories (restauraunt, bar, etc).
+Great! Now we can send this new latLng object to the rails backend. The [Ruby Google Places Gem](https://github.com/qpowell/google_places) asks for a latitude and longitude, a radius, and finally, some search categories (restauraunt, bar, etc).
 
 So we should construct an ajax call that passes that information to Rails.
 
@@ -52,7 +53,7 @@ function searchPlaces (latLng)
 
 //create a data object to send to rails
   var places_data = {
-    search: places_type,
+    search: 'restauraunt',
     radius: 1000, // how big of a search area in meters
     center: latLng
   }
