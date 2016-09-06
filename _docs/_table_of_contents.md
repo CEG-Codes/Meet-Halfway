@@ -1,14 +1,23 @@
 #**Documentation**
 ##Table of Contents
 
-##[Creating a map](create_map.md)
+##Maps
 
-##[Creating a route between two points](create_route.md)
+###[Creating a map](create_map.md)
 
-##[Finding the halfway point](find_halfway_point.md)
+###[Creating a route between two points](create_route.md)
 
-##[Creating a marker](create_marker.md)
+###[Finding the halfway point](find_halfway_point.md)
 
-##[Creating a draggable circle](create_circle_overlay.md)
+###[Creating a marker](create_marker.md)
 
-##[Reference](_reference.md)
+###[Creating a draggable circle](create_circle_overlay.md)
+
+
+##Places
+###[Setting up with Ajax](places_ajax.md)
+
+###[Using Places API with Rails Gem](places_api.md)
+
+###[Rendering Places data on Map](places_datamap.md)
+

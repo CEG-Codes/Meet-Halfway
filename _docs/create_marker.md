@@ -11,14 +11,13 @@ There are a lot of other options you can add to your marker listed in the docs.
 
 ####Coding
 ```js
-var coordinates_array = result.routes[0].overview_path
-var half = (coordinates_array.length / 2)
-var halfway_point = coordinates_array[half]
-var map = new google.maps.Map(document.getElementById('map'), map_options);
 
-//This code adds the marker.
+//we just need a latLng to pass to the marker constructor. This can be an object we write ourselves (see below) or it can also be a special Google Maps object (like an array element from the overview_path) that contains a lat/lng inside of it.
+
+latLng = {lat: XX.XX, lng: XX.XX}
+
 var marker = new google.maps.Marker({
-   position: halfway_point,
+   position: latLng,
    map: map,
    title: 'Hello World!'
  });

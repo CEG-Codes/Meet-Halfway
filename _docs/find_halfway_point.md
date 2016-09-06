@@ -82,7 +82,7 @@ for (var i = 0; startDistance < endDistance; i++)
     //So we'll check each coordinate in the array and get the distance from starting and ending points to the coordinate that's being checked.
 
     //For the first point, startDistance will = 0 and the endDistance = 100 meters
-    //For the second point, startDistance will = 1 and the endDistance == 99
-    //When this loop reaches the point that startDistance = 50 and endDistance = 50, the loop will end and the halfway_point will equal array element that it ended on. This should actually be the halfway point!
+    //For the second point, startDistance will = 1 and the endDistance == 99 meters
+    //When this loop reaches the point that startDistance = 50 and endDistance = 50, the loop will end and the halfway_point variable will equal the array element that it ended on. This should actually be the halfway point!
 }
 ```
