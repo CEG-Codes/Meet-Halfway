@@ -10,12 +10,12 @@ The goal we have here is to take the halfway point we found in the previous sect
 
 To do this we need to:
 
-* Grab the halfway coordinates the front-end
+* Grab the halfway coordinates from the front-end
 * Send them with an AJAX call to the rails back-end
 * Hit the Places API from the rails backend and get data back
 * Send that data back to the front-end and render the map markers
 
-This section will cover sending the coordinates from the front-end to the rails back-end.
+This page will cover sending the coordinates from the front-end to the rails back-end.
 
 ####Code
 
