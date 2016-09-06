@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
-gem 'google_places'
+gem 'google_places_autocomplete'
+
+
 gem 'better_errors'
 gem 'rspec'
 gem 'factory_girl'

@@ -2,41 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-<<<<<<< HEAD
-#map{
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-=======
-body, html {
-  height: 100%;
-  width: 100%;
->>>>>>> 574fa87592f3ce8456e5aa628e557e0b18c00542
-}
+
 
 #map{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 0;
 }
 
+.container {
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ background-color: rgba(255, 255, 255, 0.8);
 
+ width: 25em;
+
+}
+
+h4 {
+ font-weight: 300;
+ padding-left: 30%;
+}
 
 #destInput {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  background-color: rgba(255, 255, 255, 0.7);
 
+   margin: 30px auto;
 }
 
-.destinationInput {
+h4 {
+ font-weight: 300;
+ padding-left: 32%;
+}
 
+
+
+.destinationInput {
+}
+
+
+.destinationInput {
+ // margin: 0px auto;
 }
 
 #destSubmitBtn {
-
+ margin-left: 25%;
 }
