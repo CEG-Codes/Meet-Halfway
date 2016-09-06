@@ -1,14 +1,17 @@
 $(document).ready(function()
 {
   console.log('Hi Sarah!')
+  // initAutocomplete();
   buttonlistener();
 });
 
-
+var map
 var directionsDisplay
 var directionsService
 var request
+var predictor
 
+var autocomplete, placeSearch;
 
 function buttonlistener() {
   $('#destSubmitBtn').on('click', function(){
@@ -16,9 +19,10 @@ function buttonlistener() {
   })
 }
 
-function initMap() {
- directionsDisplay = new google.maps.DirectionsRenderer();
- directionsService = new google.maps.DirectionsService();
+function initMap()
+{
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
 
@@ -34,6 +38,15 @@ function initMap() {
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
+  var input1 = (document.getElementById('dest1'));
+  var input2 = (document.getElementById('dest2'));
+
+  var autocomplete1 = new google.maps.places.Autocomplete(input1);
+      autocomplete1.bindTo('bounds', map);
+  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+      autocomplete2.bindTo('bounds', map);
+
+
  // calcRoute();
 };
 
@@ -142,7 +155,3 @@ function searchPlaces (latLng) {
   })
 
 }
-
-
-
-

@@ -70,6 +70,9 @@ GEM
       activesupport (>= 4.1.0)
     google_places (0.32.0)
       httparty (~> 0.13.1)
+    google_places_autocomplete (0.0.3)
+      hashie
+      httparty
     hashie (3.4.4)
     httparty (0.13.7)
       json (~> 1.8)
@@ -216,6 +219,7 @@ DEPENDENCIES
   faker
   geocoder
   google_places
+  google_places_autocomplete
   httparty
   jbuilder (~> 2.5)
   jquery-rails
