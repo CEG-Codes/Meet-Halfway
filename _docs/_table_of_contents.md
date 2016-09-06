@@ -7,7 +7,7 @@
 
 ##[Finding the halfway point](find_halfway_point.md)
 
-##[Creating a marker at halfway point](create_marker.md)
+##[Creating a marker](create_marker.md)
 
 ##[Creating a draggable circle](create_circle_overlay.md)
 
