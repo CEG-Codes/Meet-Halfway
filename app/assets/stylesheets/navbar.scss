@@ -1,0 +1,33 @@
+
+
+
+#left_nav_bar {
+    position: fixed;
+    width: 50px;
+    background-color: #c62828;
+    height: 100%;
+    top: 0px;
+    z-index: 200000;
+}
+
+
+.material-icons {
+	color: #fff;
+
+	
+}
+
+.icons {
+	position: relative;
+	text-align: center;
+	margin: 10px;
+}
+
+#sign_in_icon{
+	top:80%;
+}
+
+  #map {
+      padding-left: 50px;
+	
+}
