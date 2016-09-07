@@ -19,7 +19,8 @@ function initMap(){
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
     disableDefaultUI: false,
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
+    styles: style //calls mapstyle.js
   };
 
   map = new google.maps.Map(document.getElementById('map'), map_options);

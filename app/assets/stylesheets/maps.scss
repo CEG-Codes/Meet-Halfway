@@ -18,6 +18,24 @@ body, html {
    padding-right: 10px;
 }
 
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+  background-color: #c62828;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+  border: 2px solid #c62828;
+}
+
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: #c62828 !important;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid #c62828;
+   box-shadow: 0 1px 0 0 #c62828;
+ }
 
 #map{
  width: 100%;

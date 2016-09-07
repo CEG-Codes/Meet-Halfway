@@ -1,5 +1,4 @@
-function ajax_this(url, method, data, success, error)
-{
+function ajax_this(url, method, data, success, error){
 
   $.ajax({
     url: url,
