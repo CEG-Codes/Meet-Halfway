@@ -60,9 +60,10 @@ function calcRoute() {
 
 	var start = document.getElementById('dest1').value;
 	var end = document.getElementById('dest2').value;
-  var travel_mode = $('#travel_mode').val();
-  var places_type = $('#place_type').val();
+  var travel_mode = $('input[name=group1]:checked', '#travel_mode').val()
+  var place_type = $('#place_type').val();
   var transit;
+  console.log(travel_mode, place_type)
 
   switch (travel_mode) {
     case '1':
