@@ -18,7 +18,8 @@ function initMap(){
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
-    disableDefaultUI: false,
+    mapTypeControl: false,
+    streetViewControl: false,
     mapTypeId: 'roadmap',
     styles: style //calls mapstyle.js
   };
