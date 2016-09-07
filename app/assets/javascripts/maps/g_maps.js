@@ -2,8 +2,6 @@ $(document).ready(function()
 {
   console.log('Hi Sarah!')
 
-
-
   $(".button-collapse").sideNav();
   // Initialize collapse button for nav
   
@@ -35,10 +33,7 @@ function initMap() {
   directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
-<<<<<<< HEAD
 
-=======
->>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
@@ -46,12 +41,11 @@ function initMap() {
     mapTypeId: 'roadmap'
   }
 
-<<<<<<< HEAD
   map = new google.maps.Map(document.getElementById('map'), map_options);
   directionsDisplay.setMap(map);
 }; // end initMap
-=======
- map = new google.maps.Map(document.getElementById('map'), map_options);
+
+map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
  directionsDisplay2.setMap(map);
 
@@ -62,7 +56,6 @@ function initMap() {
       autocomplete1.bindTo('bounds', map);
   var autocomplete2 = new google.maps.places.Autocomplete(input2, {types: ['geocode', 'establishment']});
       autocomplete2.bindTo('bounds', map);
->>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
 
 
 // we are going to do directions here -
@@ -122,7 +115,6 @@ function findHalfway(result){
       placeMarker(halfway_point);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
-<<<<<<< HEAD
   var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], halfway_point)
   console.log(startingToHalfway)
   var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length -1], halfway_point)
@@ -140,15 +132,13 @@ function findHalfway(result){
   };
 
   searchPlaces(latLng);
-}; // end of findHalfWay 
-=======
+}; 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
       searchPlaces(latLng);
       bothWays(latLng);
       break
     }
-  }
-};
+};// end of findHalfWay 
 
 function bothWays(latLng){
   var youStart =  $('#dest1').val();
@@ -207,7 +197,6 @@ function placeMarker(latLng)
      title: 'Hello World!'
  });
 }
->>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
 
 // computeDistanceBetween(starting_point, halfway_point)
 
