@@ -157,6 +157,26 @@ function searchPlaces (latLng, place_type) {
         lng: place.lng
       };
       placeMarker(latLng, the_map.markers);
+
+      var photo_reference = place.photos[0].photo_reference;
+      var apiKey = place.photos[0].api_key;
+      var width = 400;
+      var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
+
+      var $result_card = $(
+        '<div class="result">'+
+          '<h4 class="place_name">'+place.name+'</h4>'+
+          '<img src="'+photoURL+'" alt="" />'+
+          '<ul>'+
+          '<li class="hours">'+place.opening_hours+'</li>'+
+          '<li class="address">'+place.formatted_address+'</li>'+
+          '<li class="rating">'+place.rating+'</li>'+
+          '<li class="price">'+place.price_level+'</li>'+
+          '<button class = "favoriteButton">Fav!</button>'+
+        '</div>'
+      );
+      $('#results_list').append($result_card);
+
     });
   }
 
