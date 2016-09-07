@@ -44,22 +44,8 @@ function initMap(){
 
 
 function calcRoute(start, end, findhalf, renderer) {
-  var travel_mode = $('input[name=group1]:checked', '#travel_mode').val();
-  var place_type = $('#place_type').val();
-  var transit;
+  var transit = $('input[name=group1]:checked', '#travel_mode').val();
   console.log(travel_mode, place_type)
-
-  switch (travel_mode) {
-    case '1':
-    transit = "WALKING"
-    break;
-    case '2':
-    transit = "DRIVING"
-    break;
-    case '3':
-    transit = "TRANSIT"
-    break;
-  }
 
   var request = {
     origin: start,
@@ -86,10 +72,11 @@ function calcRoute(start, end, findhalf, renderer) {
 
 
 function findHalfway(result){
+  var place_type = $('input[name=group2]:checked', '#place_type').val();
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
-  console.log(halfway_point)
+  console.log(place_type)
 
   for (var i = 0; i < coordinates_array.length; i++){
 
@@ -102,7 +89,7 @@ function findHalfway(result){
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
-      searchPlaces(latLng);
+      searchPlaces(latLng, place_type);
       bothWays(latLng);
       break
     }
@@ -132,10 +119,32 @@ function placeMarker(latLng, markerGroup){
 };
 
 //pass the halfway point latLng to this method
-function searchPlaces (latLng) {
+function searchPlaces (latLng, place_type) {
+
+  var place;
+  var exclude;
+  switch (place_type) {
+    case "1":
+    place = ["restaurant", "food"];
+    exclude = ["night_club", "bar", "bakery", "cafe"]
+    break;
+    case "2":
+    place = ["bar", "night_club"]
+    exclude = ["restaurant","cafe","bakery"]
+    break;
+
+    case "3":
+    place = ["cafe", "bakery"]
+    exclude = ["restaurant", "bar", "night_club", ]
+    break;
+  }
+
+  console.log (place, exclude)
+
 //create a data object to send to rails
   var places_data = {
-    search: ['restauraunt','food'],
+    search: place,
+    exclude: exclude,
     radius: 1000, // how big of a search area in meters
     center: latLng
   };
