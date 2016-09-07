@@ -15,7 +15,6 @@ function NewMap(map, directionsService, directionsDisplays) {
   this.markers = [];
 };
 
-
 function initMap()
 {
 
