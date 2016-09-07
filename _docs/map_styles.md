@@ -7,7 +7,8 @@ We created mapstyle.js, and declared a variable style, which contains the stylin
 
 Then, in our g_maps.js file, we added styles in the object and referenced the variable:
 
-```function initMap(){
+```js
+function initMap(){
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
