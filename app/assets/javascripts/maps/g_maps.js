@@ -24,13 +24,11 @@ function buttonlistener() {
 function initMap()
 {
   directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay2 = new google.maps.DirectionsRenderer();
+
   directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
-
-// var directionsService = new google.maps.DirectionsService;
-// var directionsDisplay = new google.maps.DirectionsRenderer;
-
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
@@ -40,12 +38,14 @@ function initMap()
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
+ directionsDisplay2.setMap(map);
+
   var input1 = (document.getElementById('dest1'));
   var input2 = (document.getElementById('dest2'));
 
-  var autocomplete1 = new google.maps.places.Autocomplete(input1);
+  var autocomplete1 = new google.maps.places.Autocomplete(input1, {types: ['geocode', 'establishment']});
       autocomplete1.bindTo('bounds', map);
-  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  var autocomplete2 = new google.maps.places.Autocomplete(input2, {types: ['geocode', 'establishment']});
       autocomplete2.bindTo('bounds', map);
 
 
@@ -58,20 +58,35 @@ function initMap()
 
 function calcRoute() {
 
-
 	var start = document.getElementById('dest1').value;
 	var end = document.getElementById('dest2').value;
+  var travel_mode = $('#travel_mode').val();
+  var places_type = $('#place_type').val();
+  var transit;
+
+  switch (travel_mode) {
+    case '1':
+    transit = "WALKING"
+    break;
+    case '2':
+    transit = "DRIVING"
+    break;
+    case '3':
+    transit = "TRANSIT"
+    break;
+
+  }
 
 	request = {
     	origin: start,
     	destination: end,
-    	travelMode: 'DRIVING'
+    	travelMode: transit
     	// travelMode will eventually be a varible from user input
   	};
 
     directionsService.route(request, function(result, status) {
     if (status == 'OK') {
-      directionsDisplay.setDirections(result);
+      // directionsDisplay.setDirections(result);
       findHalfway(result);
       console.log(result);
       // status is the api suceeding or failing
@@ -88,23 +103,72 @@ function findHalfway(result){
   var halfway_point = coordinates_array[half]
   console.log(halfway_point)
 
+  for (var i = 0; i < coordinates_array.length; i++)
+  {
+    var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
+    var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
+    if (halfwayToDestination <= startingToHalfway)
+    {
+      halfway_point = coordinates_array[i];
+      placeMarker(halfway_point);
+      console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
-  var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], halfway_point)
-  console.log(startingToHalfway)
-  var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length -1], halfway_point)
-  console.log(halfwayToDestination)
-
-  placeMarker(halfway_point);
-
-  var latLng = {
-    lat: halfway_point.lat(),
-    lng: halfway_point.lng()
-  };
-
-  searchPlaces(latLng);
+      var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
+      searchPlaces(latLng);
+      bothWays(latLng);
+      break
+    }
+  }
 };
-// computeDistanceBetween(starting_point, halfway_point)
 
+function bothWays(latLng){
+  var youStart =  $('#dest1').val();
+  var theyStart = $('#dest2').val();
+
+  console.log(youStart, theyStart, latLng)
+
+  var travel_mode = $('#travel_mode').val();
+  var places_type = $('#place_type').val();
+  var transit;
+
+  switch (travel_mode) {
+    case '1':
+    transit = "WALKING"
+    break;
+    case '2':
+    transit = "DRIVING"
+    break;
+    case '3':
+    transit = "TRANSIT"
+    break;
+  }
+  request1 = {
+      origin: youStart,
+      destination: latLng,
+      travelMode: transit
+    };
+    directionsService.route(request1, function(result1, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(result1);
+      // findHalfway(result);
+      console.log(request1);
+      // status is the api suceeding or failing
+    }
+  })
+    request2 = {
+        origin: theyStart,
+        destination: latLng,
+        travelMode: transit
+      };
+      directionsService.route(request2, function(result2, status) {
+      if (status == 'OK') {
+        directionsDisplay2.setDirections(result2);
+        // findHalfway(result);
+        console.log(request2);
+        // status is the api suceeding or failing
+      }
+})
+};
 
 function placeMarker(latLng)
 {
