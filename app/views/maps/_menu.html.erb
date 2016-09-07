@@ -4,13 +4,13 @@
     <form class="col s12">
       <div class="row col s12">
        <div class="input-field">
-         <input id="dest1" type="text" class="validate destinationInput" name="Destination 1">
+         <input id="dest1" type="text" class="validate destinationInput" name="Destination 1" placeholder = "">
          <label for="dest1">Your Address</label>
        </div>
      </div>
      <div class="row col s12">
        <div class="input-field">
-         <input id="dest2" type="text" class="validate destinationInput" name="Destination 2">
+         <input id="dest2" type="text" class="validate destinationInput" name="Destination 2" placeholder = "">
          <label for="address_2">Your Friend's Address</label>
        </div>
      </div>
@@ -20,11 +20,23 @@
 
     <div class="row col s12">
        <div class="input-field">
-       <select>
-        <option value="" disabled selected>Select Option</option>
+       <select id="place_type">
+        <option value="" disabled selected>Where Are You Hanging Out?</option>
         <option value="1">Restaurant</option>
         <option value="2">Bar</option>
         <option value="3">Café</option>
+      </select>
+
+      </div>
+    </div>
+
+     <div class="row col s12">
+       <div class="input-field">
+       <select id="travel_mode">
+        <option value="" disabled selected>How are you getting there?</option>
+        <option value="1">Walking</option>
+        <option value="2">Driving</option>
+        <option value="3">Transit</option>
       </select>
 
       </div>
