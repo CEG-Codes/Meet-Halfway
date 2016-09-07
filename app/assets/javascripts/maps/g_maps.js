@@ -36,6 +36,7 @@ function initMap()
 
  map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
+
   var input1 = (document.getElementById('dest1'));
   var input2 = (document.getElementById('dest2'));
 
@@ -54,14 +55,30 @@ function initMap()
 
 function calcRoute() {
 
-
 	var start = document.getElementById('dest1').value;
 	var end = document.getElementById('dest2').value;
+  var travel_mode = $('#travel_mode').val();
+  var places_type = $('#place_type').val();
+  var transit;
+
+  switch (travel_mode) {
+    case '1':
+    transit = "WALKING"
+    break;
+    case '2':
+    transit = "DRIVING"
+    break;
+
+    case '3':
+    transit = "TRANSIT"
+    break;
+
+  }
 
 	request = {
     	origin: start,
     	destination: end,
-    	travelMode: 'DRIVING'
+    	travelMode: transit
     	// travelMode will eventually be a varible from user input
   	};
 
@@ -88,7 +105,7 @@ function findHalfway(result){
   {
     var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
-    if (halfwayToDestination < startingToHalfway)
+    if (halfwayToDestination <= startingToHalfway)
     {
       halfway_point = coordinates_array[i];
       placeMarker(halfway_point);
