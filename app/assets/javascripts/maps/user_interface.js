@@ -1,15 +1,12 @@
-
 var ui;
 
-$(document).ready(function()
-{
-  console.log('Buttons, reporting in!')
+$(document).ready(function(){
+  console.log('Buttons, reporting in!');
+  $('select').material_select();
   ui = new DOM_Stuff;
-
 });
 
-function DOM_Stuff()
-{
+function DOM_Stuff(){
   this.dest1 = (document.getElementById('dest1'));
   this.dest2 = (document.getElementById('dest2'));
   this.submit = $('#destSubmitBtn');
