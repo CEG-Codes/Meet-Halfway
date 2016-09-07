@@ -21,10 +21,17 @@ function initMap(){
 
 
 ####Some alternative style options to pick from:
+
 https://snazzymaps.com/style/1861/two-tone-with-labels
+
 https://snazzymaps.com/style/20560/dbi
+
 https://snazzymaps.com/style/4105/brokka-map
+
 https://snazzymaps.com/style/7943/desaturated-blues
+
 https://snazzymaps.com/style/9470/muted
+
 https://snazzymaps.com/style/27/shift-worker
+
 https://snazzymaps.com/style/83/muted-blue
