@@ -2,11 +2,29 @@ $(document).ready(function()
 {
   $('select').material_select();
   console.log('Hi Sarah!')
+<<<<<<< HEAD
+
+
+
+  $(".button-collapse").sideNav();
+  // Initialize collapse button for nav
+  
+  // Show sideNav
+  $('.button-collapse').sideNav('show');
+  // Hide sideNav
+  $('.button-collapse').sideNav('hide');
+
+  buttonlistener();
+}); // end of doc ready 
+
+// google variables 
+=======
   // initAutocomplete();
   buttonlistener();
 });
 
 var map
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
 var directionsDisplay
 var directionsService
 var request
@@ -21,14 +39,22 @@ function buttonlistener() {
   })
 }
 
+<<<<<<< HEAD
+function initMap() {
+=======
 function initMap()
 {
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
   directionsDisplay = new google.maps.DirectionsRenderer();
   directionsDisplay2 = new google.maps.DirectionsRenderer();
 
   directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
+<<<<<<< HEAD
+
+=======
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
@@ -36,6 +62,11 @@ function initMap()
     mapTypeId: 'roadmap'
   }
 
+<<<<<<< HEAD
+  map = new google.maps.Map(document.getElementById('map'), map_options);
+  directionsDisplay.setMap(map);
+}; // end initMap
+=======
  map = new google.maps.Map(document.getElementById('map'), map_options);
  directionsDisplay.setMap(map);
  directionsDisplay2.setMap(map);
@@ -54,8 +85,10 @@ function initMap()
 
 // we are going to do directions here -
 
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
 
 
+// we are going to do directions here -
 function calcRoute() {
 
 	var start = document.getElementById('dest1').value;
@@ -91,10 +124,9 @@ function calcRoute() {
       console.log(result);
       // status is the api suceeding or failing
     }
-  });
+  }); // end of directionService.route function
 
-
-}
+} // end of calcRoute function
 
 
 function findHalfway(result){
@@ -173,12 +205,29 @@ function bothWays(latLng){
 function placeMarker(latLng)
 {
   var marker = new google.maps.Marker({
+<<<<<<< HEAD
+   position: halfway_point,
+   map: map,
+   title: 'Hello World!'
+  });
+
+  var latLng = {
+    lat: halfway_point.lat(),
+    lng: halfway_point.lng()   
+  };
+
+  searchPlaces(latLng);
+}; // end of findHalfWay 
+
+// computeDistanceBetween(starting_point, halfway_point)
+=======
      position: latLng,
      map: map,
      title: 'Hello World!'
  });
 }
 
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
 
 
 //pass the halfway point latLng to this method
@@ -218,6 +267,15 @@ function searchPlaces (latLng) {
     {
       console.log('error');
     }
+<<<<<<< HEAD
+  }) // end of ajax for places 
+
+} // end of searchPlaces function
+
+
+
+=======
   })
 
 }
+>>>>>>> ffc6a095592f5cb441e10a3178faf6322aceea06
