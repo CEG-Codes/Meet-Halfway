@@ -27,10 +27,6 @@ function initMap()
   directionsService = new google.maps.DirectionsService();
 
   // init map part one calls up google maps API
-
-// var directionsService = new google.maps.DirectionsService;
-// var directionsDisplay = new google.maps.DirectionsRenderer;
-
   var map_options = {
     center: {lat: 40.750671, lng: -73.985239},
     zoom: 14,
@@ -43,9 +39,9 @@ function initMap()
   var input1 = (document.getElementById('dest1'));
   var input2 = (document.getElementById('dest2'));
 
-  var autocomplete1 = new google.maps.places.Autocomplete(input1);
+  var autocomplete1 = new google.maps.places.Autocomplete(input1, {types: ['geocode', 'establishment']});
       autocomplete1.bindTo('bounds', map);
-  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  var autocomplete2 = new google.maps.places.Autocomplete(input2, {types: ['geocode', 'establishment']});
       autocomplete2.bindTo('bounds', map);
 
 
@@ -88,23 +84,22 @@ function findHalfway(result){
   var halfway_point = coordinates_array[half]
   console.log(halfway_point)
 
+  for (var i = 0; i < coordinates_array.length; i++)
+  {
+    var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
+    var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
+    if (halfwayToDestination < startingToHalfway)
+    {
+      halfway_point = coordinates_array[i];
+      placeMarker(halfway_point);
+      console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
-  var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], halfway_point)
-  console.log(startingToHalfway)
-  var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length -1], halfway_point)
-  console.log(halfwayToDestination)
-
-  placeMarker(halfway_point);
-
-  var latLng = {
-    lat: halfway_point.lat(),
-    lng: halfway_point.lng()
-  };
-
-  searchPlaces(latLng);
+      var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
+      searchPlaces(latLng);
+      break
+    }
+  }
 };
-// computeDistanceBetween(starting_point, halfway_point)
-
 
 function placeMarker(latLng)
 {
