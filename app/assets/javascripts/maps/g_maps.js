@@ -107,18 +107,42 @@ function bothWays(halfway_point){
   calcRoute(ui.dest2.value, halfway_point, false, the_map.directionsDisplay2);
 };
 
-function placeMarker(latLng, markerGroup){
+function placeMarker(latLng, markerGroup, place)
+{
   var marker = new google.maps.Marker({
      position: latLng,
      map: map,
      title: 'Hello World!'
- });
+  });
 
-  if (markerGroup !== null){
+  if (markerGroup !== null)
+  {
     markerGroup.push(marker);
   };
-};
+  if (place !== undefined)
+  {
+    var contentString = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="firstHeading" class="infoHeading">'+place.name+'</h1>'+
+        '<div id="bodyContent">'+
+        '<ul>'+
+          '<li>Address: '+place.formatted_address+'</li>'+
+          '<li>Price: '+place.price_level+'</li>'+
+          '<li>Rating: '+place.rating+'</li>'+
+        '</ul>'+
+        '</div>'+
+        '</div>';
 
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(the_map.map, marker);
+      });
+  }
+};
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
 
@@ -140,8 +164,6 @@ function searchPlaces (latLng, place_type) {
     break;
   }
 
-  console.log (place, exclude)
-
 //create a data object to send to rails
   var places_data = {
     search: place,
@@ -151,17 +173,32 @@ function searchPlaces (latLng, place_type) {
   };
 
   var process_places = function(data) {
+
+    if (data.results.length > 0)
+    {
+      $('#results_list').empty();
+    } else {
+      $('#results_list').append($('<div style = "text-align: center;">No results found.</div>'))
+    }
+
     data.results.forEach(function(place){
       var latLng = {
         lat: place.lat,
         lng: place.lng
       };
-      placeMarker(latLng, the_map.markers);
+      placeMarker(latLng, the_map.markers, place);
 
-      var photo_reference = place.photos[0].photo_reference;
-      var apiKey = place.photos[0].api_key;
-      var width = 400;
-      var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
+
+      if(place.photos.length > 0)
+      {
+        var photo_reference = place.photos[0].photo_reference;
+        var apiKey = place.photos[0].api_key;
+        var width = 400;
+        var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
+      } else {
+        var photoURL = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+      }
+
 
       var $result_card = $(
         '<div class="result">'+
