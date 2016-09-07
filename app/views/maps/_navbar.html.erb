@@ -8,9 +8,15 @@
 		<i class="small material-icons">star</i>
 	</div>
 	<div class="icons" id="sign_in_icon">
-		<i class="small material-icons">power_settings_new</i>
+
+    <% if current_user %>
+    <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
+    <%else %>
+		<a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
+    <% end %>
+
 	</div>
-	
+
 </div>
 
 
