@@ -1,0 +1,30 @@
+<div id="container">
+
+<h4>Results</h4>
+<!-- results loop here -->
+  <%= @results.each do |result|  %>
+
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+<div class="result"><img src="" alt="" /><%= %></div>
+
+
+  <%= end %>
+<!-- end results loop -->
+</div>
+
+<style type="text/css" media="screen">
+  #box{
+    border:  1px solid red;
+    height: 200px;
+    overflow-x: scroll
+  }
+  .result{
+    border:  1px solid blue;
+    height: 100px;
+  }
+</style>
