@@ -3,13 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-// p {
-//   display: inline-block;
-//   padding-right: 10px;
-//   padding-left: -5px;
-// }
-
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
    padding-left: 25px;
    padding-right: 10px;
@@ -46,7 +39,7 @@
 
 .container {
  position: absolute;
- top: 100px;
+ top: 50px;
  left: 100px;
  background-color: rgba(255, 255, 255, 0.9);
  width: 25em;
