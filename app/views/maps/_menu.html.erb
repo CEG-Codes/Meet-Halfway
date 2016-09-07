@@ -1,52 +1,92 @@
 <div class="container hoverable">
+
   <div class="row s12" id="destInput">
-  <h4>HalfWays</h4>
-    <form class="col s12">
-      <div class="row col s12">
-       <div class="input-field">
-         <input id="dest1" type="text" class="validate destinationInput" name="Destination 1" placeholder = "">
-         <label for="dest1">Your Address</label>
-       </div>
-     </div>
-     <div class="row col s12">
-       <div class="input-field">
-         <input id="dest2" type="text" class="validate destinationInput" name="Destination 2" placeholder = "">
-         <label for="address_2">Your Friend's Address</label>
-       </div>
-     </div>
+    <h4>HalfWays</h4>
 
-     <div class="row col s12">
+      <form class="col s12">
 
+        <div class="row col s12">
+          <div class="input-field">
+            <input id="dest1" type="text" class="validate destinationInput" name="Destination 1" placeholder = "">
+            <label for="dest1">Your Address</label>
+          </div>
+        </div>
 
-    <div class="row col s12">
-       <div class="input-field">
-       <select id="place_type">
-        <option value="" disabled selected>Where Are You Hanging Out?</option>
-        <option value="1">Restaurant</option>
-        <option value="2">Bar</option>
-        <option value="3">Café</option>
-      </select>
-
-      </div>
-    </div>
-
-     <div class="row col s12">
-       <div class="input-field">
-       <select id="travel_mode">
-        <option value="" disabled selected>How are you getting there?</option>
-        <option value="1">Walking</option>
-        <option value="2">Driving</option>
-        <option value="3">Transit</option>
-      </select>
-
-      </div>
-    </div>
-
-
-    <div class="row col s12">
-
-       <button class="btn btn-primary blue-grey" id="destSubmitBtn" type="submit">Find Halfway</button>
-     </div>
-   </form>
+        <div class="row col s12">
+          <div class="input-field">
+            <input id="dest2" type="text" class="validate destinationInput" name="Destination 2" placeholder = "">
+            <label for="address_2">Your Friend's Address</label>
+          </div>
+        </div>
+      </form>
   </div>
-</div>
+
+  <div class="row s12" id="option-select">
+
+    <form action="#" id="travel_mode">
+      <div class="row col s12">
+        <div class="input-field" >
+          <input class="with-gap" name="group1" type="radio" id="walking" value="1"/>
+          <label class="transport" for="walking">Walking</label>
+
+          <input class="with-gap" name="group1" type="radio" id="driving" value="2"/>
+          <label class="transport" for="driving">Driving</label>
+
+          <input class="with-gap" name="group1" type="radio" id="transit" value="3"/>
+          <label class="transport" for="transit">Public Transport</label>
+        </div>
+      </div>
+    </form>
+
+    <form action="#">
+      <div class="row col s12">
+        <div class="input-field" id="place_type">
+          <input class="with-gap" name="group1" type="radio" id="restaurant"/>
+          <label class="transport" for="restaurant">Restaurant</label>
+
+          <input class="with-gap" name="group1" type="radio" id="bar"/>
+          <label class="transport" for="bar">Bar</label>
+
+          <input class="with-gap" name="group1" type="radio" id="coffee"/>
+          <label class="transport" for="coffee">Coffee Shop</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+        <!-- <div class="row col s12">
+          <div class="input-field">
+            <select id="place_type">
+              <option value="" disabled selected>Where Are You Hanging Out?</option>
+              <option value="1">Restaurant</option>
+              <option value="2">Bar</option>
+              <option value="3">Café</option>
+            </select>
+          </div>
+        </div>
+ -->
+<!--         <div class="row col s12">
+          <div class="input-field">
+            <select id="travel_mode">
+              <option value="" disabled selected>How are you getting there?</option>
+              <option value="1">Walking</option>
+              <option value="2">Driving</option>
+              <option value="3">Transit</option>
+            </select>
+          </div>
+        </div> -->
+
+
+    <div class="row col s12">
+      <button class="btn btn-primary blue-grey" id="destSubmitBtn" type="submit">Find Halfway</button>
+   </div>
+
+
+
+
+
+
+  </div>
