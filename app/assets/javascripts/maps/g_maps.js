@@ -128,7 +128,7 @@ function bothWays(latLng){
 
   console.log(youStart, theyStart, latLng)
 
-  var travel_mode = $('#travel_mode').val();
+  var travel_mode = $('input[name=group1]:checked', '#travel_mode').val()
   var places_type = $('#place_type').val();
   var transit;
 
