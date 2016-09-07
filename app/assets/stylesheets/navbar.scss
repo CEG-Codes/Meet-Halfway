@@ -10,6 +10,9 @@
     z-index: 200000;
 }
 
+.side-nav.fixed {
+  padding-left:50px;
+}
 
 .material-icons {
 	color: #fff;
@@ -27,7 +30,3 @@
 	top:80%;
 }
 
-  #map {
-      padding-left: 50px;
-	
-}

@@ -4,6 +4,7 @@ $(document).ready(function(){
   console.log('Buttons, reporting in!');
   $('select').material_select();
   ui = new DOM_Stuff;
+  navbarListeners();
 });
 
 function DOM_Stuff(){
@@ -17,5 +18,14 @@ function DOM_Stuff(){
     calcRoute(start, end, true);
   });
 
+}
+
+function navbarListeners() {
+  $(".button-collapse").sideNav(); // for side nav
+  $('.collapsible').collapsible(); // for tier submenus
+  $('.button-collapse').sideNav('show');
+  $('.button-collapse').sideNav('hide');
+        
+        
 }
 
