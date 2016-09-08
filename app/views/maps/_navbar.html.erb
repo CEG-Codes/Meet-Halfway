@@ -1,39 +1,55 @@
 <div id="left_nav_bar">
 
-	<div class="icons" id="menu_icon">
-		<a href="#" data-activates="slide-out" class="button-collapse">
-			<i class="small material-icons tooltipped mdi-navigation-menu" data-position="right" data-delay="50" data-tooltip="Favorites">star</i>
-		</a>
+	<div class="icons" id="top">
+		<div data-activates="slide-out" class="button-collapse"><i class="material-icons">star</i></div>
 	</div>
 
 
-  	<div class="icons" id="bottom"><i class=" small material-icons">assignment_ind</i> </div>
-
 	<div class="icons" id="bottom">
     <% if current_user %>
+      <i class=" small material-icons">assignment_ind</i>
       <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
     <%else %>
+      <i class=" small material-icons" id="emptyIcon"></i>
 		  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
     <% end %>
 	</div>
 
-
-
-
 </div>  <!-- left static nav bar -->
 
-<div>
-	<ul class="hide-on-med-and-down">
-    	<li><a href="#!"></a></li>
-    	<li><a href="#!"></a></li>
- 	</ul>
-	<ul id="slide-out" class="side-nav fixed">
-      <li class="bold"><a href="#!" class="waves-effect waves-teal">Restuarants</a></li>
-      <li class="bold"><a href="#!" class="">Bars</a></li>
-      <li class="bold"><a href="#!" class="">Coffee Shops</a></li>
+<ul id="slide-out" class="side-nav">
+    <li>
+      <div class="userView">
+        <img class="background" src="">
+        <div><img class="circle" src=""></div>
+        <div><span class="black-text name">Name:</span></div>
+        <div><span class="black-text email">Email:</span></div>
+      </div>
+    </li>
+    <ul class="collapsible" iddata-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
+        <ul class="collapsible-body">
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
+        <ul class="collapsible-body">
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
+        <ul class="collapsible-body">
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
+      </li>
     </ul>
-</div>
-
+</ul>
 
 
 
