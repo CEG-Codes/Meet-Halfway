@@ -11,6 +11,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay1 = directionsDisplays[0];
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
+  this.infoboxes = [];
 };
 
 
@@ -137,10 +138,18 @@ function placeMarker(latLng, markerGroup, place)
     var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
+    the_map.infoboxes.push(infowindow);
 
     marker.addListener('click', function() {
+        the_map.infoboxes.forEach(function(box)
+        {
+          box.close(the_map.map, marker);
+        })
         infowindow.open(the_map.map, marker);
       });
+    // the_map.map.addListener('click', function() {
+    //   infowindow.close(the_map.map, marker);
+    // });
   }
 };
 //pass the halfway point latLng to this method
@@ -160,7 +169,7 @@ function searchPlaces (latLng, place_type) {
 
     case "3":
     place = ["cafe", "bakery"]
-    exclude = ["restaurant", "bar", "night_club", ]
+    exclude = ["bar", "night_club", ]
     break;
   }
 
