@@ -1,40 +1,111 @@
 <div id="left_nav_bar">
-
-	<div class="icons" id="menu_icon">
-		<a href="#" data-activates="slide-out" class="button-collapse">
-			<i class="small material-icons tooltipped mdi-navigation-menu" data-position="right" data-delay="50" data-tooltip="Favorites">star</i>
-		</a>
-	</div>
-
-
-  	<div class="icons" id="bottom"><i class=" small material-icons">assignment_ind</i> </div>
-
-	<div class="icons" id="bottom">
+	<div class="icons" id="top">
+  <% if current_user %>
+		<div data-activates="slide-out" class="button-collapse"><i class="material-icons">star</i></div>
+	<% else %>
+    <i class=" small material-icons" id="emptyIcon"></i>
+  <% end %>
+  </div>
+  <div class="icons" id="bottom">
     <% if current_user %>
       <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
     <%else %>
-		  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
+  	  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
     <% end %>
-	</div>
-
-
-
-
+  </div>
 </div>  <!-- left static nav bar -->
 
-<div>
-	<ul class="hide-on-med-and-down">
-    	<li><a href="#!"></a></li>
-    	<li><a href="#!"></a></li>
- 	</ul>
-	<ul id="slide-out" class="side-nav fixed">
-      <li class="bold"><a href="#!" class="waves-effect waves-teal">Restuarants</a></li>
-      <li class="bold"><a href="#!" class="">Bars</a></li>
-      <li class="bold"><a href="#!" class="">Coffee Shops</a></li>
-    </ul>
-</div>
-
-
+<% if current_user %>
+<ul id="slide-out" class="side-nav">
+    <li>
+      <div class="userView">
+        <img class="background" src="">
+        <div></div>
+        <div><span class="black-text name">Welcome, <%=current_user.first_name%>!</span></div>
+        <div><span class="black-text email"><%=current_user.email%></span></div>
+      </div>
+    </li>
+    <hr>
+    <ul class="collapsible" iddata-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
+        <ul class="collapsible-body">
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
+        <ul class="collapsible-body">
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
+        <ul class="collapsible-body">
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+        </ul>
+  </ul>
+<% end %>
 
 
 
