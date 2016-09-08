@@ -20,7 +20,6 @@ function DOM_Stuff(){
 }
 
 function navbarListeners() {
-  // $('.button-collapse').sideNav('show');
   $('.button-collapse').sideNav({
       menuWidth: 400, // Default is 240
       edge: 'left', // Choose the horizontal origin
