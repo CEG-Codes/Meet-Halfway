@@ -5,7 +5,7 @@
     background-color: #c62828;
     height: 100%;
     top: 0px;
-    z-index: 200000;
+
 }
 
 .side-nav.fixed {
@@ -14,8 +14,6 @@
 
 .material-icons {
 	color: #fff;
-
-	
 }
 
 .icons {
@@ -24,7 +22,16 @@
 	margin: 10px;
 }
 
-#bottom{
-	top:80%;
+#emptyIcon{
+  height: 30px;
 }
 
+
+#bottom{
+  top: 80%;
+	bottom: 5%;
+}
+
+//Menu needs to be wider to house the list of favorites
+//when category clicked, want list to expand with favorites
+//Profile icon should show user profile... somehow?
