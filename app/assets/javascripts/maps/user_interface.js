@@ -24,5 +24,7 @@ function navbarListeners() {
   $('.collapsible').collapsible(); // for tier submenus
   $('.button-collapse').sideNav('show');
   $('.button-collapse').sideNav('hide');
+
+
 }
 
