@@ -25,8 +25,8 @@ function initMap(){
   };
 
   var map = new google.maps.Map(document.getElementById('map'), map_options);
-  var directionsDisplay1 = new google.maps.DirectionsRenderer();
-  var directionsDisplay2 = new google.maps.DirectionsRenderer();
+  var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true});
+  var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true});
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay1.setMap(map);
   directionsDisplay2.setMap(map);
@@ -44,14 +44,15 @@ function initMap(){
 };
 
 
-function calcRoute(start, end, findhalf, renderer) {
+function calcRoute(start, end, findhalf, renderer, image) {
   var transit = $('input[name=group1]:checked', '#travel_mode').val();
   console.log(travel_mode, place_type)
 
   var request = {
     origin: start,
     destination: end,
-    travelMode: transit
+    travelMode: transit,
+
     // travelMode will eventually be a varible from user input
   };
 
@@ -64,7 +65,7 @@ function calcRoute(start, end, findhalf, renderer) {
     } else if (status == 'OK' && findhalf == false) {
       //do render results
       renderRoute(renderer, result);
-
+      placeMarker(result.routes[0].overview_path[0], null, undefined, image)
     } else {
       console.log('No direct route found!')
     }
@@ -103,16 +104,16 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1);
-  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2);
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 };
 
-function placeMarker(latLng, markerGroup, place)
+function placeMarker(latLng, markerGroup, place, image)
 {
   var marker = new google.maps.Marker({
      position: latLng,
      map: home_map.map,
-     title: 'Hello World!'
+     icon: image
   });
 
   if (markerGroup !== null)
@@ -121,17 +122,19 @@ function placeMarker(latLng, markerGroup, place)
   };
   if (place !== undefined)
   {
-    var contentString = '<div class="infoContainer">'+
-  '<h5 class="infoName">'+place.name+'</h5>'+
-  '<div class="infoContent">'+
-    '<ul class = "infoList">'+
-      '<li>'+place.vicinity+'</li>'+
-      '<li>Price: '+place.price_level+'</li>'+
-      '<li>Rating: '+place.rating+'</li>'+
-    '</ul>'+
-  '</div>'+
-  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
-'</div>';
+    var contentString = '<div data-id='+place.place_id+' class="infoContainer">'+
+    '<h5 class="infoName">'+place.name+'</h5>'+
+    '<div class="infoContent">'+
+      '<ul class = "infoList">'+
+        '<li>'+place.vicinity+'</li>'+
+        '<li>Price: '+place.price_level+'</li>'+
+        '<li>Rating: '+place.rating+'</li>'+
+      '</ul>'+
+      '</div>'+
+      '<a class="save_favorite btn-floating waves-effect waves-light red darken-3" onclick=saveFavorite("'+place.place_id+'") ><i class="tiny material-icons">star</i></div>'+
+    '</div>';
+
+
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -145,11 +148,20 @@ function placeMarker(latLng, markerGroup, place)
         })
         infowindow.open(home_map.map, marker);
       });
+
+
     // home_map.map.addListener('click', function() {
     //   infowindow.close(home_map.map, marker);
     // });
+
+
   }
 };
+
+function saveFavorite(place_id)
+{
+  console.log("PLACE ID =", place_id)
+}
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
 
