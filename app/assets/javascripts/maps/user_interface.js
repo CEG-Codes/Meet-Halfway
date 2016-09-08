@@ -17,15 +17,12 @@ function DOM_Stuff(){
     var end = ui.dest2.value;
     calcRoute(start, end, true);
   });
-
 }
 
 function navbarListeners() {
-  $(".button-collapse").sideNav(); // for side nav
+  $('.button-collapse').sideNav(); // for side nav
   $('.collapsible').collapsible(); // for tier submenus
   $('.button-collapse').sideNav('show');
   $('.button-collapse').sideNav('hide');
-        
-        
 }
 

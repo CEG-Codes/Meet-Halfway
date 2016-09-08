@@ -1,9 +1,8 @@
-var the_map;
+var home_map;
 
 $(document).ready(function(){
   console.log('Hi Sarah!')
 });
-
 
 function NewMap(map, directionsService, directionsDisplays){
   this.map = map;
@@ -11,6 +10,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay1 = directionsDisplays[0];
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
+  this.infoboxes = [];
 };
 
 
@@ -24,11 +24,11 @@ function initMap(){
     styles: style //calls mapstyle.js
   };
 
-  map = new google.maps.Map(document.getElementById('map'), map_options);
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  directionsDisplay2 = new google.maps.DirectionsRenderer();
-  directionsService = new google.maps.DirectionsService();
-  directionsDisplay.setMap(map);
+  var map = new google.maps.Map(document.getElementById('map'), map_options);
+  var directionsDisplay1 = new google.maps.DirectionsRenderer();
+  var directionsDisplay2 = new google.maps.DirectionsRenderer();
+  var directionsService = new google.maps.DirectionsService();
+  directionsDisplay1.setMap(map);
   directionsDisplay2.setMap(map);
 
   var input1 = (document.getElementById('dest1'));
@@ -38,9 +38,9 @@ function initMap(){
   var autocomplete2 = new google.maps.places.Autocomplete(ui.dest2, {types: ['geocode', 'establishment']});
       autocomplete2.bindTo('bounds', map);
 
-  var directionsDisplays = [directionsDisplay, directionsDisplay2]
+  var directionsDisplays = [directionsDisplay1, directionsDisplay2]
   //Construct new map object
-  the_map = new NewMap(map, directionsService, directionsDisplays);
+  home_map = new NewMap(map, directionsService, directionsDisplays);
 };
 
 
@@ -55,7 +55,7 @@ function calcRoute(start, end, findhalf, renderer) {
     // travelMode will eventually be a varible from user input
   };
 
-  directionsService.route(request, function(result, status) {
+  home_map.directionsService.route(request, function(result, status) {
     if (status == 'OK' && findhalf == true) {
       //don't render results
       findHalfway(result);
@@ -103,22 +103,55 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, the_map.directionsDisplay1);
-  calcRoute(ui.dest2.value, halfway_point, false, the_map.directionsDisplay2);
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1);
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2);
 };
 
-function placeMarker(latLng, markerGroup){
+function placeMarker(latLng, markerGroup, place)
+{
   var marker = new google.maps.Marker({
      position: latLng,
-     map: map,
+     map: home_map.map,
      title: 'Hello World!'
- });
+  });
 
-  if (markerGroup !== null){
+  if (markerGroup !== null)
+  {
     markerGroup.push(marker);
   };
-};
+  if (place !== undefined)
+  {
+    var contentString = '<div class="infoOuterContainer">'+
+        '<div class="infoInnerContainer">'+
+        '</div>'+
+        '<h1 class="infoHeading">'+place.name+'</h1>'+
+        '<div class="infoContent">'+
+        '<ul class = "infoList">'+
+          '<li>Address: '+place.formatted_address+'</li>'+
+          '<li>Price: '+place.price_level+'</li>'+
+          '<li>Rating: '+place.rating+'</li>'+
+        '</ul>'+
+        '</div>'+
+        '<button class="infoFav">Save Fav!</button>'+
+        '</div>';
 
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    home_map.infoboxes.push(infowindow);
+
+    marker.addListener('click', function() {
+        home_map.infoboxes.forEach(function(box)
+        {
+          box.close(home_map.map, marker);
+        })
+        infowindow.open(home_map.map, marker);
+      });
+    // home_map.map.addListener('click', function() {
+    //   infowindow.close(home_map.map, marker);
+    // });
+  }
+};
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
 
@@ -136,11 +169,9 @@ function searchPlaces (latLng, place_type) {
 
     case "3":
     place = ["cafe", "bakery"]
-    exclude = ["restaurant", "bar", "night_club", ]
+    exclude = ["bar", "night_club", ]
     break;
   }
-
-  console.log (place, exclude)
 
 //create a data object to send to rails
   var places_data = {
@@ -151,17 +182,32 @@ function searchPlaces (latLng, place_type) {
   };
 
   var process_places = function(data) {
+
+    if (data.results.length > 0)
+    {
+      $('#results_list').empty();
+    } else {
+      $('#results_list').append($('<div style = "text-align: center;">No results found.</div>'))
+    }
+
     data.results.forEach(function(place){
       var latLng = {
         lat: place.lat,
         lng: place.lng
       };
-      placeMarker(latLng, the_map.markers);
+      placeMarker(latLng, home_map.markers, place);
 
-      var photo_reference = place.photos[0].photo_reference;
-      var apiKey = place.photos[0].api_key;
-      var width = 400;
-      var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
+
+      if(place.photos.length > 0)
+      {
+        var photo_reference = place.photos[0].photo_reference;
+        var apiKey = place.photos[0].api_key;
+        var width = 400;
+        var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
+      } else {
+        var photoURL = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+      }
+
 
       var $result_card = $(
         '<div class="result">'+
