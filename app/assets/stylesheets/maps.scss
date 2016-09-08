@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+input[type=text].valid {
+    border-bottom: 1px solid #c62828;
+    box-shadow: 0 1px 0 0 #c62828;
+}
 
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
    padding-left: 25px;
