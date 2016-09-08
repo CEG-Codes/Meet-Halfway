@@ -131,7 +131,7 @@ function placeMarker(latLng, markerGroup, place)
     '</ul>'+
   '</div>'+
   '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
-'</div>'
+'</div>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
