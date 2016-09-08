@@ -27,14 +27,23 @@ input[type=text].valid {
 }
 
 /* label focus color */
-.input-field input:focus + label {
-  color: #c62828 !important;
+#input-1 input:focus + label {
+  color: #09ba41 !important;
+}
+
+#input-2 input:focus + label {
+  color: #487af9 !important;
 }
 
  /* label underline focus color */
-.row .input-field input:focus {
-  border-bottom: 1px solid #c62828;
-  box-shadow: 0 1px 0 0 #c62828;
+.row #input-1 input:focus {
+  border-bottom: 1px solid #09ba41;
+  box-shadow: 0 1px 0 0 #09ba41;
+}
+
+.row #input-2 input:focus {
+  border-bottom: 1px solid #487af9;
+  box-shadow: 0 1px 0 0 #487af9;
 }
 
 h4 {
