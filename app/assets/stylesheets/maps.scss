@@ -3,83 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
-   padding-left: 25px;
-   padding-right: 10px;
-}
-
-[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
-  background-color: #c62828;
-}
-
-[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
-  border: 2px solid #c62828;
-}
-h4 {
-  font-weight: 300;
-  padding-left: 32%;
-  padding-bottom: 20px;
-}
-img{
-  height:75px;
-  width:100px;
-  display: inline-block;
-}
-/////////////////////////////////////////////////////////
-// object object
-// num
-// num
-// are ratings that should corolate to stars and $ signs
-
-/////////////////////////////////////////////////////////
-/* label focus color */
- .input-field input:focus + label {
-   color: #c62828 !important;
- }
- /* label underline focus color */
- .row .input-field input:focus {
-   border-bottom: 1px solid #c62828;
-   box-shadow: 0 1px 0 0 #c62828;
- }
-
-<<<<<<< HEAD
-.container{
-=======
-#map{
- width: 100vw;
- height: 100vh;
- position: fixed;
- top: 0;
- left: 0;
- z-index: 0;
-}
-
-.container {
->>>>>>> e2dc3c422b9df5a8a02e8db3788938808a4d76a8
- position: absolute;
- top: 50px;
- left: 100px;
- background-color: rgba(255, 255, 255, 0.9);
- width: 25em;
-
-}
-.results_container{
-  position: absolute;
-  top: 50px;
-  left: 100px;
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 25em;
-  // overflow-x: scroll;
-  // height:600px;
-
-}
-
-.destinationInput {
-}
-
-.destinationInput {
- // margin: 0px auto;
-}
 
 #map{
  width: 100vw;
@@ -88,18 +11,4 @@ img{
  top: 0;
  left: 0;
  z-index: 0;
-}
-
-#destInput {
-  margin-top: 30px;
-}
-
-#option-select {
-  margin-left: 10px;
-  margin-top: -10px;
-}
-
-#destSubmitBtn {
- margin-left: 25%;
- margin-top: 30px;
 }

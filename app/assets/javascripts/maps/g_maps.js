@@ -121,19 +121,17 @@ function placeMarker(latLng, markerGroup, place)
   };
   if (place !== undefined)
   {
-    var contentString = '<div class="infoOuterContainer">'+
-        '<div class="infoInnerContainer">'+
-        '</div>'+
-        '<h1 class="infoHeading">'+place.name+'</h1>'+
-        '<div class="infoContent">'+
-        '<ul class = "infoList">'+
-          '<li>Address: '+place.formatted_address+'</li>'+
-          '<li>Price: '+place.price_level+'</li>'+
-          '<li>Rating: '+place.rating+'</li>'+
-        '</ul>'+
-        '</div>'+
-        '<button class="infoFav">Save Fav!</button>'+
-        '</div>';
+    var contentString = '<div class="infoContainer">'+
+  '<h5 class="infoName">'+place.name+'</h5>'+
+  '<div class="infoContent">'+
+    '<ul class = "infoList">'+
+      '<li>'+place.vicinity+'</li>'+
+      '<li>Price: '+place.price_level+'</li>'+
+      '<li>Rating: '+place.rating+'</li>'+
+    '</ul>'+
+  '</div>'+
+  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+'</div>'
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -210,21 +208,50 @@ function searchPlaces (latLng, place_type) {
 
 
       var $result_card = $(
+        //////////////new stuff below here//////////////////////////////
         '<div class="result">'+
-          '<h4 class="place_name">'+place.name+'</h4>'+
-          '<img src="'+photoURL+'" alt="" />'+
-          '<ul>'+
-          '<li class="hours">'+place.opening_hours+'</li>'+
-          '<li class="address">'+place.formatted_address+'</li>'+
-          '<li class="rating">'+place.rating+'</li>'+
-          '<li class="price">'+place.price_level+'</li>'+
-          '<button class = "favoriteButton">Fav!</button>'+
+        '<ul class="collection hoverable">'+
+           '<li class="collection-item avatar">'+
+             '<img src="'+photoURL+'" alt="" class="circle responsive-img"/>'+
+             '<span class="title">'+place.name+'</span>'+
+             '<p class="center-align">'+
+                'Address: '+place.vicinity+ '<br>'+
+                'Rating: '+place.rating+ '<br>'+
+                'Price: '+place.price_level+
+             '</p>'+
+             '<a class="">Fav!</a>'+
+           '</li>'+
+        '</ul>'+
         '</div>'
       );
       $('#results_list').append($result_card);
 
     });
-  }
+    }
+
+
+        ////////////stuff above here is new/////////////////////////////
+
+
+
+        /////////this stuff below works uncomments if things get fucky///////
+
+  //       '<div class="result">'+
+  //         '<h4 class="place_name">'+place.name+'</h4>'+
+  //         '<img src="'+photoURL+'" alt="" />'+
+  //         '<ul>'+
+  //         '<li class="hours">'+place.opening_hours+'</li>'+
+  //         '<li class="address">'+place.formatted_address+'</li>'+
+  //         '<li class="rating">'+place.rating+'</li>'+
+  //         '<li class="price">'+place.price_level+'</li>'+
+  //         '<button class = "favoriteButton">Fav!</button>'+
+  //       '</div>'
+  //     );
+  //     $('#results_list').append($result_card);
+  //
+  //   });
+  // }
+  ///////////////////////////////////////////////////////////////////////////
 
   var error = function() {
 
