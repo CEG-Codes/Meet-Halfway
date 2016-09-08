@@ -1,56 +1,111 @@
 <div id="left_nav_bar">
-
 	<div class="icons" id="top">
+  <% if current_user %>
 		<div data-activates="slide-out" class="button-collapse"><i class="material-icons">star</i></div>
-	</div>
-
-
-	<div class="icons" id="bottom">
+	<% else %>
+    <i class=" small material-icons" id="emptyIcon"></i>
+  <% end %>
+  </div>
+  <div class="icons" id="bottom">
     <% if current_user %>
-      <i class=" small material-icons">assignment_ind</i>
       <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
     <%else %>
-      <i class=" small material-icons" id="emptyIcon"></i>
-		  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
+  	  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
     <% end %>
-	</div>
-
+  </div>
 </div>  <!-- left static nav bar -->
 
+<% if current_user %>
 <ul id="slide-out" class="side-nav">
     <li>
       <div class="userView">
         <img class="background" src="">
-        <div><img class="circle" src=""></div>
-        <div><span class="black-text name">Name:</span></div>
-        <div><span class="black-text email">Email:</span></div>
+        <div></div>
+        <div><span class="black-text name">Welcome, <%=current_user.first_name%>!</span></div>
+        <div><span class="black-text email"><%=current_user.email%></span></div>
       </div>
     </li>
+    <hr>
     <ul class="collapsible" iddata-collapsible="accordion">
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
         <ul class="collapsible-body">
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
         </ul>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
         <ul class="collapsible-body">
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
         </ul>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
         <ul class="collapsible-body">
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
         </ul>
-      </li>
-    </ul>
-</ul>
-
+  </ul>
+<% end %>
 
 
 
