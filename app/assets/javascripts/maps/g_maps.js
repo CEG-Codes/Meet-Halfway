@@ -121,19 +121,17 @@ function placeMarker(latLng, markerGroup, place)
   };
   if (place !== undefined)
   {
-    var contentString = '<div class="infoOuterContainer">'+
-        '<div class="infoInnerContainer">'+
-        '</div>'+
-        '<h1 class="infoHeading">'+place.name+'</h1>'+
-        '<div class="infoContent">'+
-        '<ul class = "infoList">'+
-          '<li>Address: '+place.formatted_address+'</li>'+
-          '<li>Price: '+place.price_level+'</li>'+
-          '<li>Rating: '+place.rating+'</li>'+
-        '</ul>'+
-        '</div>'+
-        '<button class="infoFav">Save Fav!</button>'+
-        '</div>';
+    var contentString = '<div class="infoContainer">'+
+  '<h5 class="infoName">'+place.name+'</h5>'+
+  '<div class="infoContent">'+
+    '<ul class = "infoList">'+
+      '<li>'+place.vicinity+'</li>'+
+      '<li>Price: '+place.price_level+'</li>'+
+      '<li>Rating: '+place.rating+'</li>'+
+    '</ul>'+
+  '</div>'+
+  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+'</div>'
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
