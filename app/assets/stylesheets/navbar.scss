@@ -5,9 +5,10 @@
     background-color: #c62828;
     height: 100%;
     top: 0px;
+    z-index: 1000;
 }
 
-.side-nav.fixed {
+#slide-out {
   padding-left:50px;
 }
 
@@ -21,17 +22,19 @@
 	margin: 10px;
 }
 
-#emptyIcon{
+#emptyIcon {
   height: 30px;
 }
 
-
-#bottom{
-  top: 20%;
-	top: 20px;
+#top {
+  top: 2%;
 }
 
-.favorite_item{
+#bottom {
+  top: 86%;
+}
+
+.favorite_item {
   margin: 8px;
   padding: 0;
   height: 140px;
