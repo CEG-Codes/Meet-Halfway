@@ -17,7 +17,7 @@ function DOM_Stuff(){
     var end = ui.dest2.value;
     calcRoute(start, end, true);
   });
-}
+};
 
 function navbarListeners() {
   $('.button-collapse').sideNav({
