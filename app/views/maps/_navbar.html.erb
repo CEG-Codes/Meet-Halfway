@@ -33,7 +33,7 @@
     <ul class="collapsible" iddata-collapsible="accordion">
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
-        <ul class="collapsible-body">
+        <ul class="collapsible-body" id = "fav_restaurant">
           <% @favorites.each do |favorite| %>
           <li class="favorite_item">
             <div class="favLeft"><%= favorite.user_id %></div>
@@ -51,7 +51,7 @@
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
-        <ul class="collapsible-body">
+        <ul class="collapsible-body" id = "fav_bars">
           <li class="favorite_item">
             <div class="favLeft">Name</div>
             <div class="favRight">Hours</div>
@@ -77,7 +77,7 @@
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
-        <ul class="collapsible-body">
+        <ul class="collapsible-body" id = "fav_cafe">
           <li class="favorite_item">
             <div class="favLeft">Name</div>
             <div class="favRight">Hours</div>
