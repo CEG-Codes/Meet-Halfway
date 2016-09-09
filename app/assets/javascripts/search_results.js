@@ -1,3 +1,6 @@
 function search_results (){
-  $('#results').append($result_card)
+  $('#destSubmitBtn').on('click', function(){
+      $('.search_box').hide();
+  }
+
 }
