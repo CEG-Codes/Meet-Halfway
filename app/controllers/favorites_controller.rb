@@ -2,9 +2,10 @@ class FavoritesController < ApplicationController
 
 	def create
 
+    user = current_user.id
 	 	place = params["place"]
-	 	debugger
-		Favorite.create( place_id: place)	 	
+		Favorite.create(user_id: user, place_id: place)
+
 	end
 
 	def delete
