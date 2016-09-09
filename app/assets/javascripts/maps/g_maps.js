@@ -104,8 +104,8 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
-  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 };
 
 function deleteMarkers()
