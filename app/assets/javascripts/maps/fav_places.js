@@ -5,11 +5,17 @@ function createFavorite (place_id) {
 	var fav_place = {
     place: place_id
     };
+
+  var success = function()
+  {
+      navbarListeners();
+
+  }
 	var error = function() {
 
 	}
 
-	ajax_this('/favorites', 'post', fav_place, error)
+	ajax_this('/favorites', 'post', fav_place, success, error)
 
 
 }
