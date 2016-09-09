@@ -7,19 +7,15 @@ class FavoritesController < ApplicationController
 	 	place = params["place"]
 
 		new_favorite = Favorite.create(user_id: user, place_id: place)
-    @spot = @client.spot(new_favorite.place_id)
-    render :json => { :new => new_favorite, :spot => @spot }
+    # @spot = @client.spot(new_favorite.place_id)
+    # render :json => { :new => new_favorite, :spot => @spot }
 
+    @favorites = Favorite.all
 
-
-
-    # @favorites = Favorite.all
-
-    #  respond_to do |format|
-    #   format.html
-    #   format.js
-    #   puts 'hello!!!!'
-    # end
+     respond_to do |format|
+      format.js
+      puts 'hello!!!!'
+    end
 
 	end
 
