@@ -34,27 +34,19 @@
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
         <ul class="collapsible-body">
+          <% @favorites.each do |favorite| %>
           <li class="favorite_item">
+            <div class="favLeft"><%= favorite.user_id %></div>
+            <br>
+            <div class="favLeft"><%= favorite.place_id %></div>
+            <br>
             <div class="favLeft">Name</div>
             <div class="favRight">Hours</div>
             <div class="" style="clear:both">Address</div>
             <div class="">Phone Number</div>
           </li>
           <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
+          <% end %>
         </ul>
       </li>
       <li>
