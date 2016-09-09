@@ -18,7 +18,7 @@ function DOM_Stuff(){
     deleteMarkers();
     calcRoute(start, end, true);
   });
-}
+};
 
 function navbarListeners() {
   $('.button-collapse').sideNav({
