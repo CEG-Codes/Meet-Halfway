@@ -1,4 +1,4 @@
-function createFavorite () {
+function createFavorite (place_id) {
 
 //create a data object to send to rails
 
@@ -13,3 +13,4 @@ function createFavorite () {
 
 
 }
+
