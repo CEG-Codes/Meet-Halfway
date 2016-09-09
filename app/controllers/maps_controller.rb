@@ -4,14 +4,11 @@ class MapsController < ApplicationController
     @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
 
     if current_user
+      @results = [];
       @favorites = Favorite.where(:user_id => current_user.id)
 
-
-
-      respond_to do |format|
-        format.html
-        format.js {render :partial => "maps/navbar"}
       end
+
     end
   end
 

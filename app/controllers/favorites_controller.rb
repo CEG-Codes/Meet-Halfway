@@ -14,7 +14,6 @@ class FavoritesController < ApplicationController
 
      respond_to do |format|
       format.js
-      puts 'hello!!!!'
     end
 
 	end
