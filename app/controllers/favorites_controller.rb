@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 	def create
 
 	 	place = params["place"]
-	 	debugger
+	 	
 		Favorite.create( place_id: place)	 	
 	end
 
