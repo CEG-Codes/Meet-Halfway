@@ -131,7 +131,7 @@ function placeMarker(latLng, markerGroup, place)
     '</ul>'+
   '</div>'+
   '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
-'</div>';
+'</div>'
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -209,20 +209,34 @@ function searchPlaces (latLng, place_type) {
 
       var $result_card = $(
         //////////////new stuff below here//////////////////////////////
-        '<div class="result">'+
-        '<ul class="collection hoverable">'+
-           '<li class="collection-item avatar">'+
-             '<img src="'+photoURL+'" alt="" class="circle responsive-img"/>'+
-             '<span class="title">'+place.name+'</span>'+
-             '<p class="center-align">'+
-                'Address: '+place.vicinity+ '<br>'+
-                'Rating: '+place.rating+ '<br>'+
-                'Price: '+place.price_level+
-             '</p>'+
-             '<a class="">Fav!</a>'+
-           '</li>'+
-        '</ul>'+
-        '</div>'
+        // '<div class="result">'+
+
+      '<div class="divider"></div>'+
+      '<div class="hoverable">'+
+      // '<div class="card horizontal">'+
+      // '<div class="">'+
+        // '</div>'
+
+        '<div class="card-stacked">'+
+        '<div class="valign-wrapper">'+
+        '<img class="valign" src="'+photoURL+'">'+
+        '<h6 class="title place-title valign">'+place.name+'</h6>'+
+        '</div>'+
+        '<div class="card-content valign-wrapper">'+
+          '<p class="place-info">'+
+           place.vicinity+ '<br>'+
+          'Rating: '+place.rating+ '<br>'+
+          'Price: '+place.price_level+
+          '</p>'+
+          '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+
+        // '</div>'+
+        // '<div class="card-action">'+
+          // '</div>'+
+          '</div>'+
+        // '</div>'+
+      '</div>'
+
       );
       $('#results_list').append($result_card);
 
