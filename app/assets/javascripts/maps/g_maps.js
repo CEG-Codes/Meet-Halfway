@@ -108,6 +108,16 @@ function bothWays(halfway_point){
   calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 };
 
+function deleteMarkers()
+{
+
+   for (var i = 0; i < home_map.markers.length; i++)
+    {
+      home_map.markers[i].setMap(null);
+    }
+  home_map.markers = [];
+}
+
 function placeMarker(latLng, markerGroup, place, image)
 {
   var marker = new google.maps.Marker({
@@ -170,16 +180,16 @@ function searchPlaces (latLng, place_type) {
   switch (place_type) {
     case "1":
     place = ["restaurant", "food"];
-    exclude = ["night_club", "bar", "bakery", "cafe"]
+    exclude = []//["night_club", "bar", "bakery", "cafe"]
     break;
     case "2":
     place = ["bar", "night_club"]
-    exclude = ["restaurant","cafe","bakery"]
+    exclude = []//["restaurant","cafe","bakery"]
     break;
 
     case "3":
     place = ["cafe", "bakery"]
-    exclude = ["bar", "night_club", ]
+    exclude = []//["bar", "night_club", ]
     break;
   }
 
