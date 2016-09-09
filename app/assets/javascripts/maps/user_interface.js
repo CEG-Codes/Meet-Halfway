@@ -17,6 +17,8 @@ function DOM_Stuff(){
     var end = ui.dest2.value;
     deleteMarkers();
     calcRoute(start, end, true);
+    $('.search_box').toggle();
+    $('.results_container').toggle();
   });
 };
 
@@ -32,5 +34,3 @@ function navbarListeners() {
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
 };
-
-

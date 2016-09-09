@@ -132,21 +132,7 @@ function placeMarker(latLng, markerGroup, place, image)
   };
   if (place !== undefined)
   {
-<<<<<<< HEAD
-    var contentString = '<div data-id='+place.place_id+' class="infoContainer">'+
-    '<h5 class="infoName">'+place.name+'</h5>'+
-    '<div class="infoContent">'+
-      '<ul class = "infoList">'+
-        '<li>'+place.vicinity+'</li>'+
-        '<li>Price: '+place.price_level+'</li>'+
-        '<li>Rating: '+place.rating+'</li>'+
-      '</ul>'+
-      '</div>'+
-      '<a class="save_favorite btn-floating waves-effect waves-light red darken-3" onclick=saveFavorite("'+place.place_id+'") ><i class="tiny material-icons">star</i></div>'+
-    '</div>';
 
-
-=======
     var contentString = '<div class="infoContainer">'+
   '<h5 class="infoName">'+place.name+'</h5>'+
   '<div class="infoContent">'+
@@ -158,7 +144,7 @@ function placeMarker(latLng, markerGroup, place, image)
   '</div>'+
   '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
 '</div>'
->>>>>>> 8fc4d2a18892559b232001c8cf39e9ee80a9c5eb
+
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -248,11 +234,11 @@ function searchPlaces (latLng, place_type) {
         //////////////new stuff below here//////////////////////////////
         // '<div class="result">'+
 
+
+
+
       '<div class="divider"></div>'+
       '<div class="hoverable">'+
-      // '<div class="card horizontal">'+
-      // '<div class="">'+
-        // '</div>'
 
         '<div class="card-stacked">'+
         '<div class="valign-wrapper">'+
@@ -262,20 +248,18 @@ function searchPlaces (latLng, place_type) {
         '<div class="card-content valign-wrapper">'+
           '<p class="place-info">'+
            place.vicinity+ '<br>'+
-          'Rating: '+place.rating+ '<br>'+
+
+          'Rating: '+place.rating+
           'Price: '+place.price_level+
           '</p>'+
           '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
 
-        // '</div>'+
-        // '<div class="card-action">'+
-          // '</div>'+
           '</div>'+
-        // '</div>'+
       '</div>'
 
       );
-      $('#results_list').append($result_card);
+
+      $('.results_container').append($result_card);
 
     });
     }
