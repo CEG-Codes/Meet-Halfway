@@ -15,6 +15,7 @@ function DOM_Stuff(){
     e.preventDefault();
     var start = ui.dest1.value;
     var end = ui.dest2.value;
+    deleteMarkers();
     calcRoute(start, end, true);
   });
 }
