@@ -34,16 +34,12 @@
       <li>
         <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
         <ul class="collapsible-body" id = "fav_restaurant">
-          <% @favorites.each do |favorite| %>
+          <% @results.each do |result| %>
           <li class="favorite_item">
-            <div class="favLeft"><%= favorite.user_id %></div>
-            <br>
-            <div class="favLeft"><%= favorite.place_id %></div>
-            <br>
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
+            <div class="favLeft"><%= result.name %></div>
+            <div class="favRight"><%=result.opening_hours["periods"][Time.new.wday]["open"]["time"]%> to <%=result.opening_hours["periods"][Time.new.wday]["close"]["time"]%></div>
+            <div class="" style="clear:both"><%= result.vicinity %></div>
+            <div class=""><%= result.formatted_phone_number %></div>
           </li>
           <hr>
           <% end %>
