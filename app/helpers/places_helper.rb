@@ -12,4 +12,10 @@ module PlacesHelper
         return photoURL = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
     end
   end
+
+
+  # def get_link
+
+
+
 end
