@@ -20,7 +20,8 @@ class PlacesController < ApplicationController
   def list_results
     @results = []
     results = params[:results]
-    results = JSON.parse(results)
+    byebug
+
 
     results.each do |result|
       spot = @client.spot(result.place_id)

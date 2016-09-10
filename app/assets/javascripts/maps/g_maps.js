@@ -245,7 +245,7 @@ function searchPlaces (latLng, place_type) {
         console.log('Partial not work')
       }
 
-      var send_back = JSON.stringify(data);
+      var send_back = {results: data};
       ajax_this('/results', 'post', send_back, success, error)
     }
 
