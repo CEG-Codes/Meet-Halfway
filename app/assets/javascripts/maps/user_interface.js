@@ -14,14 +14,11 @@ function DOM_Stuff(){
   this.submit.on('click', function(e){
     e.preventDefault();
 
-    if (validate_this())
+    if (validate_search())
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
-      deleteMarkers();
       calcRoute(start, end, true);
-      $('.search_box').toggle(); //toggles search box out
-      $('.results_container').toggle(); //toggles results in
     }
   });
 };
