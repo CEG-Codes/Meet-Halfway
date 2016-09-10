@@ -17,12 +17,12 @@ class PlacesController < ApplicationController
 
   def list_results
     @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-    @results = []
+    @places = []
     results = JSON.parse(params[:data])
 
     results["results"].each do |result|
       spot = @client.spot(result["place_id"].to_s)
-      @results.push(spot)
+      @places.push(spot)
     end
 
     respond_to do |format|

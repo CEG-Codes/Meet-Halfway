@@ -6,19 +6,19 @@
   <div id="results_list">
 
 
-    <% @results.each do |result| %>
+    <% @places.each do |place| %>
     <div class="divider"></div>
       <div class="hoverable card-stacked">
             <div class="valign-wrapper">
-              <img class="valign place_icon" src=<%= get_photo(result.photos) %>>
-              <h6 class="title place-title valign"><%=result.name%></h6>
+              <img class="valign place_icon" src=<%= get_photo(place.photos) %>>
+              <h6 class="title place-title valign"><%=place.name%></h6>
             </div>
             <div class="card-content valign-wrapper">
               <p class="place-info">
-                 <%=result.vicinity%> <br>
-                 Phone: <%=result.formatted_phone_number%>
-                 Rating: <%=result.rating%>
-                 Price: <%=result.price_level%>
+                 <%=place.vicinity%> <br>
+                 Phone: <%=place.formatted_phone_number%>
+                 Rating: <%=place.rating%>
+                 Price: <%=place.price_level%>
               </p>
               <a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>
             </div>
