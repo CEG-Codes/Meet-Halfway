@@ -9,6 +9,7 @@ function createFavorite (place_id) {
   var success = function()
   {
       navbarListeners();
+
   }
 	var error = function()
   {

@@ -23,15 +23,11 @@ function DOM_Stuff(){
     $('.search_box').toggle(); //toggles search box out
     $('.results_container').toggle(); //toggles results in
 
-
-    if (validate_this())
+    if (validate_search())
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
-      deleteMarkers();
       calcRoute(start, end, true);
-      $('.search_box').toggle(); //toggles search box out
-      $('.results_container').toggle(); //toggles results in
     }
   });
 };
@@ -52,14 +48,14 @@ function navbarListeners() {
 function deleteFavorites(){
   $('.delete_favorite').on('click', function(){
     $.ajax({
-      type: "POST",
-      url: "favorites", //double check this url
-      dataType: "json",
+      type: "DELETE",
+      url: "/", //double check this url
+      // dataType: "json",
       data: {"_method": "delete"},
-      success: function(data)
+      success: function(places_data)
       {
-        console.log('favorite deleted')
-        success(data);
+        console.log(places_data)
+        success(places_data);
       }
 
     })
@@ -67,15 +63,14 @@ function deleteFavorites(){
   })
 }
 
-$("#button").click(function(){
-    $.ajax({
-        type: "POST",
-        url: "/slot_allocations/" + slotallocation_id,
-        dataType: "json",
-        data: {"_method":"delete"},
-        complete: function(){
-            $( "#SlotAllocationForm" ).dialog( "close" );
-            alert("Deleted successfully");
-        }
-    });
-});
+// $("#button").click(function(){
+//     $.ajax({
+//         type: "DELETE",
+//         url: "/slot_allocations/" + slotallocation_id,
+//         dataType: "json",
+//         data: {"_method":"delete"},
+//         complete: function(){
+//             alert("it's gone!");
+//         }
+//     });
+// });

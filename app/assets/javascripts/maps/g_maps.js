@@ -60,6 +60,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
     if (status == 'OK' && findhalf == true) {
       //don't render results
       findHalfway(result);
+      routeFound();
       console.log(result);
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
@@ -67,11 +68,21 @@ function calcRoute(start, end, findhalf, renderer, image) {
       renderRoute(renderer, result);
       placeMarker(result.routes[0].overview_path[0], null, undefined, image)
     } else {
-      console.log('No direct route found!')
+      //console.log('No direct route found!')
+      $('#textFlash1').text('Sorry, no route found.')
+      $('#textFlash1').css('opacity', 0);
+      $('#textFlash1').animate({
+        'opacity': 1}, 500)
     }
   });
 }
 
+function routeFound()
+{
+  deleteMarkers();
+  $('.search_box').toggle(); //toggles search box out
+  $('.results_container').toggle(); //toggles results in
+}
 
 function findHalfway(result){
   var place_type = $('input[name=group2]:checked', '#place_type').val();
@@ -138,6 +149,7 @@ function placeMarker(latLng, markerGroup, place, image)
   '<div class="infoContent">'+
     '<ul class = "infoList ">'+
       '<li>'+place.vicinity+'</li>'+
+      '<li>'+place.url+'</li>'+
       '<li>Price: '+place.price_level+'</li>'+ ''+
       '<li>Rating: '+place.rating+ '</li>'+
     '</ul>'+
@@ -168,10 +180,10 @@ function placeMarker(latLng, markerGroup, place, image)
   }
 };
 
-function runDeleteFavorites(place_id){
-  console.log('delete fav running')
-  deleteFavorites(place_id);
-}
+// function runDeleteFavorites(place_id){
+//   console.log('delete fav running')
+//   deleteFavorites(place_id);
+// }
 
 
 function saveFavorite(place_id)
