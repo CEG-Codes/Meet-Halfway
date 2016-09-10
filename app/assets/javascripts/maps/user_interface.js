@@ -4,8 +4,7 @@ $(document).ready(function(){
   console.log('Buttons, reporting in!');
   $('select').material_select();
   ui = new DOM_Stuff;
-  navbarListeners();
-});
+7});
 
 function DOM_Stuff(){
   this.dest1 = (document.getElementById('dest1'));
@@ -38,3 +37,5 @@ function navbarListeners() {
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
 };
+
+

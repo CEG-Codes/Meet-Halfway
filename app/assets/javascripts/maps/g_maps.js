@@ -173,6 +173,8 @@ function saveFavorite(place_id)
   console.log("PLACE ID =", place_id)
   createFavorite(place_id)
 }
+
+
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
 
