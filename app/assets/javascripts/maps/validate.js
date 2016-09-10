@@ -1,13 +1,24 @@
-function validate_this()
+function validate_search()
 {
-  //var valid_response = /\s/;
-  var input1 = ui.dest1.value;
-  var input2 = ui.dest2.value;
+  var reg = /\s/ig; //reg ex, all whitespace
+  var input1 = ui.dest1.value.replace(reg, "");
+  var input2 = ui.dest2.value.replace(reg, "");
   console.log(input1, input2)
 
-  if (input1.replace(" ", "") === "" || input2.replace(" ", "") === "")
+  if (input1 == "" || input2 == "")
   {
-    console.log(input1.replace(" ", ""), input2.replace(" ", ""), 'false')
+    $('#textFlash1').text('')
+    $('#textFlash2').text('')
+
+    if (input1 == "")
+    {
+      $('#textFlash1').text('Please Enter a Valid Location')
+    }
+
+    if (input2 == "")
+    {
+      $('#textFlash2').text('Please Enter a Valid Location')
+    }
     return false
   } else
   {
