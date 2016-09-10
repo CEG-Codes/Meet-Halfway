@@ -13,17 +13,6 @@ function DOM_Stuff(){
   this.submit = $('#destSubmitBtn');
   this.submit.on('click', function(e){
     e.preventDefault();
-<<<<<<< HEAD
-    var start = ui.dest1.value;
-    var end = ui.dest2.value;
-    deleteMarkers();
-    calcRoute(start, end, true);
-    $('.search_box').toggle(); //toggles search box out
-
-    //try appending the Results word at the top of the div through
-    //the function
-    $('.results_container').toggle(); //toggles results in
-=======
 
     if (validate_search())
     {
@@ -31,7 +20,6 @@ function DOM_Stuff(){
       var end = ui.dest2.value;
       calcRoute(start, end, true);
     }
->>>>>>> f74e1aa25f228062340e2ae37f66bf9a7f5248e0
   });
 };
 

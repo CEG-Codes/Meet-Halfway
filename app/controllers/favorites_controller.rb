@@ -4,7 +4,6 @@ class FavoritesController < ApplicationController
     user = current_user.id
 	 	place = params["place"];
 		Favorite.create(user_id: user, place_id: place)
-
     @favorites = Favorite.all
 
      respond_to do |format|
