@@ -18,6 +18,7 @@ function DOM_Stuff(){
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
+      $('#loading_icon').css('display', 'flex')
       calcRoute(start, end, true);
     }
 
