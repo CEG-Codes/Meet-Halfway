@@ -13,6 +13,7 @@ function DOM_Stuff(){
   this.submit = $('#destSubmitBtn');
   this.submit.on('click', function(e){
     e.preventDefault();
+
     if (validate_search())
     {
       var start = ui.dest1.value;

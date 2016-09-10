@@ -5,9 +5,10 @@ root to: "maps#index"
 resources :maps
 resources :users
 resources :places
+resources :sms
 resources :favorites, only:[:create, :destroy]
 
 get "/auth/:provider/callback" => "sessions#create"
 get "signout" => "sessions#destroy", :as => :signout
-
+get "/sms" => "sms#create"
 end
