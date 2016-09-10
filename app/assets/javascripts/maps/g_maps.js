@@ -142,7 +142,7 @@ function placeMarker(latLng, markerGroup, place, image)
       '<li>Rating: '+place.rating+ '</li>'+
     '</ul>'+
   '</div>'+
-  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+  '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
 '</div>'
 
 
@@ -242,7 +242,7 @@ function searchPlaces (latLng, place_type) {
 
         '<div class="card-stacked">'+
         '<div class="valign-wrapper">'+
-        '<img class="valign" src="'+photoURL+'">'+
+        '<img class="valign place_icon" src="'+photoURL+'">'+
         '<h6 class="title place-title valign">'+place.name+'</h6>'+
         '</div>'+
         '<div class="card-content valign-wrapper">'+
