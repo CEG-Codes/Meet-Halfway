@@ -126,10 +126,15 @@
             <i class="material-icons circle">folder</i>
             <span class="title"><%= result.name %></span>
             <p> <%= result.vicinity %> <br>
-              <%= result.website %> <br> 
+              <%= result.website %> <br>
               <!-- this line above should add the url to search results -->
+        <% @favresults.each do |favresult| %>
+          <li class="collection-item avatar">
+            <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
+            <span class="title"><%= favresult.name %></span>
+            <p> <%= favresult.vicinity %> <br>
                 Hours <br>
-                Phone <%= result.formatted_phone_number %>
+                Phone <%= favresult.formatted_phone_number %>
             </p>
 
             <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>

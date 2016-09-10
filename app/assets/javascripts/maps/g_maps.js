@@ -179,7 +179,8 @@ function placeMarker(latLng, markerGroup, place, image)
 
   }
 };
-
+//keep this little function--might it need to fire
+//off the ajax delete of favorite
 // function runDeleteFavorites(place_id){
 //   console.log('delete fav running')
 //   deleteFavorites(place_id);
