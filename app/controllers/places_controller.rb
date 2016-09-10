@@ -1,6 +1,5 @@
 class PlacesController < ApplicationController
   include PlacesHelper
-  results = nil
 
 	def create
 		@client = GooglePlaces::Client.new(ENV["googleWebAPI"])
@@ -13,18 +12,16 @@ class PlacesController < ApplicationController
 	    lng = center["lng"].to_f
 
 		results = @client.spots(lat, lng, :radius => radius, :types => search, :exclude => exclude)
-
     render :json => { :results => results }
 	end
 
   def list_results
+    @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
     @results = []
-    results = params[:results]
-    byebug
+    results = JSON.parse(params[:data])
 
-
-    results.each do |result|
-      spot = @client.spot(result.place_id)
+    results["results"].each do |result|
+      spot = @client.spot(result["place_id"].to_s)
       @results.push(spot)
     end
 

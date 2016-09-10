@@ -245,12 +245,12 @@ function searchPlaces (latLng, place_type) {
         console.log('Partial not work')
       }
 
-      var send_back = {results: data};
-      ajax_this('/results', 'post', send_back, success, error)
+      var send_data = {data: JSON.stringify(data)};
+      ajax_this('/results', 'post', send_data, success, error)
     }
 
   var error = function() {
-
+    console.log('places faile')
   }
   //make an ajax POST to /places route
   ajax_this('/places', 'post', places_data, process_places, error)
