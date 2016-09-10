@@ -13,10 +13,16 @@ function DOM_Stuff(){
   this.submit = $('#destSubmitBtn');
   this.submit.on('click', function(e){
     e.preventDefault();
-    var start = ui.dest1.value;
-    var end = ui.dest2.value;
-    deleteMarkers();
-    calcRoute(start, end, true);
+
+    if (validate_this())
+    {
+      var start = ui.dest1.value;
+      var end = ui.dest2.value;
+      deleteMarkers();
+      calcRoute(start, end, true);
+      $('.search_box').toggle(); //toggles search box out
+      $('.results_container').toggle(); //toggles results in
+    }
   });
 };
 
@@ -32,5 +38,3 @@ function navbarListeners() {
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
 };
-
-

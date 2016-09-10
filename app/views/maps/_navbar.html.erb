@@ -2,12 +2,12 @@
 <!-- left static nav bar -->
 
 <div id="left_nav_bar">
-	<div class="icons" id="top">
+  <div class="icons" id="top">
   <% if current_user %>
-		<div data-activates="slide-out" class="button-collapse">
+    <div data-activates="slide-out" class="button-collapse">
       <a href='#'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Favorites">star</i></a>
     </div>
-	<% else %>
+  <% else %>
     <i class="small material-icons" id="emptyIcon"></i>
   <% end %>
   </div>
@@ -20,7 +20,7 @@
     <% if current_user %>
       <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
     <%else %>
-  	  <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
+      <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
     <% end %>
   </div>
 </div>
@@ -135,6 +135,7 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">view_headline</i>Coffee Shop</div>
         <div class="collapsible-body">
+        <ul class="collection">
         <% @favorites.each do |favorite| %>
           <li class="favorite_item">
             <div class="favLeft"><%= favorite.user_id %></div>
@@ -149,12 +150,10 @@
           <hr>
           <% end %>
           <hr>
+          </ul>
       </div>
     </li>
 
   </ul>
 </ul>
 <% end %>
-
-
-
