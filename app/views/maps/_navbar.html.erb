@@ -4,8 +4,8 @@
 <div id="left_nav_bar">
   <div class="icons" id="top">
   <% if current_user %>
-    <div data-activates="slide-out" class="button-collapse">
-      <a href='#'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Favorites">star</i></a>
+		<div data-activates="slide-out" class="button-collapse">
+      <div><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Favorites">star</i></div>
     </div>
   <% else %>
     <i class="small material-icons" id="emptyIcon"></i>
@@ -136,16 +136,17 @@
       <div class="collapsible-header"><i class="material-icons">view_headline</i>Coffee Shop</div>
         <div class="collapsible-body">
         <ul class="collection">
-        <% @favorites.each do |favorite| %>
+    <hr>
+    <ul class="collapsible" iddata-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
+        <ul class="collapsible-body" id = "fav_restaurant">
+          <% @results.each do |result| %>
           <li class="favorite_item">
-            <div class="favLeft"><%= favorite.user_id %></div>
-            <br>
-            <div class="favLeft"><%= favorite.place_id %></div>
-            <br>
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
+            <div class="favLeft"><%= result.name %></div>
+            <div class="favRight"><%=result.opening_hours["periods"][Time.new.wday]["open"]["time"]%> to <%=result.opening_hours["periods"][Time.new.wday]["close"]["time"]%></div>
+            <div class="" style="clear:both"><%= result.vicinity %></div>
+            <div class=""><%= result.formatted_phone_number %></div>
           </li>
           <hr>
           <% end %>
