@@ -248,7 +248,7 @@ function searchPlaces (latLng, place_type) {
         '<div class="card-content valign-wrapper">'+
           '<p class="place-info">'+
            place.vicinity+ '<br>'+
-
+          'Phone: '+place.formatted_phone_number+
           'Rating: '+place.rating+
           'Price: '+place.price_level+
           '</p>'+
