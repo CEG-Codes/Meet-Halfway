@@ -43,6 +43,43 @@
   <ul class="collapsible" data-collapsible="accordion">
 
     <li>
+<<<<<<< HEAD
+      <div class="userView">
+        <img class="background" src="">
+        <div></div>
+        <div><span class="black-text name">Welcome, <%=current_user.first_name%>!</span></div>
+        <div><span class="black-text email"><%=current_user.email%></span></div>
+      </div>
+    </li>
+    <hr>
+    <ul class="collapsible" iddata-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
+        <ul class="collapsible-body" id = "fav_restaurant">
+          <% @favorites.each do |favorite| %>
+          <li class="favorite_item">
+            <div class="favLeft"><%= favorite.user_id %></div>
+            <br>
+            <div class="favLeft"><%= favorite.place_id %></div>
+            <br>
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <% end %>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
+        <ul class="collapsible-body" id = "fav_bars">
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+=======
       <div class="collapsible-header"><i class="material-icons">view_headline</i>Restaurants</div>
       <div class="collapsible-body">
         <ul class="collection">
@@ -82,6 +119,7 @@
                 Number
             </p>
             <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+>>>>>>> 14f01dd6fbcd05750496d791b36a1e6e86316fb3
           </li>
         </ul>
       </div>
@@ -110,6 +148,19 @@
             </p>
             <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
           </li>
+<<<<<<< HEAD
+          <hr>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
+        <ul class="collapsible-body" id = "fav_cafe">
+          <li class="favorite_item">
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+=======
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
             <span class="title">Name</span>
@@ -118,6 +169,7 @@
                 Number
             </p>
             <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+>>>>>>> 14f01dd6fbcd05750496d791b36a1e6e86316fb3
           </li>
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
