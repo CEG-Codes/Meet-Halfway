@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  include PlacesHelper
 
   def index
     @client = GooglePlaces::Client.new(ENV["googleWebAPI"])

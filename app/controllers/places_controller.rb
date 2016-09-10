@@ -19,16 +19,15 @@ class PlacesController < ApplicationController
       @results.push(spot)
     end
 
+
+
     respond_to do |format|
       format.js #places/create.js.erb
     end
-
-
-
 	end
 
-  def show_markers
-    #render :json => { :results => results }
+  def show_markers(results)
+    render :json => { :results => results }
   end
 
 end

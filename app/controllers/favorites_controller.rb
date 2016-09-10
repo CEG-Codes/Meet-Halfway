@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  include PlacesHelper
 
 	def create
     user = current_user.id
