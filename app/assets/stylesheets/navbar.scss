@@ -1,11 +1,11 @@
 
 #left_nav_bar {
-    position: fixed;
-    width: 50px;
-    background-color: #c62828;
-    height: 100%;
-    top: 0px;
-    z-index: 1000;
+  position: fixed;
+  width: 50px;
+  background-color: #c62828;
+  height: 100%;
+  top: 0px;
+  z-index: 1000;
 }
 
 #slide-out {
@@ -31,15 +31,11 @@
 }
 
 #bottom {
-  top: 86%;
+  top: 78%;
 }
 
 .favorite_item {
-  margin: 8px;
-  padding: 0;
-  height: 140px;
-  line-height: 120%;
-  position: relative;
+  padding-left: 25px;
 }
 
 
@@ -54,6 +50,23 @@
   float: right;
 }
 
-//Menu needs to be wider to house the list of favorites
-//when category clicked, want list to expand with favorites
-//Profile icon should show user profile... somehow?
+.collapsible-body p {
+  padding: 0;
+  font-size: 13px;
+}
+
+.collection .collection-item.avatar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.collection .collection-item.avatar .secondary-content {
+    position: absolute;
+    top: 55px;
+    right: -38px;
+}
+
+#twitter-img {
+  height: 53px;
+  margin-left: -11px;
+}
