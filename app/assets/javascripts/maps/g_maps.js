@@ -241,36 +241,36 @@ function searchPlaces (latLng, place_type) {
       }
 
 
-      var $result_card = $(
-        //////////////new stuff below here//////////////////////////////
-        // '<div class="result">'+
+      // var $result_card = $(
+      //   //////////////new stuff below here//////////////////////////////
+      //   // '<div class="result">'+
 
 
 
 
-      '<div class="divider"></div>'+
-      '<div class="hoverable">'+
+      // '<div class="divider"></div>'+
+      // '<div class="hoverable">'+
 
-        '<div class="card-stacked">'+
-        '<div class="valign-wrapper">'+
-        '<img class="valign place_icon" src="'+photoURL+'">'+
-        '<h6 class="title place-title valign">'+place.name+'</h6>'+
-        '</div>'+
-        '<div class="card-content valign-wrapper">'+
-          '<p class="place-info">'+
-           place.vicinity+ '<br>'+
-          'Phone: '+place.formatted_phone_number+
-          'Rating: '+place.rating+
-          'Price: '+place.price_level+
-          '</p>'+
-          '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+      //   '<div class="card-stacked">'+
+      //   '<div class="valign-wrapper">'+
+      //   '<img class="valign place_icon" src="'+photoURL+'">'+
+      //   '<h6 class="title place-title valign">'+place.name+'</h6>'+
+      //   '</div>'+
+      //   '<div class="card-content valign-wrapper">'+
+      //     '<p class="place-info">'+
+      //      place.vicinity+ '<br>'+
+      //     'Phone: '+place.formatted_phone_number+
+      //     'Rating: '+place.rating+
+      //     'Price: '+place.price_level+
+      //     '</p>'+
+      //     '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
 
-          '</div>'+
-      '</div>'
+      //     '</div>'+
+      // '</div>'
 
-      );
+      // );
 
-      $('.results_container').append($result_card);
+      // $('.results_container').append($result_card);
 
     });
     }
