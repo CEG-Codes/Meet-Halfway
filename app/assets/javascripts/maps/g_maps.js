@@ -242,7 +242,7 @@ function searchPlaces (latLng, place_type) {
 
         '<div class="card-stacked">'+
         '<div class="valign-wrapper">'+
-        '<img class="valign" src="'+photoURL+'">'+
+        '<img class="valign place_icon" src="'+photoURL+'">'+
         '<h6 class="title place-title valign">'+place.name+'</h6>'+
         '</div>'+
         '<div class="card-content valign-wrapper">'+
