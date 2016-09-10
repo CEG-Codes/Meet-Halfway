@@ -10,18 +10,13 @@ class FavoritesController < ApplicationController
     @spot = @client.spot(new_favorite.place_id)
     render :json => { :new => new_favorite, :spot => @spot }
 
+    @favorites = Favorite.all
 
+     respond_to do |format|
+      format.js
+    end
 
-
-    # @favorites = Favorite.all
-
-    #  respond_to do |format|
-    #   format.html
-    #   format.js
-    #   puts 'hello!!!!'
-    # end
-
-	end
+  end
 
 	def delete
 		place = Favorite.find_by_id(params["place"])

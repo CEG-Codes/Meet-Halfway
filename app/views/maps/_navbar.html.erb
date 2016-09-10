@@ -135,27 +135,22 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">view_headline</i>Coffee Shop</div>
         <div class="collapsible-body">
-        <ul class="favorite_item">
-          <li>Name</li>
-          <li>Hours</li>
-          <li>Address</li>
-          <li>Phone Number</li>
-        </ul>
+        <ul class="collection">
+        <% @favorites.each do |favorite| %>
+          <li class="favorite_item">
+            <div class="favLeft"><%= favorite.user_id %></div>
+            <br>
+            <div class="favLeft"><%= favorite.place_id %></div>
+            <br>
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
           <hr>
-        <ul class="favorite_item">
-          <li>Name</li>
-          <li>Hours</li>
-          <li>Address</li>
-          <li>Phone Number</li>
-        </ul>
+          <% end %>
           <hr>
-        <ul class="favorite_item">
-          <li>Name</li>
-          <li>Hours</li>
-          <li>Address</li>
-          <li>Phone Number</li>
-        </ul>
-          <hr>
+          </ul>
       </div>
     </li>
 
