@@ -48,13 +48,13 @@
       </div>
       <div class="collapsible-body">
         <ul class="collection">
-        <% @results.each do |result| %>
+        <% @favresults.each do |favresult| %>
           <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title"><%= result.name %></span>
-            <p> <%= result.vicinity %> <br>
+            <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle"> 
+            <span class="title"><%= favresult.name %></span>
+            <p> <%= favresult.vicinity %> <br>
                 Hours <br>
-                Phone <%= result.formatted_phone_number %>
+                Phone <%= favresult.formatted_phone_number %>
             </p>
             <a href="#" class="secondary-content">
               <i class="material-icons">delete</i>
