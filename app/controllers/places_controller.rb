@@ -13,15 +13,22 @@ class PlacesController < ApplicationController
 
 		results = @client.spots(lat, lng, :radius => radius, :types => search, :exclude => exclude)
 
+
     results.each do |result|
       spot = @client.spot(result.place_id)
       @results.push(spot)
     end
 
     respond_to do |format|
-      format.js
+      format.js #places/create.js.erb
     end
 
+
+
 	end
+
+  def show_markers
+    #render :json => { :results => results }
+  end
 
 end

@@ -1,4 +1,15 @@
+#show_results{
 
+  position: fixed;
+ top: 50px;
+ left: 100px;
+ background-color: rgba(255, 255, 255, 0.9);
+ width: 25em;
+ height: 80vh;
+ overflow: scroll;
+ z-index: 1000;
+
+}
 
 .place-title {
   display: inline;
@@ -16,16 +27,19 @@
   // padding-left: 10px;
 }
 
+#results_list{
+  height: 100%;
+}
 
 .results_container {
  // position: absolute;
- top: 50px;
- left: 100px;
+ // top: 50px;
+ // left: 100px;
  background-color: rgba(255, 255, 255, 0.9);
  width: 25em;
  height:100%;
  overflow: scroll;
- display:none;
+ //display:none;
  // z-index: 12;
 }
 
