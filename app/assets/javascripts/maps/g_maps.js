@@ -168,6 +168,12 @@ function placeMarker(latLng, markerGroup, place, image)
   }
 };
 
+function runDeleteFavorites(place_id){
+  console.log('delete fav running')
+  deleteFavorites(place_id);
+}
+
+
 function saveFavorite(place_id)
 {
   console.log("PLACE ID =", place_id)
