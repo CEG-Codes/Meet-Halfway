@@ -104,8 +104,8 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
-  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 };
 
 function deleteMarkers()
@@ -132,18 +132,18 @@ function placeMarker(latLng, markerGroup, place, image)
   };
   if (place !== undefined)
   {
-    var contentString = '<div data-id='+place.place_id+' class="infoContainer">'+
-    '<h5 class="infoName">'+place.name+'</h5>'+
-    '<div class="infoContent">'+
-      '<ul class = "infoList">'+
-        '<li>'+place.vicinity+'</li>'+
-        '<li>Price: '+place.price_level+'</li>'+
-        '<li>Rating: '+place.rating+'</li>'+
-      '</ul>'+
-      '</div>'+
-      '<a class="save_favorite btn-floating waves-effect waves-light red darken-3" onclick=saveFavorite("'+place.place_id+'") ><i class="tiny material-icons">star</i></div>'+
-    '</div>';
 
+    var contentString = '<div class="infoContainer">'+
+  '<h5 class="infoName">'+place.name+'</h5>'+
+  '<div class="infoContent">'+
+    '<ul class = "infoList">'+
+      '<li>'+place.vicinity+'</li>'+
+      '<li>Price: '+place.price_level+'</li>'+
+      '<li>Rating: '+place.rating+'</li>'+
+    '</ul>'+
+  '</div>'+
+  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+'</div>'
 
 
     var infowindow = new google.maps.InfoWindow({
@@ -231,21 +231,62 @@ function searchPlaces (latLng, place_type) {
 
 
       var $result_card = $(
-        '<div class="result">'+
-          '<h4 class="place_name">'+place.name+'</h4>'+
-          '<img src="'+photoURL+'" alt="" />'+
-          '<ul>'+
-          '<li class="hours">'+place.opening_hours+'</li>'+
-          '<li class="address">'+place.formatted_address+'</li>'+
-          '<li class="rating">'+place.rating+'</li>'+
-          '<li class="price">'+place.price_level+'</li>'+
-          '<button class = "favoriteButton">Fav!</button>'+
-        '</div>'
+        //////////////new stuff below here//////////////////////////////
+        // '<div class="result">'+
+
+
+
+
+      '<div class="divider"></div>'+
+      '<div class="hoverable">'+
+
+        '<div class="card-stacked">'+
+        '<div class="valign-wrapper">'+
+        '<img class="valign place_icon" src="'+photoURL+'">'+
+        '<h6 class="title place-title valign">'+place.name+'</h6>'+
+        '</div>'+
+        '<div class="card-content valign-wrapper">'+
+          '<p class="place-info">'+
+           place.vicinity+ '<br>'+
+
+          'Rating: '+place.rating+
+          'Price: '+place.price_level+
+          '</p>'+
+          '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+
+          '</div>'+
+      '</div>'
+
       );
-      $('#results_list').append($result_card);
+
+      $('.results_container').append($result_card);
 
     });
-  }
+    }
+
+
+        ////////////stuff above here is new/////////////////////////////
+
+
+
+        /////////this stuff below works uncomments if things get fucky///////
+
+  //       '<div class="result">'+
+  //         '<h4 class="place_name">'+place.name+'</h4>'+
+  //         '<img src="'+photoURL+'" alt="" />'+
+  //         '<ul>'+
+  //         '<li class="hours">'+place.opening_hours+'</li>'+
+  //         '<li class="address">'+place.formatted_address+'</li>'+
+  //         '<li class="rating">'+place.rating+'</li>'+
+  //         '<li class="price">'+place.price_level+'</li>'+
+  //         '<button class = "favoriteButton">Fav!</button>'+
+  //       '</div>'
+  //     );
+  //     $('#results_list').append($result_card);
+  //
+  //   });
+  // }
+  ///////////////////////////////////////////////////////////////////////////
 
   var error = function() {
 

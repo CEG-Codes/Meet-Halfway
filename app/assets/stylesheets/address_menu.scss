@@ -6,11 +6,17 @@
  left: 100px;
  background-color: rgba(255, 255, 255, 0.9);
  width: 25em;
+ height: 550px;
 }
 
-input[type=text].valid {
-    border-bottom: 1px solid #c62828;
-    box-shadow: 0 1px 0 0 #c62828;
+#dest1[type=text].valid {
+    border-bottom: 1px solid #09ba41;
+    box-shadow: 0 1px 0 0 #09ba41;
+}
+
+#dest2[type=text].valid {
+    border-bottom: 1px solid #487af9;
+    box-shadow: 0 1px 0 0 #487af9;
 }
 
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
@@ -28,11 +34,11 @@ input[type=text].valid {
 
 /* label focus color */
 #input-1 input:focus + label {
-  color: #09ba41 !important;
+  color: #09ba41;
 }
 
 #input-2 input:focus + label {
-  color: #487af9 !important;
+  color: #487af9;
 }
 
  /* label underline focus color */

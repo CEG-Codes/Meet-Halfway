@@ -1,7 +1,17 @@
-<div class="container hoverable">
+<div class="container hoverable" >
+<div class="results_container">
+  <div id="results_list">
+    <div class="card" >
+
+    </div>
+  </div>
+</div>
+
+<div class="search_box">
+
 
   <div class="row s12" id="destInput">
-    <h4>HalfWays</h4>
+    <h4>HalfWay</h4>
 
       <form class="col s12">
 
@@ -27,13 +37,16 @@
       <div class="row col s12">
         <div class="input-field" >
           <input class="with-gap" name="group1" type="radio" id="walking" value="WALKING"/>
-          <label class="transport" for="walking">Walking</label>
+          <label class="transport" for="walking">Walk</label>
 
           <input class="with-gap" name="group1" type="radio" id="driving" value="DRIVING"/>
-          <label class="transport" for="driving">Driving</label>
+          <label class="transport" for="driving">Drive</label>
+
+          <input class="with-gap" name="group1" type="radio" id="bicycling" value="BICYCLING"/>
+          <label class="transport" for="bicycling">Bike</label>
 
           <input class="with-gap" name="group1" type="radio" id="transit" value="TRANSIT"/>
-          <label class="transport" for="transit">Public Transport</label>
+          <label class="transport" for="transit">Transit</label>
         </div>
       </div>
     </form>
@@ -56,6 +69,8 @@
 
   <div class="row col s12">
       <button class="btn btn-primary red darken-3" id="destSubmitBtn" type="submit">Find Halfway</button>
+  </div>
+
   </div>
 
 </div>
