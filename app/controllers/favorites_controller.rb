@@ -5,6 +5,12 @@ class FavoritesController < ApplicationController
 	 	place = params["place"];
 		Favorite.create(user_id: user, place_id: place)
 
+    @favorites = Favorite.all
+
+     respond_to do |format|
+      format.js
+    end
+
   end
 
 	def delete
