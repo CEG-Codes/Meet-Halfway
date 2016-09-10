@@ -1,10 +1,13 @@
 module MapsHelper
- 
-   def what_day_is_it
- 
-     today = Time.new.wday
-     #today.wday
- 
+  @favresults = [];
+  def self.get
+    @favresults
   end
- 
+
+  def self.push(item)
+    @favresults.push(item)
+  end
+
+
+
   end
