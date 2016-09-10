@@ -221,6 +221,8 @@ function searchPlaces (latLng, place_type) {
     center: latLng
   };
 
+
+
   var process_places = function(data) {
 
     if (data.results.length > 0)
@@ -230,7 +232,8 @@ function searchPlaces (latLng, place_type) {
       $('#results_list').append($('<div style = "text-align: center;">No results found.</div>'))
     }
 
-    data.results.forEach(function(place){
+    data.results.forEach(function(place)
+    {
       var latLng = {
         lat: place.lat,
         lng: place.lng
@@ -238,77 +241,24 @@ function searchPlaces (latLng, place_type) {
       placeMarker(latLng, home_map.markers, place);
 
 
-      if(place.photos.length > 0)
+      });
+
+     var success = function(data)
       {
-        var photo_reference = place.photos[0].photo_reference;
-        var apiKey = place.photos[0].api_key;
-        var width = 400;
-        var photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width+"&photoreference=" + photo_reference + "&key=" + apiKey;
-      } else {
-        var photoURL = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+        console.log("Good job, partial rendered")
       }
 
+      var error = function()
+      {
+        console.log('Partial not work')
+      }
 
-      var $result_card = $(
-        //////////////new stuff below here//////////////////////////////
-        // '<div class="result">'+
-
-
-
-
-      '<div class="divider"></div>'+
-      '<div class="hoverable">'+
-
-        '<div class="card-stacked">'+
-        '<div class="valign-wrapper">'+
-        '<img class="valign place_icon" src="'+photoURL+'">'+
-        '<h6 class="title place-title valign">'+place.name+'</h6>'+
-        '</div>'+
-        '<div class="card-content valign-wrapper">'+
-          '<p class="place-info">'+
-           place.vicinity+ '<br>'+
-
-          'Rating: '+place.rating+
-          'Price: '+place.price_level+
-          '</p>'+
-          '<a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
-
-          '</div>'+
-      '</div>'
-
-      );
-
-      $('.results_container').append($result_card);
-
-    });
+      var send_data = {data: JSON.stringify(data)};
+      ajax_this('/results', 'post', send_data, success, error)
     }
 
-
-        ////////////stuff above here is new/////////////////////////////
-
-
-
-        /////////this stuff below works uncomments if things get fucky///////
-
-  //       '<div class="result">'+
-  //         '<h4 class="place_name">'+place.name+'</h4>'+
-  //         '<img src="'+photoURL+'" alt="" />'+
-  //         '<ul>'+
-  //         '<li class="hours">'+place.opening_hours+'</li>'+
-  //         '<li class="address">'+place.formatted_address+'</li>'+
-  //         '<li class="rating">'+place.rating+'</li>'+
-  //         '<li class="price">'+place.price_level+'</li>'+
-  //         '<button class = "favoriteButton">Fav!</button>'+
-  //       '</div>'
-  //     );
-  //     $('#results_list').append($result_card);
-  //
-  //   });
-  // }
-  ///////////////////////////////////////////////////////////////////////////
-
   var error = function() {
-
+    console.log('places faile')
   }
   //make an ajax POST to /places route
   ajax_this('/places', 'post', places_data, process_places, error)

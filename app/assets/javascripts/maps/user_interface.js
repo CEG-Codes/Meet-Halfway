@@ -17,6 +17,7 @@ function DOM_Stuff(){
   this.submit.on('click', function(e){
     e.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
     var start = ui.dest1.value;
     var end = ui.dest2.value;
     deleteMarkers();
@@ -25,14 +26,13 @@ function DOM_Stuff(){
     $('.results_container').toggle(); //toggles results in
 
     if (validate_search())
-=======
-   if (validate_search())
->>>>>>> dd8bd96089b5b7940001255dc702f412b91c1dc0
+
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
       calcRoute(start, end, true);
     }
+
   });
 };
 
