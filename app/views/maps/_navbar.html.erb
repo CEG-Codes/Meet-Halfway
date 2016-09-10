@@ -1,3 +1,4 @@
+
 <!-- left static nav bar -->
 
 <div id="left_nav_bar">
@@ -26,7 +27,6 @@
 <!-- end of left static nav bar -->
 
 
-
 <!-- sliding nav bar controls-->
 
 <% if current_user %>
@@ -39,38 +39,121 @@
     </div>
   </li>
 
+
   <ul class="collapsible" data-collapsible="accordion">
 
-    <li> <!-- favlist -->
-      <div class="collapsible-header">
-        <i class="material-icons">view_headline</i>
-        Favorites
-      </div>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">view_headline</i>Restaurants</div>
       <div class="collapsible-body">
         <ul class="collection">
-        <% @results.each do |result| %>
+          <li class="collection-item avatar">
+            <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
-            <span class="title"><%= result.name %></span>
-            <p> <%= result.vicinity %> <br>
+            <span class="title">Name</span>
+            <p>Address <br>
                 Hours <br>
-                Phone <%= result.formatted_phone_number %>
+                Number
             </p>
-            <a href="#" class="secondary-content">
-              <i class="material-icons">delete</i>
-            </a>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
           </li>
-          <% end %> <!-- results-list -->
-         </ul> <!-- collection  -->
-      </div> <!-- collapse-body -->
-    </li> <!-- favlist -->
-  </ul> <!-- data-collapse -->
-<% end %> <!-- current user -->
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+        </ul>
+      </div>
+    </li>
 
+    <li>
+      <div class="collapsible-header"><i class="material-icons">view_headline</i>Bars</div>
+      <div class="collapsible-body">
+        <ul class="collection">
+                    <li class="collection-item avatar">
+            <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">Name</span>
+            <p>Address <br>
+                Hours <br>
+                Number
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">delete</i></a>
+          </li>
+        </ul>
+      </div>
+    </li>
 
-   
+    <li>
+      <div class="collapsible-header"><i class="material-icons">view_headline</i>Coffee Shop</div>
+        <div class="collapsible-body">
+        <ul class="collection">
+        <% @favorites.each do |favorite| %>
+          <li class="favorite_item">
+            <div class="favLeft"><%= favorite.user_id %></div>
+            <br>
+            <div class="favLeft"><%= favorite.place_id %></div>
+            <br>
+            <div class="favLeft">Name</div>
+            <div class="favRight">Hours</div>
+            <div class="" style="clear:both">Address</div>
+            <div class="">Phone Number</div>
+          </li>
+          <hr>
+          <% end %>
+          <hr>
+          </ul>
+      </div>
+    </li>
 
-
-
-
-
+  </ul>
+</ul>
+<% end %>
