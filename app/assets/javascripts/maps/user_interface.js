@@ -17,8 +17,8 @@ function DOM_Stuff(){
     var end = ui.dest2.value;
     deleteMarkers();
     calcRoute(start, end, true);
-    $('.search_box').toggle();
-    $('.results_container').toggle();
+    $('.search_box').toggle(); //toggles search box out
+    $('.results_container').toggle(); //toggles results in
   });
 };
 
