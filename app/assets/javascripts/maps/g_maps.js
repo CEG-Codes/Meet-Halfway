@@ -142,7 +142,7 @@ function placeMarker(latLng, markerGroup, place, image)
       '<li>Rating: '+place.rating+'</li>'+
     '</ul>'+
   '</div>'+
-  '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+
+  '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
 '</div>'
 
 
