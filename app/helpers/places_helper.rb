@@ -13,9 +13,4 @@ module PlacesHelper
     end
   end
 
-
-  # def get_link
-
-
-
 end
