@@ -136,10 +136,10 @@ function placeMarker(latLng, markerGroup, place, image)
     var contentString = '<div class="infoContainer">'+
   '<h5 class="infoName">'+place.name+'</h5>'+
   '<div class="infoContent">'+
-    '<ul class = "infoList">'+
+    '<ul class = "infoList ">'+
       '<li>'+place.vicinity+'</li>'+
-      '<li>Price: '+place.price_level+'</li>'+
-      '<li>Rating: '+place.rating+'</li>'+
+      '<li>Price: '+place.price_level+'</li>'+ ''+
+      '<li>Rating: '+place.rating+ '</li>'+
     '</ul>'+
   '</div>'+
   '<a class="btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>'+

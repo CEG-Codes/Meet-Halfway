@@ -18,6 +18,9 @@ function DOM_Stuff(){
     deleteMarkers();
     calcRoute(start, end, true);
     $('.search_box').toggle(); //toggles search box out
+
+    //try appending the Results word at the top of the div through
+    //the function
     $('.results_container').toggle(); //toggles results in
   });
 };
