@@ -19,86 +19,51 @@
   </div>
 </div>  <!-- left static nav bar -->
 
+
+<!-- sliding nav bar controls-->
+
 <% if current_user %>
 <ul id="slide-out" class="side-nav">
-    <li>
-      <div class="userView">
-        <img class="background" src="">
-        <div></div>
-        <div><span class="black-text name">Welcome, <%=current_user.first_name%>!</span></div>
-        <div><span class="black-text email"><%=current_user.email%></span></div>
+  <li>
+    <div class="userView">
+      <img class="background" src="https://wallpaperscraft.com/image/background_faded_stains_light_47125_602x339.jpg">
+      <span class="white-text name">Welcome, <%=current_user.first_name%>!</span>
+      <span class="white-text email"><%=current_user.email%></span>
+    </div>
+  </li>
+
+  <ul class="collapsible" data-collapsible="accordion">
+
+    <li> <!-- favlist -->
+      <div class="collapsible-header">
+        <i class="material-icons">view_headline</i>
+        Favorites
       </div>
-    </li>
-    <hr>
-    <ul class="collapsible" iddata-collapsible="accordion">
-      <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Restaurants</div>
-        <ul class="collapsible-body" id = "fav_restaurant">
-          <% @results.each do |result| %>
-          <li class="favorite_item">
-            <div class="favLeft"><%= result.name %></div>
-            <div class="favRight">
-              
-            </div>
-            <div class="" style="clear:both"><%= result.vicinity %></div>
-            <div class=""><%= result.formatted_phone_number %></div>
+      <div class="collapsible-body">
+        <ul class="collection">
+        <% @results.each do |result| %>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title"><%= result.name %></span>
+            <p> <%= result.vicinity %> <br>
+                Hours <br>
+                Phone <%= result.formatted_phone_number %>
+            </p>
+            <a href="#" class="secondary-content">
+              <i class="material-icons">delete</i>
+            </a>
           </li>
-          <hr>
-          <% end %>
-        </ul>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Bars</div>
-        <ul class="collapsible-body" id = "fav_bars">
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-        </ul>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Coffeeshops</div>
-        <ul class="collapsible-body" id = "fav_cafe">
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-          <li class="favorite_item">
-            <div class="favLeft">Name</div>
-            <div class="favRight">Hours</div>
-            <div class="" style="clear:both">Address</div>
-            <div class="">Phone Number</div>
-          </li>
-          <hr>
-        </ul>
-  </ul>
-<% end %>
+          <% end %> <!-- results-list -->
+         </ul> <!-- collection  -->
+      </div> <!-- collapse-body -->
+    </li> <!-- favlist -->
+  </ul> <!-- data-collapse -->
+<% end %> <!-- current user -->
+
+
+   
+
+
+
 
 
