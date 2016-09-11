@@ -19,5 +19,18 @@ class MapsController < ApplicationController
     end
   end
 
+  def delete_fav
+
+    place = Favorite.find_by_place_id(params[:place_id])
+    place.destroy
+
+
+    #render :nothing => true
+    respond_to do |format|
+      format.html { redirect_to root }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
+  end
 
 end
