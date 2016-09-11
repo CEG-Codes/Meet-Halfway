@@ -1,7 +1,9 @@
 
 <div class="results_container">
   <div id="results_list">
-  <button class="valign btn-floating waves-effect waves-light red darken-3 back-button" id="backButton"><i class="tiny material-icons">replay</i></button>
+    <div id="backbutton">
+      <button class="valign btn-floating waves-effect waves-light red darken-3 back-button" id="backButton"><i class="tiny material-icons">replay</i></button>
+    </div>
   <h4 id="results">Results</h4>
     <% if @places.length <= 0 %>
       <div class="hoverable card-stacked result_item" style="height:100%;" lat="" lng="">
@@ -13,13 +15,16 @@
 
     <% @places.each do |place| %>
     <div class="divider"></div>
+
       <div class="hoverable card-stacked result_item" lat="<%=place.lat%>" lng="<%=place.lng%>">
+
             <div class="valign-wrapper">
               <img class="valign place_icon" src=<%= get_photo(place.photos) %>>
               <h6 class="title place-title valign">
                 <a class ="result-title-link" href="<%=place.website%>" target="_blank"><%=place.name%></a>
               </h6>
             </div>
+
             <div class="card-content valign-wrapper">
               <p class="place-info">
                  <%=place.vicinity%> <br>
