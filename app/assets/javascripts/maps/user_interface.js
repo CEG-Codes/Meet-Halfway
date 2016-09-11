@@ -35,4 +35,32 @@ function navbarListeners() {
    $('.collapsible').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+  $('.collection').on('click', function(e)
+  {
+    var parent = $(e.target).parent()
+    var lat = $(e.target).attr('lat');
+    var lng = $(e.target).attr('lng');
+    var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
+    console.log(latLng)
+  })
+  $('.delete_button').on('click',function(e)
+  {
+    console.log($(e.target))
+  });
 };
+
+function resultListeners()
+{
+  $('.result_item').on('click', function(e)
+  {
+    var parent = $(e.target).parent();
+    var lat = parent.parent().attr('lat');
+    var lng = parent.parent().attr('lng');
+    var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
+    console.log(latLng);
+  });
+  $('#backButton').on('click',function(e)
+  {
+    toggleMenu();
+  });
+}

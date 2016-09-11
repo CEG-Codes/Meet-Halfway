@@ -1,23 +1,32 @@
 class FavoritesController < ApplicationController
   include PlacesHelper
+  include MapsHelper
 
 	def create
+    @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
+
     user = current_user.id
 	 	place = params["place"];
 		Favorite.create(user_id: user, place_id: place)
-    @favorites = Favorite.all
+    new_fav = @client.spot(place)
+    MapsHelper.push(new_fav)
+    @favresults = MapsHelper.get
 
-     respond_to do |format|
+    respond_to do |format|
       format.js
     end
 
   end
 
 	def delete
-		place = Favorite.find_by_id(params["place"])
-		place.destroy
+
 
 	end
+
+  def delete_fav
+    place = Favorite.find_by_place_id(params[:format])
+    place.destroy
+  end
 
 
 end
