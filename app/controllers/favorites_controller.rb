@@ -19,8 +19,7 @@ class FavoritesController < ApplicationController
   end
 
 	def delete
-		place = Favorite.find_by_id(params["place"])
-		place.destroy
+		place = Favorite.destroy(params[:id])
 
 	end
 

@@ -9,7 +9,12 @@ $(document).ready(function(){
 });
 
 
+function backButton(){
+  $('.back-button').on('click', function(){
+    $('.search_box').toggle(); //toggles search box out
+  })
 
+}
 function DOM_Stuff(){
   this.dest1 = (document.getElementById('dest1'));
   this.dest2 = (document.getElementById('dest2'));
@@ -56,36 +61,26 @@ function navbarListeners() {
   })
 };
 
-<<<<<<< HEAD
-function deleteFavorites(){
-  $('.delete_favorite').on('click', function(){
-    $.ajax({
-      type: "DELETE",
-      url: "/", //double check this url
-      data: {"_method": "delete"},
-      success: function(places_data)
-      {
-        console.log(places_data)
-        success(places_data);
-      }
 
-    })
-
-  })
-}
-
-// $("#button").click(function(){
+// function deleteFavorites(){
+//   $('.delete_favorite').on('click', function(){
 //     $.ajax({
-//         type: "DELETE",
-//         url: "/slot_allocations/" + slotallocation_id,
-//         dataType: "json",
-//         data: {"_method":"delete"},
-//         complete: function(){
-//             alert("it's gone!");
-//         }
-//     });
-// });
-=======
+//       type: "DELETE",
+//       url: "/", //double check this url
+//       data: {"_method": "delete"},
+//       success: function(places_data)
+//       {
+//         console.log(places_data)
+//         success(places_data);
+//       }
+//
+//     })
+//
+//   })
+// }
+
+
+
 function resultListeners()
 {
   $('.result_item').on('click', function(e)
@@ -97,4 +92,3 @@ function resultListeners()
     console.log(latLng);
   });
 }
->>>>>>> 77eb17bb55420e9c0399bdecf106738559d70f57

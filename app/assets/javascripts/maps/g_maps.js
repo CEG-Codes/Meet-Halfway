@@ -103,7 +103,7 @@ function routeFound()
     deleteMarker(home_map.markers[i]);
   }
   clearMarkerArray();
-  $('.search_box').toggle(); //toggles search box out
+  $('.search_box').toggl33e(); //toggles search box out
   $('.results_container').toggle(); //toggles results in
 }
 
@@ -290,5 +290,3 @@ function searchPlaces (latLng, place_type) {
       ajax_this('/results', 'post', send_data, success, error_function)
 
   }
-
-

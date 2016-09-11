@@ -41,124 +41,30 @@
 
   <ul class="collapsible" data-collapsible="accordion">
 
-    <li>
-      <div class="collapsible-header"><i class="material-icons">view_headline</i>Restaurants</div>
-      <div class="collapsible-body">
-        <ul class="collection">
-          <li class="collection-item avatar">
-            <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete-favorite"><i class="material-icons">delete</i></a>
-          </li>
-        </ul>
-
     <li> <!-- favlist -->
       <div class="collapsible-header">
         <i class="material-icons">view_headline</i>
         Favorites
       </div>
-
-
       <div class="collapsible-body">
         <ul class="collection">
-          <li class="collection-item avatar">
-            <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Name</span>
-            <p>Address <br>
-                Hours <br>
-                Number
-            </p>
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-          </li>
-
-        <% @results.each do |result| %>
-
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title"><%= result.name %></span>
-            <p> <%= result.vicinity %> <br>
-              <%= result.website %> <br>
-              <!-- this line above should add the url to search results -->
         <% @favresults.each do |favresult| %>
-
-
           <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
-
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
             <span class="title"><%= favresult.name %></span>
             <p> <%= favresult.vicinity %> <br>
-            <% if isOpen?(favresult) %>
-                Open <%= get_opening_time(favresult) %> to <%= get_closing_time(favresult) %>
-            <% else %>
-            <span class ="red-text">Closed Now</span>
-            <% end %>
+            hours
             <br>
                 Phone <%= favresult.formatted_phone_number %>
             </p>
-
-            <a href="#" class="secondary-content delete_favorite"><i class="material-icons">delete</i></a>
-
+            <a href="#" class="secondary-content">
               <i class="material-icons">delete</i>
             </a>
 
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->
-
-
-
-         <% end %> <!-- current user -->
-         </li> <!-- favlist -->
-        </ul> <!-- data-collapse -->
       </div> <!-- collapse-body -->
+    </li> <!-- favlist -->
+  </ul> <!-- data-collapse -->
+<% end %> <!-- current user -->
