@@ -89,9 +89,11 @@
         <i class="material-icons">view_headline</i>
         Favorites
       </div>
+
+
       <div class="collapsible-body">
         <ul class="collection">
-                    <li class="collection-item avatar">
+          <li class="collection-item avatar">
             <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
             <i class="material-icons circle">folder</i>
             <span class="title">Name</span>
@@ -129,11 +131,19 @@
               <%= result.website %> <br>
               <!-- this line above should add the url to search results -->
         <% @favresults.each do |favresult| %>
-          <li class="collection-item avatar">
+
+
+          <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
+
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
             <span class="title"><%= favresult.name %></span>
             <p> <%= favresult.vicinity %> <br>
-                Hours <br>
+            <% if isOpen?(favresult) %>
+                Open <%= get_opening_time(favresult) %> to <%= get_closing_time(favresult) %>
+            <% else %>
+            <span class ="red-text">Closed Now</span>
+            <% end %>
+            <br>
                 Phone <%= favresult.formatted_phone_number %>
             </p>
 
@@ -145,7 +155,10 @@
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->
+
+
+
+         <% end %> <!-- current user -->
+         </li> <!-- favlist -->
+        </ul> <!-- data-collapse -->
       </div> <!-- collapse-body -->
-    </li> <!-- favlist -->
-  </ul> <!-- data-collapse -->
-<% end %> <!-- current user -->

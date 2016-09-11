@@ -29,7 +29,6 @@ function DOM_Stuff(){
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
-      $('#loading_icon').css('display', 'flex')
       calcRoute(start, end, true);
     }
 
@@ -47,8 +46,17 @@ function navbarListeners() {
    $('.collapsible').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+  $('.collection').on('click', function(e)
+  {
+    var parent = $(e.target).parent()
+    var lat = $(e.target).attr('lat');
+    var lng = $(e.target).attr('lng');
+    var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
+    console.log(latLng)
+  })
 };
 
+<<<<<<< HEAD
 function deleteFavorites(){
   $('.delete_favorite').on('click', function(){
     $.ajax({
@@ -77,3 +85,16 @@ function deleteFavorites(){
 //         }
 //     });
 // });
+=======
+function resultListeners()
+{
+  $('.result_item').on('click', function(e)
+  {
+    var parent = $(e.target).parent();
+    var lat = parent.parent().attr('lat');
+    var lng = parent.parent().attr('lng');
+    var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
+    console.log(latLng);
+  });
+}
+>>>>>>> 77eb17bb55420e9c0399bdecf106738559d70f57
