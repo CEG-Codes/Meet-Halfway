@@ -62,5 +62,4 @@ function resultListeners()
   {
     toggleMenu();
   });
-  var clip = new ZeroClipboard($(".my_clip_button"));
 }
