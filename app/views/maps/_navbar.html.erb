@@ -49,11 +49,12 @@
       <div class="collapsible-body">
         <ul class="collection">
         <% @favresults.each do |favresult| %>
-          <li class="collection-item avatar">
-            <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle"> 
+          <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
+            <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
             <span class="title"><%= favresult.name %></span>
             <p> <%= favresult.vicinity %> <br>
-                Hours <br>
+            hours
+            <br>
                 Phone <%= favresult.formatted_phone_number %>
             </p>
             <a href="#" class="secondary-content">
@@ -68,7 +69,7 @@
 <% end %> <!-- current user -->
 
 
-   
+
 
 
 

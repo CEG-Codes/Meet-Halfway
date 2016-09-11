@@ -6,13 +6,16 @@ function ajax_this(url, method, data, success, error){
     data: data,
     success: function(data)
     {
-      console.log('success', data)
       success(data);
     },
     error: function(data)
     {
-      console.log('error');
-      error();
+      error(url, method, data);
     }
   })
+}
+
+var error_function = function(url, method, data)
+{
+  console.log("********ERROR********", url, method, data)
 }
