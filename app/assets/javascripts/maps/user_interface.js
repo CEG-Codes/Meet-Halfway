@@ -5,7 +5,6 @@ $(document).ready(function(){
   $('select').material_select();
   ui = new DOM_Stuff;
   navbarListeners();
-  deleteFavorites();
 });
 
 
@@ -24,7 +23,7 @@ function DOM_Stuff(){
 
     var start = ui.dest1.value;
     var end = ui.dest2.value;
-    deleteMarkers();
+    function deleteMarkers();
     calcRoute(start, end, true);
     $('.search_box').toggle(); //toggles search box out
     $('.results_container').toggle(); //toggles results in
