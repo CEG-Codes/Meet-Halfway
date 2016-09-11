@@ -49,7 +49,6 @@ function resultListeners()
 {
   $('.result_item').on('click', function(e)
   {
-    console.log($(e.target).parent());
     var parent = $(e.target).parent();
     var lat = parent.parent().attr('lat');
     var lng = parent.parent().attr('lng');

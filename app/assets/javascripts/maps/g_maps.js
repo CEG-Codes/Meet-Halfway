@@ -11,7 +11,8 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
   this.infoboxes = [];
-  this.radius = 1000;
+  this.radius = 750;
+  this.circle = undefined;
 };
 
 
@@ -26,8 +27,8 @@ function initMap(){
   };
 
   var map = new google.maps.Map(document.getElementById('map'), map_options);
-  var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true});
-  var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true});
+  var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true});
+  var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true});
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay1.setMap(map);
   directionsDisplay2.setMap(map);
@@ -61,13 +62,16 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
 
       var distance = result.routes[0].legs[0].distance.value
-      if (distance <= 1000)
+      if (distance <= 1500)
       {
         home_map.radius = (distance / 2);
-      }
+      } else {home_map.radius = 750}
 
       findHalfway(result);
       routeFound();
+
+      console.log("Radius = " +home_map.radius, "Route Distance = " + distance);
+
 
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
@@ -96,7 +100,6 @@ function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
-  console.log(coordinates_array, coordinates_array.length)
   for (var i = 0; i < coordinates_array.length; i++){
 
     var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
@@ -185,6 +188,23 @@ function placeMarker(latLng, markerGroup, place, image)
   }
 };
 
+function createCircle(center, radius)
+{
+  var circle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.15,
+      map: home_map.map,
+      center: center,
+      radius: radius,
+      draggable: true
+    });
+
+  home_map.circle = circle;
+}
+
 function saveFavorite(place_id)
 {
   console.log("PLACE ID =", place_id)
@@ -196,7 +216,9 @@ function searchPlaces (latLng, place_type) {
   var exclude;
   var radius;
 
-
+  //createCircle(latLng, home_map.radius);
+  home_map.map.setZoom(14)
+  home_map.map.setCenter(latLng)
 
   switch (place_type) {
     case "1":
@@ -214,7 +236,6 @@ function searchPlaces (latLng, place_type) {
     break;
   }
 
-  console.log(home_map.radius);
 //create a data object to send to rails
   var places_data = {
     search: place,
@@ -222,16 +243,12 @@ function searchPlaces (latLng, place_type) {
     radius: home_map.radius, // how big of a search area in meters
     center: latLng
   };
+  //make an ajax POST to /places route
+  ajax_this('/places', 'post', places_data, process_places, error_function)
+}
 
   var process_places = function(data) {
     $('#loading_icon').css('display', 'flex')
-
-    if (data.results.length > 0)
-    {
-      $('#results_list').empty();
-    } else {
-      $('#results_list').append($('<div style = "text-align: center;">No results found.</div>'))
-    }
 
     data.results.forEach(function(place)
     {
@@ -247,18 +264,9 @@ function searchPlaces (latLng, place_type) {
         resultListeners();
       }
 
-      var error = function()
-      {
-        console.log('Partial not work')
-      }
-
       var send_data = {data: JSON.stringify(data)};
-      ajax_this('/results', 'post', send_data, success, error)
-    }
+      ajax_this('/results', 'post', send_data, success, error_function)
 
-  var error = function() {
-    console.log('places failed')
   }
-  //make an ajax POST to /places route
-  ajax_this('/places', 'post', places_data, process_places, error)
-}
+
+
