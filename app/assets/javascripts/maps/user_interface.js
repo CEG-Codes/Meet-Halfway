@@ -79,6 +79,10 @@ function resultListeners()
   {
     toggleMenu();
   });
+  $('.fav_result_list_item').on('click', function(e){
+    var place_id =$(e.target).parent().attr('pid');
+    createFavorite(place_id);
+  })
 
   var clip = new ZeroClipboard($(".my_clip_button"));
 }
