@@ -14,6 +14,14 @@ module MapsHelper
     @favresults.push(item)
   end
 
+  def self.index(item)
+    @favresults.index(item)
+  end
+
+  def self.delete_at(index)
+    @favresults.delete_at(index)
+  end
+
   def self.clear
     @favresults=[]
   end

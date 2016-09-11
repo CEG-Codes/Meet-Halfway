@@ -19,10 +19,13 @@ class MapsController < ApplicationController
   end
 
   def delete_fav
+    data = params[:place].split('&array_id=')
+    place_id = data[0].to_s
+    index = data[1].to_i
 
-    place = Favorite.find_by_place_id(params[:place_id])
+    place = Favorite.find_by_place_id(place_id)
     place.destroy
-
+    MapsHelper.delete_at(index)
 
     #render :nothing => true
     respond_to do |format|

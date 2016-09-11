@@ -40,7 +40,15 @@ function navbarListeners() {
     var lat = $(e.target).attr('lat');
     var lng = $(e.target).attr('lng');
     var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
-    console.log(latLng)
+    latLng = {lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng)}
+    console.log(latLng);
+    if (latLng.lat >= 0 || latLng.lat <= 0 )
+    {
+      home_map.map.setZoom(16);
+      home_map.map.panTo(latLng);
+    } else {
+      console.log('Cant center')
+    }
   })
   $('.delete_button').on('click',function(e)
   {
@@ -52,20 +60,51 @@ function resultListeners()
 {
   $('.result_item').on('click', function(e)
   {
-    var parent = $(e.target).parent();
-    var lat = parent.parent().attr('lat');
-    var lng = parent.parent().attr('lng');
-    var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
-    console.log(latLng);
+    var parent = $(e.target);
+    var saveButton = parent.parent();
+    console.log(saveButton)
+    if (saveButton.hasClass('save_button'))
+    {
+      var place_id = parent.parent().attr('pid');
+      console.log(place_id)
+      createFavorite(place_id);
+    }
+
+    //console.log(parent.parents('div'))
+    var lat = parent.closest('.result_item').attr('lat');
+    var lng = parent.closest('.result_item').attr('lng');
+    var mkid = parent.closest('.result_item').attr('mkid');
+    var latLng = {lat:lat, lng:lng};
+    var infowindow = home_map.infoboxes[mkid]
+    latLng = {lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng)}
+    if (latLng.lat >= 0 || latLng.lat <= 0 )
+    {
+      home_map.map.setZoom(16);
+      home_map.map.panTo(latLng);
+      closeInfoBoxes();
+      infowindow.open(home_map.map, home_map.markers[mkid]);
+    } else {
+      console.log('Cant center')
+    }
+
   });
   $('#backButton').on('click',function(e)
   {
     toggleMenu();
   });
-  $('.fav_result_list_item').on('click', function(e){
-    var place_id =$(e.target).parent().attr('pid');
-    createFavorite(place_id);
-  })
 
   var clip = new ZeroClipboard($(".my_clip_button"));
+}
+
+function closeInfoBoxes()
+{
+  home_map.infoboxes.forEach(function(box)
+    {
+      box.close(home_map.map);
+    })
+}
+
+function deleteInfoBoxes()
+{
+  home_map.infoboxes = [];
 }
