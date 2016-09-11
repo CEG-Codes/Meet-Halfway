@@ -8,7 +8,7 @@ resources :places
 resources :favorites, only:[:create, :destroy]
 
 
-delete "/maps" => "favorites#delete_fav", as: :delete_fav
+delete "/maps" => "maps#delete_fav", as: :delete_fav
 
 post "/results" => "places#list_results"
 get "/auth/:provider/callback" => "sessions#create"
