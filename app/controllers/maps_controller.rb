@@ -18,4 +18,6 @@ class MapsController < ApplicationController
       @favresults = MapsHelper.get
     end
   end
+
+
 end

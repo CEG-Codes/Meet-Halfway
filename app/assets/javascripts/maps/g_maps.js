@@ -31,10 +31,10 @@ function initMap(){
 
   //Place custom appearance options here!
   var route1Line = {
-      strokeColor: "red"
+      strokeColor: "green"
     }
   var route2Line = {
-      strokeColor: "red"
+      strokeColor: "blue"
     }
   var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route1Line});
   var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route2Line});
@@ -179,16 +179,16 @@ function placeMarker(latLng, markerGroup, place, image)
   {
 
     var contentString = '<div class="infoContainer">'+
-  '<h5 class="infoName">'+place.name+'</h5>'+
-  '<div class="infoContent">'+
-    '<ul class = "infoList ">'+
-      '<li>'+place.vicinity+'</li>'+
-      '<li>Price: '+place.price_level+'</li>'+ ''+
-      '<li>Rating: '+place.rating+ '</li>'+
-    '</ul>'+
-  '</div>'+
-  '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
-'</div>'
+    '<h5 class="infoName">'+place.name+'</h5>'+
+    '<div class="infoContent">'+
+      '<ul class = "infoList ">'+
+        '<li>'+place.vicinity+'</li>'+
+        '<li>Price: '+place.price_level+'</li>'+ ''+
+        '<li>Rating: '+place.rating+ '</li>'+
+      '</ul>'+
+    '</div>'+
+    '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
+  '</div>'
 
 
     var infowindow = new google.maps.InfoWindow({
@@ -273,6 +273,8 @@ function searchPlaces (latLng, place_type) {
 }
 
 var process_places = function(data) {
+  console.log(data)
+
   $('#preloader').css('display', 'flex')
   var image = "" //Place custom places markers here!
   data.results.forEach(function(place)
@@ -286,6 +288,7 @@ var process_places = function(data) {
 
    var success = function(data)
     {
+
       $('#preloader').hide();
       resultListeners();
     }
