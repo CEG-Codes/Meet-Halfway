@@ -51,7 +51,11 @@
         <% @favresults.each do |favresult| %>
           <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
-            <span class="title"><%= favresult.name %></span>
+            <span class="title">
+              <a class="fav-name-link" href="<%=favresult.website%>" target="_blank">
+                <%= favresult.name %>
+              </a>
+              </span>
             <p> <%= favresult.vicinity %> <br>
             hours
             <br>

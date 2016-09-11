@@ -16,7 +16,9 @@
       <div class="hoverable card-stacked result_item" lat="<%=place.lat%>" lng="<%=place.lng%>">
             <div class="valign-wrapper">
               <img class="valign place_icon" src=<%= get_photo(place.photos) %>>
-              <h6 class="title place-title valign"><%=place.name%></h6>
+              <h6 class="title place-title valign">
+                <a class ="result-title-link" href="<%=place.website%>" target="_blank"><%=place.name%></a>
+              </h6>
             </div>
             <div class="card-content valign-wrapper">
               <p class="place-info">
