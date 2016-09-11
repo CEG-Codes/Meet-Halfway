@@ -11,6 +11,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
   this.infoboxes = [];
+  this.radius = 1000;
 };
 
 
@@ -46,8 +47,6 @@ function initMap(){
 
 function calcRoute(start, end, findhalf, renderer, image) {
   var transit = $('input[name=group1]:checked', '#travel_mode').val();
-  console.log(travel_mode, place_type)
-
   var request = {
     origin: start,
     destination: end,
@@ -59,9 +58,17 @@ function calcRoute(start, end, findhalf, renderer, image) {
   home_map.directionsService.route(request, function(result, status) {
     if (status == 'OK' && findhalf == true) {
       //don't render results
+
+
+      var distance = result.routes[0].legs[0].distance.value
+      if (distance <= 1000)
+      {
+        home_map.radius = (distance / 2);
+      }
+
       findHalfway(result);
       routeFound();
-      console.log(result);
+
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
       //do render results
@@ -89,8 +96,7 @@ function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
-  console.log(place_type)
-
+  console.log(coordinates_array, coordinates_array.length)
   for (var i = 0; i < coordinates_array.length; i++){
 
     var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
@@ -186,9 +192,12 @@ function saveFavorite(place_id)
 }
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
-
   var place;
   var exclude;
+  var radius;
+
+
+
   switch (place_type) {
     case "1":
     place = ["restaurant", "food"];
@@ -205,17 +214,17 @@ function searchPlaces (latLng, place_type) {
     break;
   }
 
+  console.log(home_map.radius);
 //create a data object to send to rails
   var places_data = {
     search: place,
     exclude: exclude,
-    radius: 1000, // how big of a search area in meters
+    radius: home_map.radius, // how big of a search area in meters
     center: latLng
   };
 
-
-
   var process_places = function(data) {
+    $('#loading_icon').css('display', 'flex')
 
     if (data.results.length > 0)
     {
@@ -231,13 +240,11 @@ function searchPlaces (latLng, place_type) {
         lng: place.lng
       };
       placeMarker(latLng, home_map.markers, place);
-
-
       });
 
      var success = function(data)
       {
-        console.log("Good job, partial rendered")
+        resultListeners();
       }
 
       var error = function()
@@ -250,7 +257,7 @@ function searchPlaces (latLng, place_type) {
     }
 
   var error = function() {
-    console.log('places faile')
+    console.log('places failed')
   }
   //make an ajax POST to /places route
   ajax_this('/places', 'post', places_data, process_places, error)
