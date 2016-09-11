@@ -1,34 +1,47 @@
+
 #menu_container{
-
   position: fixed;
- top: 50px;
- left: 100px;
- background-color: rgba(255, 255, 255, 0.9);
- width: 25em;
- height: 80vh;
- overflow: scroll;
- z-index: 1;
+  top: 50px;
+  left: 100px;
+  // background-color: rgba(255, 255, 255, 0.87);
+  width: 25em;
+  height: 80vh;
+  overflow: scroll;
+  z-index: 1;
+}
 
+#backbutton {
+  padding-left: 79px;
+  float: left;
+}
+
+
+#results {
+  font-weight: 300;
+  padding-left: 125px;
+  color: #0e0e0ede;
 }
 
 .result-title-link {
   color: #000;
-
 }
+
 .result-title-link:hover {
   color: #c62828;
-
 }
 
 
 .place-title {
   display: inline;
-  padding-left: 5%;
-  font-size: 1.5em;
+  padding-left: 3%;
+  font-size: 19px;
+  font-weight: 300;
+  padding-top: 8px;
+  color: #0e0e0e;
+
 }
 
 .place_icon{
-
   height: 50px;
   width: 50px;
   display: inline;
@@ -45,7 +58,7 @@
  // position: absolute;
  // top: 50px;
  // left: 100px;
- background-color: rgba(255, 255, 255, 0.9);
+ background-color: rgba(255, 255, 255, 0.87);
  width: 25em;
  height:100%;
  overflow: scroll;
@@ -64,4 +77,7 @@
   width: 200px;
   padding-left: 10px;
   font-size: 1em;
+  color: #6f6d6d
 }
+
+

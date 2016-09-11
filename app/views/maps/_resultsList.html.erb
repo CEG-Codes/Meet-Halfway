@@ -1,8 +1,10 @@
 
 <div class="results_container">
   <div id="results_list">
-  <h3>Results</h3>
-   <a class="valign btn-floating waves-effect waves-light red darken-3 back-button" id="backButton"><i class="tiny material-icons">replay</i></a>
+    <div id="backbutton">
+      <button class="valign btn-floating waves-effect waves-light red darken-3 back-button" id="backButton"><i class="tiny material-icons">replay</i></button>
+    </div>
+  <h4 id="results">Results</h4>
     <% if @places.length <= 0 %>
       <div class="hoverable card-stacked result_item" style="height:100%;" lat="" lng="">
         <div class="valign-wrapper" style="height:100%;" >
@@ -20,6 +22,7 @@
                 <a class ="result-title-link" href="<%=place.website%>" target="_blank"><%=place.name%></a>
               </h6>
             </div>
+
             <div class="card-content valign-wrapper">
               <p class="place-info">
                  <%=place.vicinity%> <br>
@@ -27,10 +30,7 @@
                  Rating: <%=place.rating%>
                  Price: <%=place.price_level%>
               </p>
-
-              <a pid = <%=place.place_id%> class="fav_result_list_item valign favorite-button btn-floating waves-effect waves-light red darken-3">
-                <i class="tiny material-icons">star</i>
-              </a>
+              <button pid = <%=place.place_id%> class="valign favorite-button btn-floating waves-effect waves-light red darken-3" onclick="Materialize.toast('Saved!', 2000)"><i class="tiny material-icons">star</i></button>
 
               <button class="valign favorite-button btn-floating waves-effect waves-light red darken-3 my_clip_button" data-clipboard-text="<%=get_link(place)%>" onclick="Materialize.toast('Link Copied!', 2000)" id="d_clip_button" title="Copy to Clipboard">
                 <i class="tiny material-icons">save</i>
