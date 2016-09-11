@@ -51,16 +51,23 @@
         <% @favresults.each do |favresult| %>
           <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
-            <span class="title"><%= favresult.name %></span>
+            <span class="title">
+              <a class="fav-name-link" href="<%=favresult.website%>" target="_blank">
+                <%= favresult.name %>
+              </a>
+              </span>
             <p> <%= favresult.vicinity %> <br>
-            hours
+            Hours
             <br>
-                Phone <%= favresult.formatted_phone_number %>
+                <%= favresult.formatted_phone_number %>
             </p>
-            <a href="#" class="secondary-content">
-              <i class="material-icons">delete</i>
-             <%= link_to 'DELETE ME', delete_fav_path(favresult.place_id), method: :delete %><br>
-            </a>
+            <span class="secondary-content">
+
+            <%= link_to delete_fav_path(place: "#{favresult.place_id}&array_id=#{@favresults.index(favresult)}"), method: :delete, data: { place: "#{favresult.place_id}&#{@favresults.index(favresult)}" }, :remote => true, :class => 'delete_fav' do %>
+              <i class="grey material-icons">delete</i>
+            <% end %>
+
+            </span>
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->

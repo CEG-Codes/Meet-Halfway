@@ -2,15 +2,12 @@
 
 .container {
  position: absolute;
- // top: 50px;
- // left: 100px;
  background-color: rgba(255, 255, 255, 0.9);
  width: 25em;
  height: 550px;
 }
 
 #preloader{
-
   position: relative;
   flex-direction: center;
   align-items: center;
@@ -21,12 +18,9 @@
   height: 100%;
   width: 100%;
   z-index:1;
-  zoom: 3;
+  zoom: 1;
 }
-#loading_icon
-{
 
-}
 
 #dest1[type=text].valid {
     border-bottom: 1px solid #09ba41;

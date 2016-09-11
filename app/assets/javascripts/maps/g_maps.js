@@ -108,6 +108,8 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
   {
     deleteMarker(home_map.originMarkers[i]);
   }
+  closeInfoBoxes();
+  deleteInfoBoxes();
   clearMarkerArray(home_map.markers);
   clearMarkerArray(home_map.originMarkers);
   toggleMenu();
@@ -178,18 +180,18 @@ function placeMarker(latLng, markerGroup, place, image)
   if (place !== undefined)
   {
 
-    var contentString = '<div class="infoContainer">'+
-    '<h5 class="infoName">'+place.name+'</h5>'+
-    '<div class="infoContent">'+
-      '<ul class = "infoList ">'+
-        '<li>'+place.vicinity+'</li>'+
-        '<li>Price: '+place.price_level+'</li>'+ ''+
-        '<li>Rating: '+place.rating+ '</li>'+
-      '</ul>'+
-    '</div>'+
-    '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
-  '</div>'
-
+    var contentString = ""+
+    '<div class="infoContainer">'+
+      '<h5 class="infoName">'+place.name+'</h5>'+
+      '<div class="infoContent">'+
+        '<ul class = "infoList">'+
+          '<li>'+place.vicinity+'</li>'+
+          '<li>Price: '+place.price_level+'</li>'+ ''+
+          '<li>Rating: '+place.rating+ '</li>'+
+        '</ul>'+
+      '</div>'+
+      '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
+    '</div>'
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -197,19 +199,13 @@ function placeMarker(latLng, markerGroup, place, image)
     home_map.infoboxes.push(infowindow);
 
     marker.addListener('click', function() {
-        home_map.infoboxes.forEach(function(box)
-        {
-          box.close(home_map.map, marker);
-        })
+        closeInfoBoxes();
         infowindow.open(home_map.map, marker);
       });
-
 
     // home_map.map.addListener('click', function() {
     //   infowindow.close(home_map.map, marker);
     // });
-
-
   }
 };
 

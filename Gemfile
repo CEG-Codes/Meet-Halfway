@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'google_places_autocomplete'
-
+gem 'zeroclipboard-rails'
 
 gem 'better_errors'
 gem 'rspec'

@@ -23,10 +23,7 @@ class FavoritesController < ApplicationController
 
 	end
 
-  def delete_fav
-    place = Favorite.find_by_place_id(params[:format])
-    place.destroy
-  end
+
 
 
 end

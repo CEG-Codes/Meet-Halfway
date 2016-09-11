@@ -1,12 +1,17 @@
 <div id="map" style=""></div>
 
-<div id="post_fav">
+<div class="post_fav">
   <%= render "navbar" %>
 </div>
 
 <div id="menu_container">
-  <div id="preloader" style="display:none"><%= render "preloader" %></div>
-  <div id ="show_results">
-  </div>
-<%= render "menu" %>
+
+	<div id="preloader" style="display:none">
+		<%= render "preloader" %>
+	</div>
+
+	<div id ="show_results">
+	</div>
+
+	<%= render "menu" %>
 </div>
