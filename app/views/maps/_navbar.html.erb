@@ -57,14 +57,15 @@
               </a>
               </span>
             <p> <%= favresult.vicinity %> <br>
-            hours
+            Hours
             <br>
                 <%= favresult.formatted_phone_number %>
             </p>
-            <a href="#" class="secondary-content">
-              <i class="material-icons">delete</i>
-             <%= link_to 'DELETE ME', delete_fav_path(favresult.place_id), method: :delete %><br>
-            </a>
+            <span class="secondary-content">
+            <%= link_to delete_fav_path(place_id: favresult.place_id), method: :delete, data: { place_id: favresult.place_id }, :remote => true, :class => 'delete_fav' do %>
+              <i class="black material-icons">delete</i>
+            <% end %>
+            </span>
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->
