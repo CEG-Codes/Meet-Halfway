@@ -171,6 +171,9 @@ function placeMarker(latLng, markerGroup, place, image)
   if (place !== undefined)
   {
 
+    var copy_url = "https://www.google.com/maps/place/"+place.name+"/@"+place.lat+","+place.lng+",15z"
+
+
     var contentString = '<div class="infoContainer">'+
   '<h5 class="infoName">'+place.name+'</h5>'+
   '<div class="infoContent">'+
