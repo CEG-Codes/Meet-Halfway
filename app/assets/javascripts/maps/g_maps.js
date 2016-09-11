@@ -27,8 +27,16 @@ function initMap(){
   };
 
   var map = new google.maps.Map(document.getElementById('map'), map_options);
-  var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true});
-  var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true});
+
+  //Place custom appearance options here!
+  var route1Line = {
+      strokeColor: "red"
+    }
+  var route2Line = {
+      strokeColor: "red"
+    }
+  var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route1Line});
+  var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route2Line});
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay1.setMap(map);
   directionsDisplay2.setMap(map);
@@ -77,7 +85,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
     } else if (status == 'OK' && findhalf == false) {
       //do render results
       renderRoute(renderer, result);
-      placeMarker(result.routes[0].overview_path[0], null, undefined, image)
+      placeMarker(result.routes[0].overview_path[0], undefined, undefined, image)
     } else {
       //console.log('No direct route found!')
       $('#textFlash1').text('Sorry, no route found.')
@@ -90,7 +98,11 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
 function routeFound()
 {
-  deleteMarkers();
+ for (var i = 0; i < home_map.markers.length; i++)
+  {
+    deleteMarker(home_map.markers[i]);
+  }
+  clearMarkerArray();
   $('.search_box').toggle(); //toggles search box out
   $('.results_container').toggle(); //toggles results in
 }
@@ -100,14 +112,16 @@ function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
+  var image = ""; //Place custom place marker image link here!
+
   for (var i = 0; i < coordinates_array.length; i++){
 
     var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
-
+    var image = ""; //Place halfway point image link here!
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
-      placeMarker(halfway_point, null);
+      placeMarker(halfway_point, undefined, undefined, image);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
@@ -128,13 +142,13 @@ function bothWays(halfway_point){
   calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 };
 
-function deleteMarkers()
+function deleteMarker(marker)
 {
+   marker.setMap(null);
+}
 
-   for (var i = 0; i < home_map.markers.length; i++)
-    {
-      home_map.markers[i].setMap(null);
-    }
+function clearMarkerArray()
+{
   home_map.markers = [];
 }
 
@@ -146,7 +160,7 @@ function placeMarker(latLng, markerGroup, place, image)
      icon: image
   });
 
-  if (markerGroup !== null)
+  if (markerGroup !== undefined)
   {
     markerGroup.push(marker);
   };
@@ -256,7 +270,7 @@ function searchPlaces (latLng, place_type) {
         lat: place.lat,
         lng: place.lng
       };
-      placeMarker(latLng, home_map.markers, place);
+      placeMarker(latLng, home_map.markers, place, image);
       });
 
      var success = function(data)
