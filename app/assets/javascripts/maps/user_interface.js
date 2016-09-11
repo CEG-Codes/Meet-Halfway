@@ -61,7 +61,16 @@ function resultListeners()
   $('.result_item').on('click', function(e)
   {
     var parent = $(e.target);
-    console.log(parent.parents('div'))
+    var saveButton = parent.parent();
+    console.log(saveButton)
+    if (saveButton.hasClass('save_button'))
+    {
+      var place_id = parent.parent().attr('pid');
+      console.log(place_id)
+      createFavorite(place_id);
+    }
+
+    //console.log(parent.parents('div'))
     var lat = parent.closest('.result_item').attr('lat');
     var lng = parent.closest('.result_item').attr('lng');
     var mkid = parent.closest('.result_item').attr('mkid');
@@ -78,16 +87,11 @@ function resultListeners()
       console.log('Cant center')
     }
 
-
   });
   $('#backButton').on('click',function(e)
   {
     toggleMenu();
   });
-  $('.fav_result_list_item').on('click', function(e){
-    var place_id =$(e.target).parent().attr('pid');
-    createFavorite(place_id);
-  })
 
   var clip = new ZeroClipboard($(".my_clip_button"));
 }

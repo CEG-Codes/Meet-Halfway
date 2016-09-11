@@ -30,7 +30,7 @@
                  Rating: <%=place.rating%>
                  Price: <%=place.price_level%>
               </p>
-              <button pid = <%=place.place_id%> class="valign favorite-button btn-floating waves-effect waves-light red darken-3" onclick="Materialize.toast('Saved!', 2000)"><i class="tiny material-icons">star</i></button>
+              <button pid = <%=place.place_id%> class="save_button valign favorite-button btn-floating waves-effect waves-light red darken-3" onclick="Materialize.toast('Saved!', 2000)"><i class="tiny material-icons">star</i></button>
 
               <button class="valign favorite-button btn-floating waves-effect waves-light red darken-3 my_clip_button" data-clipboard-text="<%=get_link(place)%>" onclick="Materialize.toast('Link Copied!', 2000)" id="d_clip_button" title="Copy to Clipboard">
                 <i class="tiny material-icons">save</i>
