@@ -1,0 +1,85 @@
+<!-- left static nav bar -->
+
+<div id="left_nav_bar">
+  <div class="icons" id="top">
+  <% if current_user %>
+    <div data-activates="slide-out" class="button-collapse">
+      <a href='#'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Favorites">star</i></a>
+    </div>
+  <% else %>
+    <i class="small material-icons" id="emptyIcon"></i>
+  <% end %>
+  </div>
+
+  <div class="icons" id="bottom">
+
+    <a href="https://twitter.com/intent/tweet?original_referer=http%33A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&text=Want%20to%20find%20a%20place%20to%20meet%20halfway%20between%20you%20and%20your%20friend%3F%20Check%20out%20this%20great%20app&tw_p=tweetbutton&url=http%3A%2F%2Fwww.meethalfways.herokuapp.com"><img id="twitter-img" src="<%=asset_path('twitter.png')%>"/></a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <% if current_user %>
+      <a href='/signout'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign Out">power_settings_new</i></a>
+    <%else %>
+      <a href='/auth/google'><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Sign In">power_settings_new</i></a>
+    <% end %>
+  </div>
+</div>
+<!-- end of left static nav bar -->
+
+
+
+<!-- sliding nav bar controls-->
+
+<% if current_user %>
+<ul id="slide-out" class="side-nav">
+  <li>
+    <div class="userView">
+      <img class="background" src="https://wallpaperscraft.com/image/background_faded_stains_light_47125_602x339.jpg">
+      <span class="white-text name">Welcome, <%=current_user.first_name%>!</span>
+      <span class="white-text email"><%=current_user.email%></span>
+    </div>
+  </li>
+
+  <ul class="collapsible" data-collapsible="accordion">
+
+    <li> <!-- favlist -->
+      <div class="collapsible-header">
+        <i class="material-icons">view_headline</i>
+        Favorites
+      </div>
+      <div class="collapsible-body">
+        <ul class="collection">
+        <% @favresults.each do |favresult| %>
+          <li class="collection-item avatar" lat="<%=favresult.lat%>" lng="<%=favresult.lng%>" >
+            <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
+            <span class="title">
+              <a class="fav-name-link" href="<%=favresult.website%>" target="_blank">
+                <%= favresult.name %>
+              </a>
+              </span>
+            <p> <%= favresult.vicinity %> <br>
+            Hours
+            <br>
+                <%= favresult.formatted_phone_number %>
+            </p>
+            <span class="secondary-content">
+
+            <%= link_to delete_fav_path(place: "#{favresult.place_id}&array_id=#{@favresults.index(favresult)}"), method: :delete, data: { place: "#{favresult.place_id}&#{@favresults.index(favresult)}" }, :remote => true, :class => 'delete_fav' do %>
+              <i class="grey material-icons">delete</i>
+            <% end %>
+
+            </span>
+          </li>
+          <% end %> <!-- results-list -->
+         </ul> <!-- collection  -->
+      </div> <!-- collapse-body -->
+    </li> <!-- favlist -->
+  </ul> <!-- data-collapse -->
+<% end %> <!-- current user -->
+
+
+
+
+
+
+
+

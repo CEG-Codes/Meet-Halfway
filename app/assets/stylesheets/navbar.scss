@@ -1,0 +1,89 @@
+// styles related to navbar
+
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+  padding: 0 26.5px 0 0;
+  margin-top: -5px;
+}
+
+
+#left_nav_bar {
+  position: fixed;
+  width: 50px;
+  background-color: #c62828;
+  height: 100%;
+  top: 0px;
+  z-index: 1000;
+}
+
+#slide-out {
+  padding-left:50px;
+}
+
+.material-icons {
+	color: #fff;
+}
+
+.icons {
+	position: relative;
+	text-align: center;
+	margin: 10px;
+}
+
+#emptyIcon {
+  height: 30px;
+}
+
+#top {
+  top: 2%;
+}
+
+#bottom {
+  top: 78%;
+}
+
+.favorite_item {
+  padding-left: 25px;
+}
+
+
+.favLeft{
+  display: inline-block;
+  float: left;
+
+
+}
+.favRight{
+  display: inline-block;
+  float: right;
+}
+
+.collapsible-body p {
+  padding: 0;
+  font-size: 13px;
+}
+
+.collection .collection-item.avatar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.collection .collection-item.avatar .secondary-content {
+  position: relative;
+  top: -24px;
+  right: -15px;
+}
+
+#twitter-img {
+  height: 53px;
+  margin-left: -11px;
+}
+
+.fav-name-link {
+  color: #000;
+
+}
+.fav-name-link:hover {
+  color: #c62828;
+
+}
+

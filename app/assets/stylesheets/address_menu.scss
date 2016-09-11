@@ -1,0 +1,87 @@
+// styles related to address menu input form
+
+.container {
+ position: absolute;
+ background-color: rgba(255, 255, 255, 0.9);
+ width: 25em;
+ height: 550px;
+}
+
+#preloader{
+  position: relative;
+  flex-direction: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index:1;
+  zoom: 1;
+}
+
+
+#dest1[type=text].valid {
+    border-bottom: 1px solid #09ba41;
+    box-shadow: 0 1px 0 0 #09ba41;
+}
+
+#dest2[type=text].valid {
+    border-bottom: 1px solid #487af9;
+    box-shadow: 0 1px 0 0 #487af9;
+}
+
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+   padding-left: 25px;
+   padding-right: 10px;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+  background-color: #c62828;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+  border: 2px solid #c62828;
+}
+
+/* label focus color */
+#input-1 input:focus + label {
+  color: #09ba41;
+}
+
+#input-2 input:focus + label {
+  color: #487af9;
+}
+
+ /* label underline focus color */
+.row #input-1 input:focus {
+  border-bottom: 1px solid #09ba41;
+  box-shadow: 0 1px 0 0 #09ba41;
+}
+
+.row #input-2 input:focus {
+  border-bottom: 1px solid #487af9;
+  box-shadow: 0 1px 0 0 #487af9;
+}
+
+h4 {
+  font-weight: 300;
+  padding-left: 32%;
+  padding-bottom: 20px;
+}
+
+#destInput {
+  margin-top: 30px;
+}
+
+#option-select {
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+#destSubmitBtn {
+ margin-left: 25%;
+ margin-top: 30px;
+ margin-bottom: 20px;
+}
