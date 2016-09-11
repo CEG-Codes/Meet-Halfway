@@ -59,6 +59,7 @@
             </p>
             <a href="#" class="secondary-content">
               <i class="material-icons">delete</i>
+             <%= link_to 'DELETE ME', delete_fav_path(favresult.place_id), method: :delete %><br>
             </a>
           </li>
           <% end %> <!-- results-list -->

@@ -43,6 +43,10 @@ function navbarListeners() {
     var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
     console.log(latLng)
   })
+  $('.delete_button').on('click',function(e)
+  {
+    console.log($(e.target))
+  });
 };
 
 function resultListeners()

@@ -10,6 +10,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay1 = directionsDisplays[0];
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
+  this.originMarkers = [];
   this.infoboxes = [];
   this.radius = 750;
   this.circle = undefined;
@@ -30,10 +31,10 @@ function initMap(){
 
   //Place custom appearance options here!
   var route1Line = {
-      strokeColor: "red"
+      strokeColor: "green"
     }
   var route2Line = {
-      strokeColor: "red"
+      strokeColor: "blue"
     }
   var directionsDisplay1 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route1Line});
   var directionsDisplay2 = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true, polylineOptions: route2Line});
@@ -85,7 +86,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
     } else if (status == 'OK' && findhalf == false) {
       //do render results
       renderRoute(renderer, result);
-      placeMarker(result.routes[0].overview_path[0], undefined, undefined, image)
+      placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
     } else {
       //console.log('No direct route found!')
       $('#textFlash1').text('Sorry, no route found.')
@@ -102,7 +103,13 @@ function routeFound()
   {
     deleteMarker(home_map.markers[i]);
   }
-  clearMarkerArray();
+
+for (var i = 0; i < home_map.originMarkers.length; i++)
+  {
+    deleteMarker(home_map.originMarkers[i]);
+  }
+  clearMarkerArray(home_map.markers);
+  clearMarkerArray(home_map.originMarkers);
   toggleMenu();
 }
 
@@ -125,7 +132,7 @@ function findHalfway(result){
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
-      placeMarker(halfway_point, undefined, undefined, image);
+      placeMarker(halfway_point, home_map.originMarkers, undefined, image);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
@@ -151,9 +158,9 @@ function deleteMarker(marker)
    marker.setMap(null);
 }
 
-function clearMarkerArray()
+function clearMarkerArray(markerGroup)
 {
-  home_map.markers = [];
+  markerGroup = [];
 }
 
 function placeMarker(latLng, markerGroup, place, image)
@@ -172,16 +179,16 @@ function placeMarker(latLng, markerGroup, place, image)
   {
 
     var contentString = '<div class="infoContainer">'+
-  '<h5 class="infoName">'+place.name+'</h5>'+
-  '<div class="infoContent">'+
-    '<ul class = "infoList ">'+
-      '<li>'+place.vicinity+'</li>'+
-      '<li>Price: '+place.price_level+'</li>'+ ''+
-      '<li>Rating: '+place.rating+ '</li>'+
-    '</ul>'+
-  '</div>'+
-  '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
-'</div>'
+    '<h5 class="infoName">'+place.name+'</h5>'+
+    '<div class="infoContent">'+
+      '<ul class = "infoList ">'+
+        '<li>'+place.vicinity+'</li>'+
+        '<li>Price: '+place.price_level+'</li>'+ ''+
+        '<li>Rating: '+place.rating+ '</li>'+
+      '</ul>'+
+    '</div>'+
+    '<a class="btn-floating waves-effect waves-light red darken-3" onclick =saveFavorite("'+place.place_id+'")><i class="tiny material-icons">star</i></a>'+
+  '</div>'
 
 
     var infowindow = new google.maps.InfoWindow({
@@ -266,6 +273,8 @@ function searchPlaces (latLng, place_type) {
 }
 
 var process_places = function(data) {
+  console.log(data)
+
   $('#preloader').css('display', 'flex')
   var image = "" //Place custom places markers here!
   data.results.forEach(function(place)
@@ -279,6 +288,7 @@ var process_places = function(data) {
 
    var success = function(data)
     {
+
       $('#preloader').hide();
       resultListeners();
     }
