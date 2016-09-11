@@ -10,8 +10,12 @@ function ajax_this(url, method, data, success, error){
     },
     error: function(data)
     {
-      console.log('error');
-      error();
+      error(url, method, data);
     }
   })
+}
+
+var error_function = function(url, method, data)
+{
+  console.log("********ERROR********", url, method, data)
 }
