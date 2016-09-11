@@ -10,6 +10,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.directionsDisplay1 = directionsDisplays[0];
   this.directionsDisplay2 = directionsDisplays[1];
   this.markers = [];
+  this.originMarkers = [];
   this.infoboxes = [];
   this.radius = 750;
   this.circle = undefined;
@@ -85,7 +86,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
     } else if (status == 'OK' && findhalf == false) {
       //do render results
       renderRoute(renderer, result);
-      placeMarker(result.routes[0].overview_path[0], undefined, undefined, image)
+      placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
     } else {
       //console.log('No direct route found!')
       $('#textFlash1').text('Sorry, no route found.')
@@ -102,7 +103,13 @@ function routeFound()
   {
     deleteMarker(home_map.markers[i]);
   }
-  clearMarkerArray();
+
+for (var i = 0; i < home_map.originMarkers.length; i++)
+  {
+    deleteMarker(home_map.originMarkers[i]);
+  }
+  clearMarkerArray(home_map.markers);
+  clearMarkerArray(home_map.originMarkers);
   toggleMenu();
 }
 
@@ -125,7 +132,7 @@ function findHalfway(result){
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
-      placeMarker(halfway_point, undefined, undefined, image);
+      placeMarker(halfway_point, home_map.originMarkers, undefined, image);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
@@ -151,9 +158,9 @@ function deleteMarker(marker)
    marker.setMap(null);
 }
 
-function clearMarkerArray()
+function clearMarkerArray(markerGroup)
 {
-  home_map.markers = [];
+  markerGroup = [];
 }
 
 function placeMarker(latLng, markerGroup, place, image)
