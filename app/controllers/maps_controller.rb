@@ -5,12 +5,12 @@ class MapsController < ApplicationController
     def index
      @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
 
-
       if current_user
-       @favorites = Favorite.where(:user_id => current_user.id)
-       @favorites.each do |favorite|
-         spot = @client.spot(favorite.place_id)
-         MapsHelper.push(spot)
+        MapsHelper.clear
+        @favorites = Favorite.where(:user_id => current_user.id)
+        @favorites.each do |favorite|
+        spot = @client.spot(favorite.place_id)
+        MapsHelper.unshift(spot)
       end
       @favresults = MapsHelper.get
     end
