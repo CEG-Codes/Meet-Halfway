@@ -20,7 +20,6 @@ module PlacesHelper
     lat = place.lat
     lng = place.lng
 
-
     markerURL = "https://www.google.com/maps/place/#{name}/@#{lat},#{lng},15z"
 
   end
