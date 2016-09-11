@@ -16,8 +16,7 @@ function DOM_Stuff(){
   this.submit = $('#destSubmitBtn');
   this.submit.on('click', function(e){
     e.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     var start = ui.dest1.value;
     var end = ui.dest2.value;
     deleteMarkers();
