@@ -53,7 +53,12 @@
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
             <span class="title"><%= favresult.name %></span>
             <p> <%= favresult.vicinity %> <br>
-                Hours <br>
+            <% if isOpen?(favresult) %>
+                Open <%= get_opening_time(favresult) %> to <%= get_closing_time(favresult) %>
+            <% else %>
+            <span class ="red-text">Closed Now</span>
+            <% end %>
+            <br>
                 Phone <%= favresult.formatted_phone_number %>
             </p>
             <a href="#" class="secondary-content">
