@@ -90,4 +90,8 @@ function resultListeners()
     var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
     console.log(latLng);
   });
+  $('#backButton').on('click',function(e)
+  {
+    toggleMenu();
+  });
 }

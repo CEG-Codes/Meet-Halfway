@@ -9,17 +9,23 @@
  height: 550px;
 }
 
-#loading_icon
-{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: none;
+#preloader{
+
+  position: relative;
   flex-direction: center;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
   z-index:1;
   zoom: 3;
+}
+#loading_icon
+{
+
 }
 
 #dest1[type=text].valid {

@@ -103,7 +103,16 @@ function routeFound()
     deleteMarker(home_map.markers[i]);
   }
   clearMarkerArray();
+<<<<<<< HEAD
   $('.search_box').toggl33e(); //toggles search box out
+=======
+  toggleMenu();
+}
+
+function toggleMenu()
+{
+  $('.search_container').toggle(); //toggles search box out
+>>>>>>> ce4c0091734899130ca653b7846cd8c672cc5745
   $('.results_container').toggle(); //toggles results in
 }
 
@@ -112,13 +121,12 @@ function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
-  var image = ""; //Place custom place marker image link here!
+  var image = ""; //Place custom halfway marker image link here!
 
   for (var i = 0; i < coordinates_array.length; i++){
 
     var startingToHalfway = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[0], coordinates_array[i])
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
-    var image = ""; //Place halfway point image link here!
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
       placeMarker(halfway_point, undefined, undefined, image);
@@ -269,24 +277,25 @@ function searchPlaces (latLng, place_type) {
   ajax_this('/places', 'post', places_data, process_places, error_function)
 }
 
-  var process_places = function(data) {
-    $('#loading_icon').css('display', 'flex')
+var process_places = function(data) {
+  $('#preloader').css('display', 'flex')
+  var image = "" //Place custom places markers here!
+  data.results.forEach(function(place)
+  {
+    var latLng = {
+      lat: place.lat,
+      lng: place.lng
+    };
+    placeMarker(latLng, home_map.markers, place, image);
+    });
 
-    data.results.forEach(function(place)
+   var success = function(data)
     {
-      var latLng = {
-        lat: place.lat,
-        lng: place.lng
-      };
-      placeMarker(latLng, home_map.markers, place, image);
-      });
+      $('#preloader').hide();
+      resultListeners();
+    }
 
-     var success = function(data)
-      {
-        resultListeners();
-      }
-
-      var send_data = {data: JSON.stringify(data)};
-      ajax_this('/results', 'post', send_data, success, error_function)
+    var send_data = {data: JSON.stringify(data)};
+    ajax_this('/results', 'post', send_data, success, error_function)
 
   }
