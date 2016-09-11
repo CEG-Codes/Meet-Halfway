@@ -40,7 +40,15 @@ function navbarListeners() {
     var lat = $(e.target).attr('lat');
     var lng = $(e.target).attr('lng');
     var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
-    console.log(latLng)
+    latLng = {lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng)}
+    console.log(latLng);
+    if (latLng.lat >= 0 || latLng.lat <= 0 )
+    {
+      home_map.map.setZoom(16);
+      home_map.map.panTo(latLng);
+    } else {
+      console.log('Cant center')
+    }
   })
   $('.delete_button').on('click',function(e)
   {
@@ -56,7 +64,16 @@ function resultListeners()
     var lat = parent.parent().attr('lat');
     var lng = parent.parent().attr('lng');
     var latLng = (lat == undefined) ? {lat: parent.attr('lat'), lng: parent.attr('lng')} : {lat:lat, lng:lng}
-    console.log(latLng);
+    latLng = {lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng)}
+    if (latLng.lat >= 0 || latLng.lat <= 0 )
+    {
+      home_map.map.setZoom(16);
+      home_map.map.panTo(latLng);
+    } else {
+      console.log('Cant center')
+    }
+
+
   });
   $('#backButton').on('click',function(e)
   {
