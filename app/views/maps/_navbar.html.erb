@@ -59,7 +59,7 @@
             <p> <%= favresult.vicinity %> <br>
             Hours
             <br>
-                Phone <%= favresult.formatted_phone_number %>
+                <%= favresult.formatted_phone_number %>
             </p>
             <span class="secondary-content">
             <%= link_to delete_fav_path(place_id: favresult.place_id), method: :delete, data: { place_id: favresult.place_id }, :remote => true, :class => 'delete_fav' do %>

@@ -1,3 +1,10 @@
+// styles related to navbar
+
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+  padding: 0 26.5px 0 0;
+  margin-top: -5px;
+}
+
 
 #left_nav_bar {
   position: fixed;
@@ -61,9 +68,11 @@
 }
 
 .collection .collection-item.avatar .secondary-content {
-    position: absolute;
-    top: 55px;
-    right: 0px;
+
+  position: absolute;
+  top: 55px;
+  right: -38px;
+
 }
 
 #twitter-img {
