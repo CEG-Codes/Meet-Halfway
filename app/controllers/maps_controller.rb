@@ -4,23 +4,18 @@ class MapsController < ApplicationController
 
     def index
      @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-
+     @time = Time.new
       if current_user
         MapsHelper.clear
         @favorites = Favorite.where(:user_id => current_user.id)
         @favorites.each do |favorite|
-        spot = @client.spot(favorite.place_id)
-        MapsHelper.unshift(spot)
-      end
+          spot = @client.spot(favorite.place_id)
+          MapsHelper.unshift(spot)
+          # puts @time.hour < get_final_hour(spot)
+          # puts @time.hour
+          # puts get_final_hour(spot)
+        end
       @favresults = MapsHelper.get
     end
-
-
-  # def index
-  #   @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-  #   if current_user
-  #     @favorites = Favorite.where(:user_id => current_user.id)
-  #   end
-  # end
   end
 end
