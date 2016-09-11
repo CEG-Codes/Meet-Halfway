@@ -1,21 +1,12 @@
 <div id="map" style=""></div>
 
 <div id="post_fav">
-<%= render "navbar" %>
+  <%= render "navbar" %>
 </div>
-<div id="show_results">
-  <div id ="loading_icon" style="">
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
+
+<div id="menu_container">
+  <div id="preloader" style="display:none"><%= render "preloader" %></div>
+  <div id ="show_results">
   </div>
 <%= render "menu" %>
 </div>
