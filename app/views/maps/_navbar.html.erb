@@ -53,14 +53,15 @@
             <img src="<%=get_photo(favresult.photos)%>" alt="" class="circle">
             <span class="title"><%= favresult.name %></span>
             <p> <%= favresult.vicinity %> <br>
-            hours
+            Hours <%= get_opening_time(favresult) %> to <%=get_closing_time(favresult)%>
             <br>
                 Phone <%= favresult.formatted_phone_number %>
             </p>
             <a href="#" class="secondary-content">
-              <i class="material-icons">delete</i>
-             <%= link_to 'DELETE ME', delete_fav_path(favresult.place_id), method: :delete %><br>
-            </a>
+</a>
+        <%= link_to "Delete", delete_fav_path(place_id: favresult.place_id), :confirm => 'Are you sure?', :class => "button", :method => :delete %>
+
+
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->

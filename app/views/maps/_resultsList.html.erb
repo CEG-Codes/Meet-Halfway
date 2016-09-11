@@ -24,6 +24,8 @@
                  Phone: <%=place.formatted_phone_number%>
                  Rating: <%=place.rating%>
                  Price: <%=place.price_level%>
+                Hours <%= get_opening_time(place) %> to <%=get_closing_time(place)%>
+
               </p>
               <a class="valign favorite-button btn-floating waves-effect waves-light red darken-3"><i class="tiny material-icons">star</i></a>
             </div>
