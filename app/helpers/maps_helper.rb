@@ -38,19 +38,36 @@ module MapsHelper
     @favresults=[]
   end
 
-  def get_opening_time(place)
-    place.opening_hours["periods"][@time.wday]["open"]["time"]
-  end
+  # def get_opening_time(place)
+  #   place.opening_hours["periods"][@time.wday]["open"]["time"]
+  # end
 
-  def get_closing_time(place)
-    place.opening_hours["periods"][@time.wday]["close"]["time"]
-  end
+  # def get_closing_time(place)
+  #   place.opening_hours["periods"][@time.wday]["close"]["time"]
+  # end
 
-  def get_final_hour(place)
-    place.opening_hours["periods"][@time.wday]["close"]["time"][0,2].to_i
-  end
+  # def get_final_hour(place)
+  #   place.opening_hours["periods"][@time.wday]["close"]["time"][0,2].to_i
+  # end
 
-  def isOpen?(place)
-    place.opening_hours["open"]
-  end
+  # def isOpen?(place)
+  #   place.opening_hours["open"]
+  # end
+
+   def get_weekday_text(place)
+      place.opening_hours["weekday_text"]
+   end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+

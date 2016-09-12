@@ -1,9 +1,9 @@
 class PlacesController < ApplicationController
   include PlacesHelper
 
+
 	def create
 		@client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-
 	 	search = params["search"]
 	    radius = params["radius"].to_i
 	    center = params["center"]
