@@ -5,6 +5,9 @@ $(document).ready(function(){
   $('select').material_select();
   ui = new DOM_Stuff;
   navbarListeners();
+
+
+
 });
 
 function DOM_Stuff(){
@@ -17,9 +20,15 @@ function DOM_Stuff(){
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
+      $('#show_results').hide();
       calcRoute(start, end, true);
     }
 
+  });
+  this.circleTime = $('#circleTime');
+  this.circleTime.on('click', function(e)
+  {
+    toggleCircle();
   });
 };
 
@@ -28,12 +37,13 @@ function navbarListeners() {
       menuWidth: 400, // Default is 240
       edge: 'left', // Choose the horizontal origin
       closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
+    });
+
   $('.button-collapse').sideNav('hide');
    $('.collapsible').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+
   $('.collection').on('click', function(e)
   {
     var parent = $(e.target).parent()
@@ -54,15 +64,15 @@ function navbarListeners() {
   {
     console.log($(e.target))
   });
-  $('#circleTime').on('click', function(e)
-  {
-    home_map.circleTime = true;
-  });
+
 
 };
 
 function resultListeners()
 {
+    $('.col-time').collapsible({
+      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
   $('.result_item').off('click', centerMapClick);
   var centerMapClick = function(e)
   {
@@ -103,6 +113,8 @@ function resultListeners()
 
   var clip = new ZeroClipboard($(".my_clip_button"));
 }
+
+//
 
 function closeInfoBoxes()
 {
