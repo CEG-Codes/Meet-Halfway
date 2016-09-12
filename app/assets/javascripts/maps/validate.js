@@ -16,6 +16,10 @@ function validate_search()
       $('#textFlash2').text('Please Enter a Valid Location')
     }
     return false
+  } else if (input1 == input2)
+  {
+    $('#textFlash1').text('Step out the door. You\'re there.');
+    return false
   } else
   {
     return true;

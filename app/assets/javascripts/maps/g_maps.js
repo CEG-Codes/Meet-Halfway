@@ -105,7 +105,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
   if (home_map.circle != undefined && findhalf)
   {
-    console.log('DELETE CIRCLE!')
+    //console.log('DELETE CIRCLE!')
     home_map.circle.setMap(null);
     createCircle();
   }
@@ -193,7 +193,7 @@ function deleteMarker(marker)
 
 function placeMarker(latLng, markerGroup, place, image)
 {
-  console.log(image)
+  //console.log(image)
   var marker = new google.maps.Marker({
      position: latLng,
      map: home_map.map,
@@ -294,7 +294,7 @@ function toggleCircle()
 
 function saveFavorite(place_id)
 {
-  console.log("PLACE ID =", place_id)
+ // console.log("PLACE ID =", place_id)
   Materialize.toast('Saved!', 2000);
   createFavorite(place_id)
 }
