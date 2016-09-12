@@ -15,6 +15,7 @@ class MapsController < ApplicationController
           # puts get_final_hour(spot)
         end
       @favresults = MapsHelper.get
+      render :index
     end
   end
 
