@@ -64,12 +64,11 @@
                 <%= favresult.formatted_phone_number %>
             </p>
             <span class="secondary-content">
-
-            <%= link_to delete_fav_path(place: "#{favresult.place_id}&array_id=#{favresult.name}"), method: :delete, :remote => true, :class => 'delete_fav' do %>
+              <%= link_to delete_fav_path(place: "#{favresult.place_id}&array_id=#{favresult.name}"), method: :delete, :remote => true, :class => 'delete_fav' do %>
               <i class="grey material-icons">delete</i>
-            <% end %>
-
+              <% end %>
             </span>
+            
           </li>
           <% end %> <!-- results-list -->
          </ul> <!-- collection  -->
