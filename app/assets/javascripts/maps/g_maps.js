@@ -85,6 +85,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
       //do render results
+      resetErrorFlash();
       renderRoute(renderer, result);
       placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
     } else {
@@ -110,8 +111,8 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
   }
   closeInfoBoxes();
   deleteInfoBoxes();
-  clearMarkerArray(home_map.markers);
-  clearMarkerArray(home_map.originMarkers);
+  home_map.markers = [];
+  home_map.originMarkers =[];
   toggleMenu();
 }
 
@@ -151,18 +152,13 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'https://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 };
 
 function deleteMarker(marker)
 {
    marker.setMap(null);
-}
-
-function clearMarkerArray(markerGroup)
-{
-  markerGroup = [];
 }
 
 function placeMarker(latLng, markerGroup, place, image)
@@ -229,6 +225,7 @@ function createCircle(center, radius)
 function saveFavorite(place_id)
 {
   console.log("PLACE ID =", place_id)
+  Materialize.toast('Saved!', 2000);
   createFavorite(place_id)
 }
 //pass the halfway point latLng to this method
@@ -287,6 +284,7 @@ var process_places = function(data) {
 
       $('#preloader').hide();
       resultListeners();
+
     }
 
     var send_data = {data: JSON.stringify(data)};

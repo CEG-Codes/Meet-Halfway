@@ -17,14 +17,18 @@ class MapsController < ApplicationController
           # puts get_final_hour(spot)
         end
       @favresults = MapsHelper.get
+      render :index
     end
   end
 
   def delete_fav
-
-    place = Favorite.find_by_place_id(params[:place_id])
+    data = params[:place].split('&array_id=')
+    place_id = data[0].to_s
+    name = data[1].to_s
+    index = MapsHelper.index_by_name(name)
+    place = Favorite.find_by_place_id(place_id)
     place.destroy
-
+    MapsHelper.delete_at(index)
 
     #render :nothing => true
     respond_to do |format|

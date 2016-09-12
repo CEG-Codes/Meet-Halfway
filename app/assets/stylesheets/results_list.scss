@@ -13,13 +13,15 @@
 #backbutton {
   padding-left: 79px;
   float: left;
+  padding-top: 9px;
 }
-
 
 #results {
   font-weight: 300;
   padding-left: 125px;
-  color: #0e0e0ede;
+  color: #0e0e0e;
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 .result-title-link {
@@ -30,7 +32,6 @@
   color: #c62828;
 }
 
-
 .place-title {
   display: inline;
   padding-left: 3%;
@@ -38,7 +39,6 @@
   font-weight: 300;
   padding-top: 8px;
   color: #0e0e0e;
-
 }
 
 .place_icon{
@@ -50,27 +50,30 @@
   // padding-left: 10px;
 }
 
-#results_list{
-  height: 100%;
-}
 
 .results_container {
- // position: absolute;
- // top: 50px;
- // left: 100px;
- background-color: rgba(255, 255, 255, 0.87);
- width: 25em;
- height:100%;
- overflow: scroll;
- //display:none;
- // z-index: 12;
+  // position: absolute;
+  // top: 50px;
+  // left: 100px;
+  background-color: rgba(255, 255, 255, 0.87);
+  width: 25em;
+  height:100%;
+  overflow: scroll;
+  //display:none;
+  // z-index: 12;
 }
 
-.favorite-button {
-  float: right;
-  display: inline;
-  margin: 0 auto;
-}
+// #fixed {
+//   position: fixed;
+//   top:100px;
+// }
+
+
+// .favorite-button {
+//   float: right;
+//   display: inline;
+//   margin: 0 auto;
+// }
 
 .place-info {
   display: inline;
@@ -85,6 +88,15 @@
   display: block;
 }
 
+#save {
+  padding-left: 57px;
+  padding-top: 37px;
+}
+
+#share {
+  padding-left: 18px;
+  padding-top:39px;
+}
 
 .time-text {
      color: #6f6d6d;
