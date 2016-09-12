@@ -6,6 +6,10 @@ module MapsHelper
     @favresults
   end
 
+  def self.iget(index)
+    @favresults[index]
+  end
+
   def self.unshift(item)
     @favresults.unshift(item)
   end
@@ -14,8 +18,8 @@ module MapsHelper
     @favresults.push(item)
   end
 
-  def self.index(item)
-    @favresults.index(item)
+  def self.index_by_name(value)
+    @favresults.index{|item| item.name == value}
   end
 
   def self.delete_at(index)
