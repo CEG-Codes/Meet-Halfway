@@ -79,6 +79,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
       findHalfway(result);
       routeFound();
+      toggleMenu();
 
       console.log("Radius = " +home_map.radius, "Route Distance = " + distance);
 
@@ -97,6 +98,13 @@ function calcRoute(start, end, findhalf, renderer, image) {
         'opacity': 1}, 500)
     }
   });
+
+  if (home_map.circle != undefined && findhalf)
+  {
+    console.log('DELETE CIRCLE!')
+    home_map.circle.setMap(null);
+    createCircle();
+  }
 }
 
 function routeFound()
@@ -114,7 +122,6 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
   deleteInfoBoxes();
   home_map.markers = [];
   home_map.originMarkers =[];
-  toggleMenu();
 }
 
 function toggleMenu()
@@ -124,7 +131,6 @@ function toggleMenu()
 }
 
 function findHalfway(result){
-  var place_type = $('input[name=group2]:checked', '#place_type').val();
   var coordinates_array = result.routes[0].overview_path
   var half = Math.floor(coordinates_array.length / 2)
   var halfway_point = coordinates_array[half]
@@ -140,7 +146,7 @@ function findHalfway(result){
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
-      searchPlaces(latLng, place_type);
+      searchPlaces(latLng);
       bothWays(latLng);
       break
     }
@@ -208,7 +214,6 @@ function placeMarker(latLng, markerGroup, place, image)
 
 function createCircle(center, radius)
 {
-
   var circle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -220,6 +225,16 @@ function createCircle(center, radius)
       radius: radius,
       draggable: true
     });
+
+  circle.addListener('dragend', function()
+    {
+      var center = circle.getCenter();
+      var latlng = {lat: center.lat(), lng: center.lng()}
+      var radius = circle.getRadius();
+
+      searchPlaces(latlng);
+      routeFound();
+    })
 
   home_map.circle = circle;
   toggleCircle();
@@ -243,11 +258,16 @@ function saveFavorite(place_id)
 }
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
+  $('.results_container').toggle(); //toggles results in
+  var place_type = $('input[name=group2]:checked', '#place_type').val();
   var place;
   var exclude;
   var radius;
+  if (home_map.circle == undefined)
+  {
+    createCircle(latLng, home_map.radius);
+  }
 
-  createCircle(latLng, home_map.radius);
   home_map.map.setZoom(14)
   home_map.map.setCenter(latLng)
 
@@ -295,8 +315,11 @@ var process_places = function(data) {
    var success = function(data)
     {
 
+
+
       $('#preloader').hide();
       resultListeners();
+
 
     }
 
