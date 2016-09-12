@@ -21,10 +21,12 @@ function validate_search()
     return true;
   }
 
+
 }
 
 function resetErrorFlash()
 {
   $('#textFlash1').text('')
   $('#textFlash2').text('')
+  $('#textFlash3').text('')
 }
