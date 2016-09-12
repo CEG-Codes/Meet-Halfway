@@ -5,6 +5,9 @@ $(document).ready(function(){
   $('select').material_select();
   ui = new DOM_Stuff;
   navbarListeners();
+
+
+
 });
 
 function DOM_Stuff(){
@@ -17,9 +20,15 @@ function DOM_Stuff(){
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
+      $('#show_results').hide();
       calcRoute(start, end, true);
     }
 
+  });
+  this.circleTime = $('#circleTime');
+  this.circleTime.on('click', function(e)
+  {
+    toggleCircle();
   });
 };
 
@@ -28,12 +37,13 @@ function navbarListeners() {
       menuWidth: 400, // Default is 240
       edge: 'left', // Choose the horizontal origin
       closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
+    });
+
   $('.button-collapse').sideNav('hide');
    $('.collapsible').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+
   $('.collection').on('click', function(e)
   {
     var parent = $(e.target).parent()
@@ -54,11 +64,17 @@ function navbarListeners() {
   {
     console.log($(e.target))
   });
+
+
 };
 
 function resultListeners()
 {
-  $('.result_item').on('click', function(e)
+    $('.col-time').collapsible({
+      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  $('.result_item').off('click', centerMapClick);
+  var centerMapClick = function(e)
   {
     var parent = $(e.target);
     var saveButton = parent.parent();
@@ -81,13 +97,15 @@ function resultListeners()
     {
       home_map.map.setZoom(16);
       home_map.map.panTo(latLng);
+      console.log(latLng, mkid);
       closeInfoBoxes();
       infowindow.open(home_map.map, home_map.markers[mkid]);
     } else {
       console.log('Cant center')
     }
 
-  });
+  }
+  $('.result_item').on('click', centerMapClick);
   $('#backButton').on('click',function(e)
   {
     toggleMenu();
@@ -95,6 +113,8 @@ function resultListeners()
 
   var clip = new ZeroClipboard($(".my_clip_button"));
 }
+
+//
 
 function closeInfoBoxes()
 {

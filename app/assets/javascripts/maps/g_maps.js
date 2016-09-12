@@ -14,6 +14,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.infoboxes = [];
   this.radius = 750;
   this.circle = undefined;
+  this.circleTime = false;
 };
 
 
@@ -78,15 +79,21 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
       findHalfway(result);
       routeFound();
+      toggleMenu();
 
       console.log("Radius = " +home_map.radius, "Route Distance = " + distance);
 
 
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
+      var halfway_image = 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png'; //Place custom halfway marker image link here!
+
       //do render results
+      resetErrorFlash();
       renderRoute(renderer, result);
       placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
+      placeMarker(result.routes[0].overview_path[(result.routes[0].overview_path.length - 1)], home_map.originMarkers, undefined, halfway_image);
+
     } else {
       //console.log('No direct route found!')
       $('#textFlash1').text('Sorry, no route found.')
@@ -95,6 +102,13 @@ function calcRoute(start, end, findhalf, renderer, image) {
         'opacity': 1}, 500)
     }
   });
+
+  if (home_map.circle != undefined && findhalf)
+  {
+    console.log('DELETE CIRCLE!')
+    home_map.circle.setMap(null);
+    createCircle();
+  }
 }
 
 function routeFound()
@@ -110,9 +124,8 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
   }
   closeInfoBoxes();
   deleteInfoBoxes();
-  clearMarkerArray(home_map.markers);
-  clearMarkerArray(home_map.originMarkers);
-  toggleMenu();
+  home_map.markers = [];
+  home_map.originMarkers =[];
 }
 
 function toggleMenu()
@@ -122,11 +135,9 @@ function toggleMenu()
 }
 
 function findHalfway(result){
-  var place_type = $('input[name=group2]:checked', '#place_type').val();
-  var coordinates_array = result.routes[0].overview_path
-  var half = Math.floor(coordinates_array.length / 2)
-  var halfway_point = coordinates_array[half]
-  var image = ""; //Place custom halfway marker image link here!
+  var coordinates_array = result.routes[0].overview_path;
+  var half = Math.floor(coordinates_array.length / 2);
+  var halfway_point = coordinates_array[half];
 
   for (var i = 0; i < coordinates_array.length; i++){
 
@@ -134,11 +145,13 @@ function findHalfway(result){
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
-      placeMarker(halfway_point, home_map.originMarkers, undefined, image);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
-      searchPlaces(latLng, place_type);
+
+      createCircle(latLng, home_map.radius);
+
+      searchPlaces(latLng);
       bothWays(latLng);
       break
     }
@@ -151,8 +164,8 @@ function renderRoute(renderer, result){
 }
 
 function bothWays(halfway_point){
-  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+  calcRoute(ui.dest1.value, halfway_point, false, home_map.directionsDisplay1, 'https://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  calcRoute(ui.dest2.value, halfway_point, false, home_map.directionsDisplay2, 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 };
 
 function deleteMarker(marker)
@@ -160,13 +173,9 @@ function deleteMarker(marker)
    marker.setMap(null);
 }
 
-function clearMarkerArray(markerGroup)
-{
-  markerGroup = [];
-}
-
 function placeMarker(latLng, markerGroup, place, image)
 {
+  console.log(image)
   var marker = new google.maps.Marker({
      position: latLng,
      map: home_map.map,
@@ -223,21 +232,66 @@ function createCircle(center, radius)
       draggable: true
     });
 
+  circle.addListener('dragend', function()
+    {
+
+      var center = circle.getCenter();
+      var latlng = {lat: center.lat(), lng: center.lng()}
+      var radius = circle.getRadius();
+
+      searchPlaces(latlng);
+      routeFound();
+    })
+
   home_map.circle = circle;
+
+  if (home_map.circleTime)
+  {
+    home_map.circle.setVisible(true);
+  }else{
+    home_map.circle.setVisible(false);
+  }
+}
+
+function toggleCircle()
+{
+  if (home_map.circleTime)
+  {
+    home_map.circleTime = false;
+    Materialize.toast('Circle Disabled!', 2000);
+    if (home_map.circle !=undefined)
+    {
+      home_map.circle.setVisible(false);
+    }
+
+  } else {
+    home_map.circleTime = true;
+    Materialize.toast('Circle Enabled!', 2000);
+    if (home_map.circle !=undefined)
+    {
+      home_map.circle.setVisible(true);
+    }
+  }
 }
 
 function saveFavorite(place_id)
 {
   console.log("PLACE ID =", place_id)
+  Materialize.toast('Saved!', 2000);
   createFavorite(place_id)
 }
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
+  $('.results_container').toggle(); //toggles results in
+  var place_type = $('input[name=group2]:checked', '#place_type').val();
   var place;
   var exclude;
   var radius;
 
-  //createCircle(latLng, home_map.radius);
+
+
+  home_map.circle.setOptions({fillColor: '#FFFF00', draggable: false});
+
   home_map.map.setZoom(14)
   home_map.map.setCenter(latLng)
 
@@ -272,7 +326,7 @@ var process_places = function(data) {
   console.log(data)
 
   $('#preloader').css('display', 'flex')
-  var image = "" //Place custom places markers here!
+  var image = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png' //Place custom places markers here!
   data.results.forEach(function(place)
   {
     var latLng = {
@@ -285,8 +339,15 @@ var process_places = function(data) {
    var success = function(data)
     {
 
+
+
       $('#preloader').hide();
+      $('#show_results').show();
       resultListeners();
+
+    home_map.circle.setOptions({fillColor: '#FF0000', draggable: true});
+
+
     }
 
     var send_data = {data: JSON.stringify(data)};
