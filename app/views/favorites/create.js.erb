@@ -1,2 +1,5 @@
 $(".post_fav").html("<%=escape_javascript(render :partial =>'maps/navbar')%>")
 
+<% if @dup == true %>
+  Materialize.toast('Already Saved!', 2000, 'red');
+<% end %>

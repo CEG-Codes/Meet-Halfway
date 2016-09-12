@@ -229,6 +229,7 @@ function createCircle(center, radius)
 function saveFavorite(place_id)
 {
   console.log("PLACE ID =", place_id)
+  Materialize.toast('Saved!', 2000);
   createFavorite(place_id)
 }
 //pass the halfway point latLng to this method
