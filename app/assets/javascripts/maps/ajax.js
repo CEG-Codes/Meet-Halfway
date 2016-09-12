@@ -18,4 +18,7 @@ function ajax_this(url, method, data, success, error){
 var error_function = function(url, method, data)
 {
   console.log("********ERROR********", url, method, data)
+  toggleMenu();
+  $('#preloader').css('display', 'none')
+  $('#textFlash1').text('Sorry, Google wouldn\'t share with us. Try again!')
 }
