@@ -22,6 +22,11 @@ function DOM_Stuff(){
     }
 
   });
+  this.circleTime = $('#circleTime');
+  this.circleTime.on('click', function(e)
+  {
+    toggleCircle();
+  });
 };
 
 function navbarListeners() {
@@ -55,10 +60,7 @@ function navbarListeners() {
   {
     console.log($(e.target))
   });
-  $('#circleTime').on('click', function(e)
-  {
-    home_map.circleTime = true;
-  });
+
 
 };
 
