@@ -19,7 +19,6 @@
 
     <div id="scroll">
       <% @places.each do |place| %>
-      <div class="divider"></div>
         <div class="hoverable card-stacked result_item" lat="<%=place.lat%>" lng="<%=place.lng%>" mkid="<%=@places.index(place)%>">
           <div class="valign-wrapper">
             <img class="valign place_icon" src=<%= get_photo(place.photos) %>>
