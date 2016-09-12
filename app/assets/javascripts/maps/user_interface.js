@@ -55,6 +55,11 @@ function navbarListeners() {
   {
     console.log($(e.target))
   });
+  $('#circleTime').on('click', function(e)
+  {
+    home_map.circleTime = true;
+  });
+
 };
 
 function resultListeners()
