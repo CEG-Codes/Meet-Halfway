@@ -293,5 +293,3 @@ var process_places = function(data) {
     ajax_this('/results', 'post', send_data, success, error_function)
 
   }
-
-
