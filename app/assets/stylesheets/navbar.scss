@@ -5,11 +5,15 @@
   margin-top: -5px;
 }
 
+.userView {
+  background-image: linear-gradient(to right, #e64c3c, #2c3e50)
+}
+
 
 #left_nav_bar {
   position: fixed;
   width: 50px;
-  background-color: #c62828;
+  background-color: #e64c3c;
   height: 100%;
   top: 0px;
   z-index: 1000;
@@ -38,7 +42,7 @@
 }
 
 #bottom {
-  top: 78%;
+  top: 73%;
 }
 
 .favorite_item {
@@ -83,7 +87,12 @@
 
 }
 .fav-name-link:hover {
-  color: #c62828;
+  color: #e64c3c;
 
+}
+
+#circleTime{
+  cursor: pointer;
+  padding-top: 4px;
 }
 

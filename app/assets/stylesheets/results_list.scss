@@ -29,7 +29,7 @@
 }
 
 .result-title-link:hover {
-  color: #c62828;
+  color: #e64c3c;
 }
 
 .place-title {
@@ -101,4 +101,8 @@
 .time-text {
      color: #6f6d6d;
     background-color: rgba(255, 255, 255, -0.13);
+}
+
+#show_results{
+  display: none;
 }
