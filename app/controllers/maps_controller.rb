@@ -21,8 +21,8 @@ class MapsController < ApplicationController
   def delete_fav
     data = params[:place].split('&array_id=')
     place_id = data[0].to_s
-    index = data[1].to_i
-
+    name = data[1].to_s
+    index = MapsHelper.index_by_name(name)
     place = Favorite.find_by_place_id(place_id)
     place.destroy
     MapsHelper.delete_at(index)
