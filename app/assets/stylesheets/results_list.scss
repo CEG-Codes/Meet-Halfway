@@ -16,6 +16,10 @@
   padding-top: 9px;
 }
 
+.back-button{
+  background-color: #e64c3c;
+}
+
 #results {
   font-weight: 300;
   padding-left: 125px;
@@ -68,12 +72,14 @@
 //   top:100px;
 // }
 
+#d_clip_button {
+  background-color: #e64c3c;
+}
 
-// .favorite-button {
-//   float: right;
-//   display: inline;
-//   margin: 0 auto;
-// }
+
+.favorite-button {
+  background-color: #e64c3c;
+}
 
 .place-info {
   display: inline;
