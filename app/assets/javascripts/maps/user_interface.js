@@ -31,12 +31,13 @@ function navbarListeners() {
       menuWidth: 400, // Default is 240
       edge: 'left', // Choose the horizontal origin
       closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
+    });
+
   $('.button-collapse').sideNav('hide');
    $('.collapsible').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+
   $('.collection').on('click', function(e)
   {
     var parent = $(e.target).parent()
@@ -61,7 +62,7 @@ function navbarListeners() {
 
 function resultListeners()
 {
-    $('.collapsible').collapsible({
+    $('.col-time').collapsible({
       accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   $('.result_item').off('click', centerMapClick);
@@ -104,6 +105,8 @@ function resultListeners()
 
   var clip = new ZeroClipboard($(".my_clip_button"));
 }
+
+//
 
 function closeInfoBoxes()
 {
