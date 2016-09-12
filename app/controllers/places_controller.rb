@@ -1,9 +1,10 @@
 class PlacesController < ApplicationController
   include PlacesHelper
 
+
 	def create
 		@client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-
+    @time = Time.new
 	 	search = params["search"]
 	    radius = params["radius"].to_i
 	    center = params["center"]
@@ -16,6 +17,7 @@ class PlacesController < ApplicationController
 	end
 
   def list_results
+    @time = Time.new
     @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
     @places = []
     results = JSON.parse(params[:data])

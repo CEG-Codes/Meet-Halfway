@@ -5,6 +5,9 @@ $(document).ready(function(){
   $('select').material_select();
   ui = new DOM_Stuff;
   navbarListeners();
+
+
+
 });
 
 function DOM_Stuff(){
@@ -58,6 +61,10 @@ function navbarListeners() {
 
 function resultListeners()
 {
+  $('.collapsible').collapsible({
+      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+
   $('.result_item').on('click', function(e)
   {
     var parent = $(e.target);

@@ -33,4 +33,21 @@ module MapsHelper
   def isOpen?(place)
     place.opening_hours["open"]
   end
+
+   def get_weekday_text(place)
+    place.opening_hours["weekday_text"]
+   end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
