@@ -15,6 +15,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.radius = 750;
   this.circle = undefined;
   this.circleTime = false;
+  this.searchShow = true;
 };
 
 
@@ -129,8 +130,17 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
 
 function toggleMenu()
 {
-  $('.search_container').toggle(); //toggles search box out
-  $('#show_results').toggle(); //toggles results in
+  if (home_map.searchShow)
+  {
+    $('.search_container').toggle(); //toggles search box out
+    $('#show_results').toggle(); //toggles results in
+    home_map.searchShow = false;
+  } else {
+    $('.search_container').toggle(); //toggles search box out
+    $('#show_results').toggle(); //toggles results in
+    home_map.searchShow = true;
+  }
+
 }
 
 function hideMenu()
@@ -352,7 +362,12 @@ var process_places = function(data) {
 
       $('#preloader').hide();
       showMenu();
-      toggleMenu();
+
+      if (home_map.searchShow)
+      {
+        toggleMenu();
+      }
+
 
       resultListeners();
 
