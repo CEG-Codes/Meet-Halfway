@@ -22,8 +22,16 @@ module MapsHelper
     @favresults.index{|item| item.name == value}
   end
 
+  def self.index_by_place_id(value)
+    @favresults.index{|item| item.place_id == value}
+  end
+
   def self.delete_at(index)
     @favresults.delete_at(index)
+  end
+
+  def self.include?(item)
+    @favresults.include?(item)
   end
 
   def self.clear
