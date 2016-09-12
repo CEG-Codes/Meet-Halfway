@@ -86,10 +86,14 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
+      var halfway_image = 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png'; //Place custom halfway marker image link here!
+
       //do render results
       resetErrorFlash();
       renderRoute(renderer, result);
       placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
+      placeMarker(result.routes[0].overview_path[(result.routes[0].overview_path.length - 1)], home_map.originMarkers, undefined, halfway_image);
+
     } else {
       //console.log('No direct route found!')
       $('#textFlash1').text('Sorry, no route found.')
@@ -131,10 +135,9 @@ function toggleMenu()
 }
 
 function findHalfway(result){
-  var coordinates_array = result.routes[0].overview_path
-  var half = Math.floor(coordinates_array.length / 2)
-  var halfway_point = coordinates_array[half]
-  var image = ""; //Place custom halfway marker image link here!
+  var coordinates_array = result.routes[0].overview_path;
+  var half = Math.floor(coordinates_array.length / 2);
+  var halfway_point = coordinates_array[half];
 
   for (var i = 0; i < coordinates_array.length; i++){
 
@@ -142,10 +145,12 @@ function findHalfway(result){
     var halfwayToDestination = google.maps.geometry.spherical.computeDistanceBetween(coordinates_array[coordinates_array.length - 1], coordinates_array[i])
     if (halfwayToDestination <= startingToHalfway){
       halfway_point = coordinates_array[i];
-      placeMarker(halfway_point, home_map.originMarkers, undefined, image);
       console.log("Are they equal?", startingToHalfway/1000+"km", halfwayToDestination/1000+"km");
 
       var latLng = { lat: halfway_point.lat(), lng: halfway_point.lng() };
+
+      createCircle(latLng, home_map.radius);
+
       searchPlaces(latLng);
       bothWays(latLng);
       break
@@ -170,6 +175,7 @@ function deleteMarker(marker)
 
 function placeMarker(latLng, markerGroup, place, image)
 {
+  console.log(image)
   var marker = new google.maps.Marker({
      position: latLng,
      map: home_map.map,
@@ -228,6 +234,7 @@ function createCircle(center, radius)
 
   circle.addListener('dragend', function()
     {
+
       var center = circle.getCenter();
       var latlng = {lat: center.lat(), lng: center.lng()}
       var radius = circle.getRadius();
@@ -237,16 +244,33 @@ function createCircle(center, radius)
     })
 
   home_map.circle = circle;
-  toggleCircle();
+
+  if (home_map.circleTime)
+  {
+    home_map.circle.setVisible(true);
+  }else{
+    home_map.circle.setVisible(false);
+  }
 }
 
 function toggleCircle()
 {
   if (home_map.circleTime)
   {
-    home_map.circle.setVisible(true);
+    home_map.circleTime = false;
+    Materialize.toast('Circle Disabled!', 2000);
+    if (home_map.circle !=undefined)
+    {
+      home_map.circle.setVisible(false);
+    }
+
   } else {
-    home_map.circle.setVisible(false);
+    home_map.circleTime = true;
+    Materialize.toast('Circle Enabled!', 2000);
+    if (home_map.circle !=undefined)
+    {
+      home_map.circle.setVisible(true);
+    }
   }
 }
 
@@ -263,10 +287,10 @@ function searchPlaces (latLng, place_type) {
   var place;
   var exclude;
   var radius;
-  if (home_map.circle == undefined)
-  {
-    createCircle(latLng, home_map.radius);
-  }
+
+
+
+  home_map.circle.setOptions({fillColor: '#FFFF00', draggable: false});
 
   home_map.map.setZoom(14)
   home_map.map.setCenter(latLng)
@@ -302,7 +326,7 @@ var process_places = function(data) {
   console.log(data)
 
   $('#preloader').css('display', 'flex')
-  var image = "" //Place custom places markers here!
+  var image = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png' //Place custom places markers here!
   data.results.forEach(function(place)
   {
     var latLng = {
@@ -318,7 +342,10 @@ var process_places = function(data) {
 
 
       $('#preloader').hide();
+      $('#show_results').show();
       resultListeners();
+
+    home_map.circle.setOptions({fillColor: '#FF0000', draggable: true});
 
 
     }
