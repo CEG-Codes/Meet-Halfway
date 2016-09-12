@@ -5,9 +5,7 @@ function validate_search()
   var input2 = ui.dest2.value.replace(reg, "");
   if (input1 == "" || input2 == "")
   {
-    $('#textFlash1').text('')
-    $('#textFlash2').text('')
-
+    resetErrorFlash();
     if (input1 == "")
     {
       $('#textFlash1').text('Please Enter a Valid Location')
@@ -23,4 +21,10 @@ function validate_search()
     return true;
   }
 
+}
+
+function resetErrorFlash()
+{
+  $('#textFlash1').text('')
+  $('#textFlash2').text('')
 }
