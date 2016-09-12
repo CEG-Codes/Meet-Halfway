@@ -7,14 +7,26 @@ class FavoritesController < ApplicationController
 
     user = current_user.id
 	 	place = params["place"];
-		Favorite.create(user_id: user, place_id: place)
+		Favorite.create(user_id: user, place_id: place, unique_id: "#{place}_#{user}")
     new_fav = @client.spot(place)
-    MapsHelper.push(new_fav)
-    @favresults = MapsHelper.get
+    if (MapsHelper.index_by_place_id(new_fav.place_id) == nil)
+      MapsHelper.push(new_fav)
+      @dup = false;
+      @favresults = MapsHelper.get
+      respond_to do |format|
+        format.js
+      end
+    else
+      puts "DUPLICATE!"
+      @dup = true
+      @favresults = MapsHelper.get
 
-    respond_to do |format|
-      format.js
+      respond_to do |format|
+        format.js
+      end
+
     end
+
 
   end
 
