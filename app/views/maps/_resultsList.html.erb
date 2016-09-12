@@ -50,7 +50,7 @@
                   <li>
                     <div class="time-text collapsible-header">Time</div>
                     <div class="collapsible-body">
-                     <% if place["opening_hours"]["weekday_text"].length > 0 %>
+                     <% if place["opening_hours"] %>
                       <% get_weekday_text(place).each do |hour|%>
                         <div class="place-info hour-text"><%=hour%></div>
                       <%end%> <!--time warp-->
