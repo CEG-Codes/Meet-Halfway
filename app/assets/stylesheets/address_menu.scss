@@ -38,11 +38,11 @@
 }
 
 [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
-  background-color: #c62828;
+  background-color: #e64c3c;
 }
 
 [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
-  border: 2px solid #c62828;
+  border: 2px solid #e64c3c;
 }
 
 /* label focus color */
@@ -65,10 +65,17 @@
   box-shadow: 0 1px 0 0 #487af9;
 }
 
-h4 {
-  font-weight: 300;
-  padding-left: 32%;
-  padding-bottom: 20px;
+// h4 {
+//   font-weight: 300;
+//   padding-left: 32%;
+//   padding-bottom: 20px;
+// }
+
+#hw_wordmark{
+  height: 80px;
+  margin-left: 36px;
+  margin-top: -26px;
+  margin-bottom: 23px;
 }
 
 #destInput {
@@ -84,4 +91,5 @@ h4 {
  margin-left: 25%;
  margin-top: 30px;
  margin-bottom: 20px;
+ background-color: #e64c3c;
 }
