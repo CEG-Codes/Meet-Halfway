@@ -14,6 +14,7 @@ function NewMap(map, directionsService, directionsDisplays){
   this.infoboxes = [];
   this.radius = 750;
   this.circle = undefined;
+  this.circleTime = false;
 };
 
 
@@ -207,6 +208,7 @@ function placeMarker(latLng, markerGroup, place, image)
 
 function createCircle(center, radius)
 {
+
   var circle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -220,6 +222,17 @@ function createCircle(center, radius)
     });
 
   home_map.circle = circle;
+  toggleCircle();
+}
+
+function toggleCircle()
+{
+  if (home_map.circleTime)
+  {
+    home_map.circle.setVisible(true);
+  } else {
+    home_map.circle.setVisible(false);
+  }
 }
 
 function saveFavorite(place_id)
@@ -234,7 +247,7 @@ function searchPlaces (latLng, place_type) {
   var exclude;
   var radius;
 
-  //createCircle(latLng, home_map.radius);
+  createCircle(latLng, home_map.radius);
   home_map.map.setZoom(14)
   home_map.map.setCenter(latLng)
 
