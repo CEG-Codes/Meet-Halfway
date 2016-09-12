@@ -85,6 +85,7 @@ function calcRoute(start, end, findhalf, renderer, image) {
       // status is the api suceeding or failing
     } else if (status == 'OK' && findhalf == false) {
       //do render results
+      resetErrorFlash();
       renderRoute(renderer, result);
       placeMarker(result.routes[0].overview_path[0], home_map.originMarkers, undefined, image)
     } else {
