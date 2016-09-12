@@ -283,6 +283,7 @@ var process_places = function(data) {
     {
 
       $('#preloader').hide();
+      $('#show_results').show();
       resultListeners();
 
     }
