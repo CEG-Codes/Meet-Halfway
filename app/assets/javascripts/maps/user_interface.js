@@ -58,7 +58,8 @@ function navbarListeners() {
 
 function resultListeners()
 {
-  $('.result_item').on('click', function(e)
+  $('.result_item').off('click', centerMapClick);
+  var centerMapClick = function(e)
   {
     var parent = $(e.target);
     var saveButton = parent.parent();
@@ -81,13 +82,15 @@ function resultListeners()
     {
       home_map.map.setZoom(16);
       home_map.map.panTo(latLng);
+      console.log(latLng, mkid);
       closeInfoBoxes();
       infowindow.open(home_map.map, home_map.markers[mkid]);
     } else {
       console.log('Cant center')
     }
 
-  });
+  }
+  $('.result_item').on('click', centerMapClick);
   $('#backButton').on('click',function(e)
   {
     toggleMenu();

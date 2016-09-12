@@ -110,8 +110,8 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
   }
   closeInfoBoxes();
   deleteInfoBoxes();
-  clearMarkerArray(home_map.markers);
-  clearMarkerArray(home_map.originMarkers);
+  home_map.markers = [];
+  home_map.originMarkers =[];
   toggleMenu();
 }
 
@@ -158,11 +158,6 @@ function bothWays(halfway_point){
 function deleteMarker(marker)
 {
    marker.setMap(null);
-}
-
-function clearMarkerArray(markerGroup)
-{
-  markerGroup = [];
 }
 
 function placeMarker(latLng, markerGroup, place, image)
@@ -288,6 +283,7 @@ var process_places = function(data) {
 
       $('#preloader').hide();
       resultListeners();
+
     }
 
     var send_data = {data: JSON.stringify(data)};
