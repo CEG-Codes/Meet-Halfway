@@ -1,4 +1,3 @@
-
 <div class="results_container">
 
     <div id="fixed">
@@ -10,11 +9,13 @@
 
     <% if @places.length <= 0 %>
       <div class="hoverable card-stacked result_item" style="height:100%;" lat="" lng="">
-        <div class="valign-wrapper" style="height:100%;" >
-          <p class="valign black-text" style ="text-align:center; width:100%">No results found!</p>
+        <div class="valign-wrapper" style="height:100%;">
+          <p class="valign black-text" style ="text-align:center; width:100%">
+            No results found!
+          </p>
         </div>
       </div>
-    <% end %>
+    <% end %> <!-- end of error -->
 
     <div id="scroll">
       <% @places.each do |place| %>
@@ -42,11 +43,35 @@
               <button class="btn-floating waves-effect waves-light red darken-3 my_clip_button" data-clipboard-text="<%=get_link(place)%>" onclick="Materialize.toast('Link Copied!', 2000)" id="d_clip_button" title="Copy to Clipboard">
                 <i class="tiny material-icons">trending_up</i>
               </button>
-            </div>
-
-          </div>
-        </div>
+            </div>         
+        </div> <!--content-->
+            <div id="time-info">
+                <ul class="col-time collapsible" data-collapsible="accordion">
+                  <li>
+                    <div class="time-text collapsible-header">Time</div>
+                    <div class="collapsible-body">
+                      <% get_weekday_text(place).each do |hour|%>
+                        <div class="place-info hour-text"><%=hour%></div>
+                      <%end%> <!--time warp-->
+                    </div>
+                  </li>
+                </ul>
+            </div> <!--time info-->
+        </div> <!-- cards -->
       <% end %>
 
-    </div>
-  </div>
+    </div> <!-- scroll -->
+  </div> <!-- container -->
+
+<!-- new shit -->
+
+
+
+
+
+
+
+
+
+
+

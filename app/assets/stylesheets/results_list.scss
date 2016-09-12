@@ -83,6 +83,11 @@
   color: #6f6d6d
 }
 
+.hour-text {
+  width: 100%;
+  display: block;
+}
+
 #save {
   padding-left: 57px;
   padding-top: 37px;
@@ -93,3 +98,7 @@
   padding-top:39px;
 }
 
+.time-text {
+     color: #6f6d6d;
+    background-color: rgba(255, 255, 255, -0.13);
+}
