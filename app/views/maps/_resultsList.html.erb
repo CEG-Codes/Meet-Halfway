@@ -2,7 +2,7 @@
 
     <div id="fixed">
       <div id="backbutton">
-        <button class="valign btn-floating waves-effect waves-light red darken-3 back-button" id="backButton"><i class="tiny material-icons">replay</i></button>
+        <button class="valign btn-floating waves-effect waves-light back-button" id="backButton"><i class="tiny material-icons">replay</i></button>
       </div>
       <h4 id="results">Results</h4>
     </div>
@@ -37,13 +37,13 @@
             </p>
 
             <div id="save">
-              <button pid = <%=place.place_id%> class="save_button favorite-button btn-floating waves-effect waves-light red darken-3" onclick="Materialize.toast('Saved!', 2000)"><i class="tiny material-icons">star</i></button>
+              <button pid = <%=place.place_id%> class="save_button favorite-button btn-floating waves-effect waves-light" onclick="Materialize.toast('Saved!', 2000)"><i class="tiny material-icons">star</i></button>
             </div>
             <div id="share">
-              <button class="btn-floating waves-effect waves-light red darken-3 my_clip_button" data-clipboard-text="<%=get_link(place)%>" onclick="Materialize.toast('Link Copied!', 2000)" id="d_clip_button" title="Copy to Clipboard">
+              <button class="btn-floating waves-effect waves-light my_clip_button" data-clipboard-text="<%=get_link(place)%>" onclick="Materialize.toast('Link Copied!', 2000)" id="d_clip_button" title="Copy to Clipboard">
                 <i class="tiny material-icons">trending_up</i>
               </button>
-            </div>         
+            </div>
         </div> <!--content-->
             <div id="time-info">
                 <ul class="col-time collapsible" data-collapsible="accordion">
@@ -62,7 +62,7 @@
 
     </div> <!-- scroll -->
   </div> <!-- container -->
-  
+
 
 <!-- new shit -->
 
