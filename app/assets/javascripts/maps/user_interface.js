@@ -20,7 +20,6 @@ function DOM_Stuff(){
     {
       var start = ui.dest1.value;
       var end = ui.dest2.value;
-      $('#show_results').hide();
       calcRoute(start, end, true);
     }
 
