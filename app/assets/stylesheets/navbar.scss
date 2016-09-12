@@ -4,11 +4,14 @@
   padding: 0 26.5px 0 0;
   margin-top: -5px;
 }
-
-.userView {
-  background-image: linear-gradient(to right, #e64c3c, #2c3e50)
+.side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+    background-color: #fff;
 }
 
+
+.userView {
+  background-image: linear-gradient(to top right, #2c3e50, #edf0f1);
+}
 
 #left_nav_bar {
   position: fixed;
@@ -101,3 +104,5 @@
     font-size: 12px;
     margin-bottom: -8px;
 }
+
+
