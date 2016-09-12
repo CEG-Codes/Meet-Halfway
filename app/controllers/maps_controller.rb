@@ -3,9 +3,8 @@ class MapsController < ApplicationController
   include MapsHelper
 
     def index
-     @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
-
       if current_user
+      @client = GooglePlaces::Client.new(ENV["googleWebAPI"])
         MapsHelper.clear
         @favorites = Favorite.where(:user_id => current_user.id)
         @favorites.each do |favorite|
@@ -16,8 +15,8 @@ class MapsController < ApplicationController
           # puts get_final_hour(spot)
         end
       @favresults = MapsHelper.get
-      render :index
     end
+    render :index
   end
 
   def delete_fav
