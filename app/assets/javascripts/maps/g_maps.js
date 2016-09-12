@@ -79,7 +79,6 @@ function calcRoute(start, end, findhalf, renderer, image) {
 
       findHalfway(result);
       routeFound();
-      toggleMenu();
 
       console.log("Radius = " +home_map.radius, "Route Distance = " + distance);
 
@@ -131,9 +130,18 @@ for (var i = 0; i < home_map.originMarkers.length; i++)
 function toggleMenu()
 {
   $('.search_container').toggle(); //toggles search box out
-  $('.results_container').toggle(); //toggles results in
+  $('#show_results').toggle(); //toggles results in
 }
 
+function hideMenu()
+{
+  $('#inner_menu_container').hide(); //toggles results in
+}
+
+function showMenu()
+{
+  $('#inner_menu_container').show(); //toggles results in
+}
 function findHalfway(result){
   var coordinates_array = result.routes[0].overview_path;
   var half = Math.floor(coordinates_array.length / 2);
@@ -282,13 +290,14 @@ function saveFavorite(place_id)
 }
 //pass the halfway point latLng to this method
 function searchPlaces (latLng, place_type) {
-  $('.results_container').toggle(); //toggles results in
+  //$('.results_container').toggle(); //toggles results in
   var place_type = $('input[name=group2]:checked', '#place_type').val();
   var place;
   var exclude;
   var radius;
 
 
+  hideMenu();
 
   home_map.circle.setOptions({fillColor: '#FFFF00', draggable: false});
 
@@ -342,7 +351,9 @@ var process_places = function(data) {
 
 
       $('#preloader').hide();
-      $('#show_results').show();
+      showMenu();
+      toggleMenu();
+
       resultListeners();
 
     home_map.circle.setOptions({fillColor: '#FF0000', draggable: true});
