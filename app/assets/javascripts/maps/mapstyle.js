@@ -64,8 +64,9 @@ var style = [
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#e7e6e5"
+                "color": "#3b97d3"
             },
+            //#e7e6e5
             {
                 "gamma": "0.65"
             },
